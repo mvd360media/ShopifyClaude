@@ -51,13 +51,34 @@
 - templates/index.json (portada) y templates/product.oc.json (plantilla de producto "oc")
 - Footer y barra de anuncios configurados en español
 
+## Productos (revisados 2026-10-17)
+- Máscara LED — gid://shopify/Product/16649284485511 — plantilla "oc"
+  - Quitadas imágenes con claims médicos / antes-después. Descripción sin imágenes de AliExpress (copia original: herramientas/ no; se reescribió con nota de autonomía y "sin caja original").
+  - Opción "Autonomía por carga": "1,5–2 h" (29,90 €) y "30–40 min" (39,90 €) — según imágenes del proveedor. OJO: la de más autonomía es la más barata → confirmar precios con el usuario.
+  - Imágenes con texto en inglés a rehacer en español: MediaImage 77748808515975 (Multi-effect care), 77748808548743 (Wireless operation), 77748808614279 (400mAh 1.5-2h No box), 77748808647047 (400mAh 30-40min No box). Las dos últimas son imágenes de variante.
+- Calendario de Adviento — gid://shopify/Product/16649471754631 — plantilla "oc"
+  - Quitada imagen con marca de agua de otra tienda. Descripción reescrita (coincide con las fotos). Título sin "2026".
+  - Opción "Diseño": "Merry Christmas" / "Advent (texto en alemán)". Opción "Size" eliminada.
+  - Imagen con texto en inglés a rehacer: MediaImage 77756163391879 ("Back Details / Wood Rod").
+  - Stock 1 unidad por variante (revisar sincronización de DSers).
+- compareAtPrice borrado en ambos (DSers ponía el coste del proveedor).
+- Ninguno publicado en el canal Tienda online (publishedAt null).
+
+## Cómo retomar en una sesión nueva (entorno en la nube)
+1. npm install -g @shopify/cli@latest
+2. Crear stub de navegador: carpeta bin con un xdg-open que guarde la URL en un archivo; anteponerla al PATH.
+3. Ejecutar todo con NODE_USE_ENV_PROXY=1.
+4. Login del tema: `shopify theme list --store ccdf97-s7.myshopify.com` en segundo plano → pasar al usuario el enlace activate-with-code.
+5. Datos: `shopify store auth --store ccdf97-s7.myshopify.com --scopes read_products,write_products,read_files,write_files,read_themes,read_content,write_content,read_online_store_pages,write_online_store_pages,read_publications,write_publications`
+   → el usuario abre la URL, autoriza y pega la URL de error 127.0.0.1:PUERTO/auth/callback?...; entregarla con `curl --noproxy 127.0.0.1 "<url>"`.
+6. Utilidades en herramientas/: gql.py (run(query, variables)), shot.mjs (capturas con Playwright + headless_shell), crop.py.
+7. Comprobar OPENAI_API_KEY con GET https://api.openai.com/v1/models (200 = válida).
+
 ## Pendiente
-- [ ] Clave de OpenAI → generar imágenes (la variable OPENAI_API_KEY existe pero la clave es inválida: parece copiada recortada)
-- [x] Productos importados (2): plantilla "oc" asignada y vendor "Ojo Con Ese Detalle" (2026-10-17)
-  - Máscara LED (gid://shopify/Product/16649284485511): imágenes 2,3,6 con claims médicos y antes/después; 4,5,7,8 con texto en inglés; variantes "400mah no box"/"No Box" confusas; ambas sin caja
-  - Calendario adviento (gid://shopify/Product/16649471754631): imagen 1 con marca de agua de otra tienda; 2 con texto en inglés; 6 en alemán (¿variante A2?); descripción habla de diseño "2026" que no coincide con las fotos; stock 1 unidad
-  - compareAtPrice menor que el precio en ambos (parece el coste del proveedor): revisar regla de precios de DSers
-  - Productos NO publicados en el canal Tienda online (publishedAt null) → no se ven en la web
-- [ ] Crear colecciones (Drop Navidad, Para ella, Para él, Amigo invisible, Menos de 20 €) y enlazarlas
-- [x] Nombre de la tienda: Ojo con ese detalle
+- [ ] Clave OpenAI válida (en esta sesión la variable tiene una clave recortada; el valor nuevo se aplica en sesión nueva)
+- [ ] Rehacer en español las 5 imágenes con texto en inglés (lista arriba) y sustituirlas conservando el orden y la imagen de variante
+- [ ] Generar imágenes de portada: hero, 4 tarjetas "regalos por persona", favicon/logo con el ojo
+- [ ] Publicar productos en Tienda online (con write_publications o el usuario a mano)
+- [ ] Crear colecciones (Drop de Navidad, Para ella, Para él, Amigo invisible, Menos de 20 €), publicarlas y enlazarlas en la portada (oc-drop.coleccion y URLs de oc-regalos)
+- [ ] Confirmar precios de las variantes de la máscara
 - [ ] Políticas legales, plazos de entrega reales tras ver tiempos del proveedor

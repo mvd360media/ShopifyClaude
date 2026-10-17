@@ -1,0 +1,11 @@
+import { chromium } from 'playwright';
+const [,, url, out, w] = process.argv;
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell', args: ['--no-sandbox'] });
+const p = await b.newPage({ viewport: { width: Number(w || 1366), height: 900 } });
+await p.goto(url, { waitUntil: 'networkidle', timeout: 60000 }).catch(e => console.log('goto', e.message));
+await p.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 500) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 120)); } window.scrollTo(0, 0); });
+await p.waitForTimeout(1200);
+await p.screenshot({ path: out, fullPage: true });
+const errs = await p.evaluate(() => document.body.innerText.match(/Liquid error[^\n]*/g));
+console.log('liquid errors:', errs);
+await b.close();
