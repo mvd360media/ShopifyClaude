@@ -1,0 +1,83 @@
+{{ 'oc-styles.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'oc-scripts.js' | asset_url }}" defer></script>
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.fondo }};
+  }
+  #shopify-section-{{ section.id }} .oc-hero__titulo { font-size: clamp(36px, 6vw, {{ section.settings.heading_size }}px); text-align: {{ section.settings.text_align }}; }
+  #shopify-section-{{ section.id }} .oc-hero__texto { justify-items: {% if section.settings.text_align == 'center' %}center{% else %}start{% endif %}; text-align: {{ section.settings.text_align }}; }
+  #shopify-section-{{ section.id }} .oc-hero__bajada { font-size: {{ section.settings.body_size }}px; max-width: 46ch; }
+  {%- if section.settings.imagen_izquierda -%}
+  #shopify-section-{{ section.id }} .oc-hero__media-wrap { order: -1; }
+  {%- endif -%}
+{% endstyle %}
+
+<section class="oc-hero oc-section">
+  <div class="oc-container oc-hero__grid">
+    <div class="oc-hero__texto oc-reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="oc-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h1 class="oc-hero__titulo">
+        {%- if section.settings.mostrar_ojo -%}<span class="oc-ojo" aria-hidden="true"></span>{%- endif -%}
+        {{ section.settings.titulo | newline_to_br }}
+      </h1>
+      <p class="oc-hero__bajada oc-sub">{{ section.settings.bajada | newline_to_br }}</p>
+      <div class="oc-hero__acciones">
+        {%- if section.settings.boton_texto != blank -%}
+          <a class="oc-btn oc-btn--primario" href="{{ section.settings.boton_url | default: '/collections/all' }}">{{ section.settings.boton_texto }}</a>
+        {%- endif -%}
+        {%- if section.settings.boton2_texto != blank -%}
+          <a class="oc-btn oc-btn--secundario" href="{{ section.settings.boton2_url | default: '/collections/all' }}">{{ section.settings.boton2_texto }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="oc-hero__media-wrap oc-reveal" style="--oc-delay: .15s">
+      <div class="oc-hero__media">
+        {%- if section.settings.imagen != blank -%}
+          <img src="{{ section.settings.imagen | image_url: width: 1600 }}"
+               srcset="{{ section.settings.imagen | image_url: width: 800 }} 800w, {{ section.settings.imagen | image_url: width: 1600 }} 1600w"
+               sizes="(max-width: 990px) 100vw, 50vw"
+               alt="{{ section.settings.imagen.alt | escape }}" loading="eager" fetchpriority="high">
+        {%- else -%}
+          <div class="oc-hueco">Elige aquí la imagen principal<br>(Editor → esta sección → Imagen)</div>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.sello != blank -%}<span class="oc-hero__sello">{{ section.settings.sello }}</span>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "OC – Portada principal",
+  "tag": "div",
+  "settings": [
+    { "type": "header", "content": "Textos" },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Drop de temporada" },
+    { "type": "checkbox", "id": "mostrar_ojo", "label": "Mostrar el ojo animado", "default": true },
+    { "type": "textarea", "id": "titulo", "label": "Título", "default": "Ojo con ese detalle" },
+    { "type": "textarea", "id": "bajada", "label": "Texto", "default": "Regalos y caprichos de temporada que no vas a ver en todas partes." },
+    { "type": "text", "id": "sello", "label": "Sello sobre la imagen", "default": "Hasta el 6 de enero" },
+    { "type": "header", "content": "Botones" },
+    { "type": "text", "id": "boton_texto", "label": "Botón principal: texto", "default": "Ver el drop" },
+    { "type": "url", "id": "boton_url", "label": "Botón principal: enlace" },
+    { "type": "text", "id": "boton2_texto", "label": "Botón secundario: texto", "default": "Ideas de regalo" },
+    { "type": "url", "id": "boton2_url", "label": "Botón secundario: enlace" },
+    { "type": "header", "content": "Imagen" },
+    { "type": "image_picker", "id": "imagen", "label": "Imagen principal" },
+    { "type": "checkbox", "id": "imagen_izquierda", "label": "Imagen a la izquierda", "default": false },
+    { "type": "header", "content": "Diseño" },
+    { "type": "color", "id": "fondo", "label": "Color de fondo", "default": "#FBF8F4" },
+    { "type": "select", "id": "text_align", "label": "Alineación del texto", "options": [
+      { "value": "left", "label": "Izquierda" }, { "value": "center", "label": "Centro" }
+    ], "default": "left" },
+    { "type": "range", "id": "heading_size", "label": "Tamaño máximo del título (px)", "min": 32, "max": 112, "step": 2, "unit": "px", "default": 84 },
+    { "type": "range", "id": "body_size", "label": "Tamaño del texto (px)", "min": 14, "max": 26, "step": 1, "unit": "px", "default": 19 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 64 }
+  ],
+  "presets": [ { "name": "OC – Portada principal" } ]
+}
+{% endschema %}

@@ -1,0 +1,72 @@
+{{ 'oc-styles.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'oc-scripts.js' | asset_url }}" defer></script>
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.fondo }};
+  }
+  #shopify-section-{{ section.id }} .oc-ventajas__titulo { font-size: clamp(28px, 4vw, {{ section.settings.heading_size }}px); }
+  #shopify-section-{{ section.id }} .oc-ventajas__cabecera { text-align: {{ section.settings.text_align }}; justify-items: {% if section.settings.text_align == 'center' %}center{% else %}start{% endif %}; }
+  #shopify-section-{{ section.id }} .oc-ventajas__grid { --oc-cols: {{ section.blocks.size | at_least: 1 | at_most: 4 }}; }
+  #shopify-section-{{ section.id }} .oc-ventaja p { font-size: {{ section.settings.body_size }}px; }
+{% endstyle %}
+
+<section class="oc-ventajas oc-section">
+  <div class="oc-container">
+    <div class="oc-ventajas__cabecera oc-reveal" style="display:grid;gap:12px">
+      {%- if section.settings.eyebrow != blank -%}<span class="oc-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2 class="oc-ventajas__titulo">{{ section.settings.titulo }}</h2>
+    </div>
+    <div class="oc-ventajas__grid">
+      {%- for block in section.blocks -%}
+        <div class="oc-ventaja oc-reveal" style="--oc-delay: {{ forloop.index0 | times: 0.08 }}s" {{ block.shopify_attributes }}>
+          <span class="oc-ventaja__icono">{% render 'oc-icono', nombre: block.settings.icono %}</span>
+          <h3>{{ block.settings.titulo }}</h3>
+          <p class="oc-sub">{{ block.settings.texto | newline_to_br }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "OC – Por qué comprarnos",
+  "tag": "div",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Por qué Ojo Con Ese Detalle" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Elegido con ojo, enviado con cariño" },
+    { "type": "header", "content": "Diseño" },
+    { "type": "color", "id": "fondo", "label": "Color de fondo", "default": "#FBF8F4" },
+    { "type": "select", "id": "text_align", "label": "Alineación del título", "options": [
+      { "value": "left", "label": "Izquierda" }, { "value": "center", "label": "Centro" }
+    ], "default": "left" },
+    { "type": "range", "id": "heading_size", "label": "Tamaño máximo del título (px)", "min": 24, "max": 72, "step": 2, "unit": "px", "default": 44 },
+    { "type": "range", "id": "body_size", "label": "Tamaño del texto (px)", "min": 13, "max": 22, "step": 1, "unit": "px", "default": 16 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "ventaja",
+      "name": "Ventaja",
+      "settings": [
+        { "type": "select", "id": "icono", "label": "Icono", "options": [
+          { "value": "ojo", "label": "Ojo" }, { "value": "regalo", "label": "Regalo" }, { "value": "envio", "label": "Envío" },
+          { "value": "devolucion", "label": "Devolución" }, { "value": "seguro", "label": "Pago seguro" },
+          { "value": "calendario", "label": "Calendario" }, { "value": "estrella", "label": "Estrella" }
+        ], "default": "ojo" },
+        { "type": "text", "id": "titulo", "label": "Título", "default": "Seleccionado a mano" },
+        { "type": "textarea", "id": "texto", "label": "Texto", "default": "Cada producto pasa un filtro: que sorprenda, que sea útil y que quede bonito al regalarlo." }
+      ]
+    }
+  ],
+  "presets": [ {
+    "name": "OC – Por qué comprarnos",
+    "blocks": [ { "type": "ventaja" }, { "type": "ventaja" }, { "type": "ventaja" } ]
+  } ]
+}
+{% endschema %}

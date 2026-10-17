@@ -1,0 +1,54 @@
+{{ 'oc-styles.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'oc-scripts.js' | asset_url }}" defer></script>
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.fondo_pagina }};
+  }
+  #shopify-section-{{ section.id }} .oc-cta__caja { background: {{ section.settings.fondo }}; color: {{ section.settings.color_texto }}; }
+  #shopify-section-{{ section.id }} .oc-cta__titulo { font-size: clamp(30px, 5vw, {{ section.settings.heading_size }}px); }
+  #shopify-section-{{ section.id }} .oc-cta__caja .oc-sub { font-size: {{ section.settings.body_size }}px; }
+{% endstyle %}
+
+<section class="oc-cta oc-section">
+  <div class="oc-container">
+    <div class="oc-cta__caja oc-reveal">
+      <h2 class="oc-cta__titulo">{%- if section.settings.mostrar_ojo -%}<span class="oc-ojo" aria-hidden="true"></span> {% endif -%}{{ section.settings.titulo }}</h2>
+      {%- if section.settings.texto != blank -%}<p class="oc-sub">{{ section.settings.texto | newline_to_br }}</p>{%- endif -%}
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center">
+        {%- if section.settings.boton_texto != blank -%}
+          <a class="oc-btn oc-btn--primario" href="{{ section.settings.boton_url | default: '/collections/all' }}">{{ section.settings.boton_texto }}</a>
+        {%- endif -%}
+        {%- if section.settings.instagram_texto != blank and settings.social_instagram_link != blank -%}
+          <a class="oc-btn oc-btn--secundario" style="color:inherit;border-color:currentColor" href="{{ settings.social_instagram_link }}" target="_blank" rel="noopener">{{ section.settings.instagram_texto }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "OC – Llamada final",
+  "tag": "div",
+  "settings": [
+    { "type": "checkbox", "id": "mostrar_ojo", "label": "Mostrar el ojo animado", "default": true },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "¿Ya sabes qué regalar?" },
+    { "type": "textarea", "id": "texto", "label": "Texto", "default": "Pide con tiempo: así llega antes de la fecha." },
+    { "type": "text", "id": "boton_texto", "label": "Botón: texto", "default": "Ver el drop" },
+    { "type": "url", "id": "boton_url", "label": "Botón: enlace" },
+    { "type": "text", "id": "instagram_texto", "label": "Botón de Instagram: texto", "info": "El enlace se toma de Configuración del tema → Redes sociales.", "default": "Síguenos en Instagram" },
+    { "type": "header", "content": "Diseño" },
+    { "type": "color", "id": "fondo", "label": "Color de la caja", "default": "#1E1B2E" },
+    { "type": "color", "id": "color_texto", "label": "Color del texto", "default": "#FBF8F4" },
+    { "type": "color", "id": "fondo_pagina", "label": "Color de fondo alrededor", "default": "#FBF8F4" },
+    { "type": "range", "id": "heading_size", "label": "Tamaño máximo del título (px)", "min": 24, "max": 88, "step": 2, "unit": "px", "default": 60 },
+    { "type": "range", "id": "body_size", "label": "Tamaño del texto (px)", "min": 14, "max": 24, "step": 1, "unit": "px", "default": 18 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 80 }
+  ],
+  "presets": [ { "name": "OC – Llamada final" } ]
+}
+{% endschema %}

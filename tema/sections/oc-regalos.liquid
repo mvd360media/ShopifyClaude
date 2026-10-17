@@ -1,0 +1,83 @@
+{{ 'oc-styles.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'oc-scripts.js' | asset_url }}" defer></script>
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.fondo }};
+  }
+  #shopify-section-{{ section.id }} .oc-regalos__titulo { font-size: clamp(30px, 4.5vw, {{ section.settings.heading_size }}px); text-align: {{ section.settings.text_align }}; }
+  #shopify-section-{{ section.id }} .oc-regalos__cabecera { text-align: {{ section.settings.text_align }}; justify-items: {% if section.settings.text_align == 'center' %}center{% else %}start{% endif %}; }
+  #shopify-section-{{ section.id }} .oc-regalos__grid { --oc-cols: {{ section.settings.columnas }}; }
+  #shopify-section-{{ section.id }} .oc-regalo__titulo { font-size: clamp(17px, 4.2vw, {{ section.settings.card_size }}px); }
+{% endstyle %}
+
+<section class="oc-regalos oc-section" id="regalos">
+  <div class="oc-container">
+    <div class="oc-regalos__cabecera oc-reveal" style="display:grid;gap:12px">
+      {%- if section.settings.eyebrow != blank -%}<span class="oc-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2 class="oc-regalos__titulo">{{ section.settings.titulo }}</h2>
+      {%- if section.settings.texto != blank -%}<p class="oc-sub">{{ section.settings.texto | newline_to_br }}</p>{%- endif -%}
+    </div>
+    <div class="oc-regalos__grid">
+      {%- for block in section.blocks -%}
+        <a class="oc-regalo oc-reveal" style="--oc-delay: {{ forloop.index0 | times: 0.08 }}s" href="{{ block.settings.url | default: '/collections/all' }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.imagen != blank -%}
+            <img src="{{ block.settings.imagen | image_url: width: 800 }}" alt="{{ block.settings.imagen.alt | escape }}" loading="lazy">
+          {%- else -%}
+            <div class="oc-hueco">Elige una imagen</div>
+          {%- endif -%}
+          <span class="oc-regalo__texto">
+            <span class="oc-regalo__titulo">{{ block.settings.titulo }}</span>
+            <span class="oc-regalo__flecha">{{ block.settings.subtitulo }} →</span>
+          </span>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "OC – Regalos por persona",
+  "tag": "div",
+  "max_blocks": 8,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "¿Para quién es?" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Encuentra el detalle perfecto" },
+    { "type": "textarea", "id": "texto", "label": "Texto", "default": "Elige a quién quieres sorprender y te enseñamos lo que mejor le va." },
+    { "type": "range", "id": "columnas", "label": "Tarjetas por fila (ordenador)", "min": 2, "max": 5, "step": 1, "default": 4 },
+    { "type": "header", "content": "Diseño" },
+    { "type": "color", "id": "fondo", "label": "Color de fondo", "default": "#F3ECE3" },
+    { "type": "select", "id": "text_align", "label": "Alineación del título", "options": [
+      { "value": "left", "label": "Izquierda" }, { "value": "center", "label": "Centro" }
+    ], "default": "center" },
+    { "type": "range", "id": "heading_size", "label": "Tamaño máximo del título (px)", "min": 24, "max": 80, "step": 2, "unit": "px", "default": 52 },
+    { "type": "range", "id": "card_size", "label": "Tamaño del texto de las tarjetas (px)", "min": 16, "max": 40, "step": 1, "unit": "px", "default": 26 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 80 }
+  ],
+  "blocks": [
+    {
+      "type": "tarjeta",
+      "name": "Tarjeta",
+      "settings": [
+        { "type": "text", "id": "titulo", "label": "Título", "default": "Para ella" },
+        { "type": "text", "id": "subtitulo", "label": "Subtítulo", "default": "Ver ideas" },
+        { "type": "image_picker", "id": "imagen", "label": "Imagen" },
+        { "type": "url", "id": "url", "label": "Enlace (colección)" }
+      ]
+    }
+  ],
+  "presets": [ {
+    "name": "OC – Regalos por persona",
+    "blocks": [
+      { "type": "tarjeta", "settings": { "titulo": "Para ella" } },
+      { "type": "tarjeta", "settings": { "titulo": "Para él" } },
+      { "type": "tarjeta", "settings": { "titulo": "Amigo invisible" } },
+      { "type": "tarjeta", "settings": { "titulo": "Menos de 20 €" } }
+    ]
+  } ]
+}
+{% endschema %}

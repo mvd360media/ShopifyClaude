@@ -1,75 +1,84 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
-          }
-        },
-        "button": {
-          "type": "buttons",
-          "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "button"
-      ],
+    "hero": {
+      "type": "oc-hero",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "eyebrow": "Drop de Navidad",
+        "titulo": "Ojo con ese detalle",
+        "bajada": "Regalos y caprichos de temporada que no vas a ver en todas partes. Elegidos uno a uno, para quedar bien sin pensarlo mucho.",
+        "sello": "Disponible hasta el 6 de enero",
+        "boton_texto": "Ver el drop de Navidad",
+        "boton2_texto": "Ideas por persona",
+        "boton2_url": "#regalos"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "marquesina": {
+      "type": "oc-marquesina",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "frases": "Envío a toda España\n14 días para devolver\nPago 100% seguro\nRegalos que se notan\nNuevo drop cada temporada"
+      }
+    },
+    "drop": {
+      "type": "oc-drop",
+      "settings": {
+        "eyebrow": "Edición de temporada",
+        "titulo": "El drop de Navidad",
+        "texto": "Una selección pensada para estas fiestas. El 6 de enero se retira y llega la siguiente colección.",
+        "fecha_fin": "2027-01-06",
+        "texto_fin": "Disponible durante"
+      }
+    },
+    "regalos": {
+      "type": "oc-regalos",
+      "blocks": {
+        "r1": { "type": "tarjeta", "settings": { "titulo": "Para ella", "subtitulo": "Ver ideas" } },
+        "r2": { "type": "tarjeta", "settings": { "titulo": "Para él", "subtitulo": "Ver ideas" } },
+        "r3": { "type": "tarjeta", "settings": { "titulo": "Amigo invisible", "subtitulo": "Aciertos seguros" } },
+        "r4": { "type": "tarjeta", "settings": { "titulo": "Menos de 20 €", "subtitulo": "Detalles que suman" } }
+      },
+      "block_order": ["r1", "r2", "r3", "r4"],
+      "settings": {
+        "eyebrow": "¿Para quién es?",
+        "titulo": "Encuentra el detalle perfecto",
+        "texto": "Elige a quién quieres sorprender y te enseñamos lo que mejor le va."
+      }
+    },
+    "ventajas": {
+      "type": "oc-ventajas",
+      "blocks": {
+        "v1": { "type": "ventaja", "settings": { "icono": "ojo", "titulo": "Seleccionado con ojo", "texto": "Cada producto pasa un filtro: que sorprenda, que sea útil y que quede bonito al regalarlo." } },
+        "v2": { "type": "ventaja", "settings": { "icono": "calendario", "titulo": "Colecciones de temporada", "texto": "Navidad, San Valentín, primavera… Cada época trae su drop. Lo que hoy ves, mañana cambia." } },
+        "v3": { "type": "ventaja", "settings": { "icono": "seguro", "titulo": "Compra sin riesgo", "texto": "Pago seguro, seguimiento del envío y 14 días para devolver si no te convence." } }
+      },
+      "block_order": ["v1", "v2", "v3"],
+      "settings": {
+        "eyebrow": "Por qué Ojo Con Ese Detalle",
+        "titulo": "Elegido con ojo, enviado con cariño"
+      }
+    },
+    "faq": {
+      "type": "oc-faq",
+      "blocks": {
+        "q1": { "type": "pregunta", "settings": { "pregunta": "¿Cuánto tarda mi pedido?", "respuesta": "Preparamos tu pedido en 1–3 días laborables. La entrega en España tarda normalmente entre 7 y 12 días laborables. Te enviamos el número de seguimiento por email." } },
+        "q2": { "type": "pregunta", "settings": { "pregunta": "¿Llega a tiempo para Navidad o Reyes?", "respuesta": "Para Navidad, pide antes del 8 de diciembre. Para Reyes, antes del 20 de diciembre. Después de esas fechas no podemos garantizar la entrega a tiempo." } },
+        "q3": { "type": "pregunta", "settings": { "pregunta": "¿Puedo devolver un producto?", "respuesta": "Sí. Tienes 14 días desde que lo recibes para devolverlo sin dar explicaciones. Escríbenos y te indicamos cómo hacerlo." } },
+        "q4": { "type": "pregunta", "settings": { "pregunta": "¿Qué pasa cuando termina un drop?", "respuesta": "La colección se retira de la tienda y llega la siguiente. Algunos favoritos se quedan de forma permanente." } },
+        "q5": { "type": "pregunta", "settings": { "pregunta": "¿Cómo puedo pagar?", "respuesta": "Con tarjeta y los demás métodos que aparecen al finalizar la compra. El pago es 100% seguro." } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "settings": {
+        "eyebrow": "Antes de pedir",
+        "titulo": "Preguntas frecuentes"
+      }
+    },
+    "cta": {
+      "type": "oc-cta",
+      "settings": {
+        "titulo": "¿Ya sabes qué regalar?",
+        "texto": "Pide con tiempo: así llega antes de la fecha y tú quedas como un rey.",
+        "boton_texto": "Ver el drop de Navidad"
       }
     }
   },
-  "order": [
-    "image_banner",
-    "featured_collection"
-  ]
+  "order": ["hero", "marquesina", "drop", "regalos", "ventajas", "faq", "cta"]
 }

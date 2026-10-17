@@ -1,0 +1,94 @@
+{{ 'oc-styles.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'oc-scripts.js' | asset_url }}" defer></script>
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.fondo }};
+  }
+  #shopify-section-{{ section.id }} .oc-drop__titulo { font-size: clamp(30px, 4.5vw, {{ section.settings.heading_size }}px); }
+  #shopify-section-{{ section.id }} .oc-grid-productos { --oc-cols: {{ section.settings.columnas }}; }
+{% endstyle %}
+
+{%- assign coleccion = section.settings.coleccion -%}
+<section class="oc-drop oc-section">
+  <div class="oc-container">
+    <div class="oc-drop__cabecera oc-reveal">
+      <div style="display:grid;gap:12px;max-width:640px">
+        {%- if section.settings.eyebrow != blank -%}<span class="oc-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        <h2 class="oc-drop__titulo">{{ section.settings.titulo }}</h2>
+        {%- if section.settings.texto != blank -%}<p class="oc-sub">{{ section.settings.texto | newline_to_br }}</p>{%- endif -%}
+      </div>
+      {%- if section.settings.fecha_fin != blank -%}
+        <span class="oc-drop__fin" data-oc-fin="{{ section.settings.fecha_fin }}" data-oc-terminado="{{ section.settings.texto_terminado | escape }}">
+          {{ section.settings.texto_fin }} <b></b>
+        </span>
+      {%- endif -%}
+    </div>
+
+    <div class="oc-grid-productos">
+      {%- if coleccion != blank and coleccion.products_count > 0 -%}
+        {%- for p in coleccion.products limit: section.settings.limite -%}
+          <a class="oc-card oc-reveal" style="--oc-delay: {{ forloop.index0 | times: 0.06 }}s" href="{{ p.url }}">
+            <div class="oc-card__media">
+              {%- if p.featured_media -%}
+                <img src="{{ p.featured_media | image_url: width: 700 }}" alt="{{ p.featured_media.alt | default: p.title | escape }}" loading="lazy" width="700" height="700">
+              {%- else -%}
+                <div class="oc-hueco">Sin foto</div>
+              {%- endif -%}
+              {%- if p.compare_at_price > p.price -%}<span class="oc-card__etiqueta">{{ section.settings.texto_oferta }}</span>{%- endif -%}
+            </div>
+            <span class="oc-card__titulo">{{ p.title }}</span>
+            <span class="oc-card__precio">
+              {{ p.price | money }}
+              {%- if p.compare_at_price > p.price -%} <s>{{ p.compare_at_price | money }}</s>{%- endif -%}
+            </span>
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..section.settings.columnas) -%}
+          <div class="oc-card">
+            <div class="oc-card__media"><div class="oc-hueco">Elige la colección del drop<br>(Editor → esta sección)</div></div>
+            <span class="oc-card__titulo">Producto del drop</span>
+            <span class="oc-card__precio">--,-- €</span>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.boton_texto != blank -%}
+      <div class="oc-drop__pie">
+        <a class="oc-btn oc-btn--secundario" href="{% if coleccion != blank %}{{ coleccion.url }}{% else %}/collections/all{% endif %}">{{ section.settings.boton_texto }}</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "OC – Drop de temporada",
+  "tag": "div",
+  "settings": [
+    { "type": "collection", "id": "coleccion", "label": "Colección del drop" },
+    { "type": "range", "id": "limite", "label": "Número de productos", "min": 2, "max": 16, "step": 1, "default": 8 },
+    { "type": "range", "id": "columnas", "label": "Productos por fila (ordenador)", "min": 2, "max": 5, "step": 1, "default": 4 },
+    { "type": "header", "content": "Textos" },
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Edición de temporada" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "El drop de Navidad" },
+    { "type": "textarea", "id": "texto", "label": "Texto", "default": "Una selección pensada para esta temporada. Cuando termine, la colección se retira y llega la siguiente." },
+    { "type": "text", "id": "texto_oferta", "label": "Etiqueta de oferta", "default": "Oferta" },
+    { "type": "text", "id": "boton_texto", "label": "Texto del botón", "default": "Ver todo el drop" },
+    { "type": "header", "content": "Fecha de fin de la colección" },
+    { "type": "text", "id": "fecha_fin", "label": "Fecha de fin (formato AAAA-MM-DD; vacío para ocultar)", "default": "2027-01-06", "info": "Pon solo la fecha real en que retirarás la colección." },
+    { "type": "text", "id": "texto_fin", "label": "Texto antes de la cuenta atrás", "default": "Disponible durante" },
+    { "type": "text", "id": "texto_terminado", "label": "Texto cuando termine", "default": "Drop terminado" },
+    { "type": "header", "content": "Diseño" },
+    { "type": "color", "id": "fondo", "label": "Color de fondo", "default": "#FBF8F4" },
+    { "type": "range", "id": "heading_size", "label": "Tamaño máximo del título (px)", "min": 24, "max": 80, "step": 2, "unit": "px", "default": 52 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 80 }
+  ],
+  "presets": [ { "name": "OC – Drop de temporada" } ]
+}
+{% endschema %}

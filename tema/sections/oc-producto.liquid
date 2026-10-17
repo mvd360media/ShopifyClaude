@@ -1,0 +1,163 @@
+{{ 'oc-styles.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'oc-scripts.js' | asset_url }}" defer></script>
+{% style %}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background: {{ section.settings.fondo }};
+  }
+  #shopify-section-{{ section.id }} .oc-compra__titulo { font-size: clamp(28px, 4vw, {{ section.settings.heading_size }}px); }
+  #shopify-section-{{ section.id }} .oc-desc, #shopify-section-{{ section.id }} .oc-compra__intro { font-size: {{ section.settings.body_size }}px; }
+{% endstyle %}
+
+{%- assign v = product.selected_or_first_available_variant -%}
+<section class="oc-producto oc-section" data-oc-producto data-oc-moneda="{{ shop.money_format | escape }}">
+  <div class="oc-container oc-producto__grid">
+    <div class="oc-galeria" data-oc-galeria>
+      <div class="oc-galeria__principal">
+        {%- assign primera = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+        {%- if primera -%}
+          <img src="{{ primera | image_url: width: 1400 }}"
+               srcset="{{ primera | image_url: width: 700 }} 700w, {{ primera | image_url: width: 1400 }} 1400w"
+               sizes="(max-width: 990px) 100vw, 55vw"
+               alt="{{ primera.alt | default: product.title | escape }}" loading="eager" fetchpriority="high" width="1400" height="1400">
+        {%- else -%}
+          <div class="oc-hueco">Este producto aún no tiene fotos</div>
+        {%- endif -%}
+      </div>
+      {%- if product.media.size > 1 -%}
+        <div class="oc-galeria__miniaturas" role="list">
+          {%- for m in product.media -%}
+            {%- if m.media_type == 'image' -%}
+              <button type="button" role="listitem" aria-label="Ver foto {{ forloop.index }}" aria-current="{% if m.id == primera.id %}true{% else %}false{% endif %}"
+                      data-src="{{ m | image_url: width: 1400 }}" data-alt="{{ m.alt | default: product.title | escape }}">
+                <img src="{{ m | image_url: width: 160 }}" alt="" loading="lazy" width="160" height="160">
+              </button>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="oc-compra">
+      {%- if section.settings.eyebrow != blank -%}<span class="oc-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h1 class="oc-compra__titulo oc-h">{{ product.title }}</h1>
+      {%- if section.settings.intro != blank -%}<p class="oc-compra__intro oc-sub">{{ section.settings.intro | newline_to_br }}</p>{%- endif -%}
+
+      <div class="oc-compra__precio">
+        <span data-oc-precio>{{ v.price | money }}</span>
+        <s data-oc-tachado>{% if v.compare_at_price > v.price %}{{ v.compare_at_price | money }}{% endif %}</s>
+        {%- if v.compare_at_price > v.price and section.settings.mostrar_ahorro -%}
+          <span class="oc-compra__ahorro">-{{ v.compare_at_price | minus: v.price | times: 100 | divided_by: v.compare_at_price }}%</span>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.texto_impuestos != blank -%}<p class="oc-sub" style="font-size:13px;margin-top:-12px">{{ section.settings.texto_impuestos }}</p>{%- endif -%}
+
+      {%- form 'product', product, class: 'oc-compra', novalidate: 'novalidate' -%}
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            {%- assign opt_index = forloop.index0 -%}
+            <fieldset class="oc-opcion">
+              <legend>{{ option.name }}</legend>
+              <div class="oc-opcion__valores">
+                {%- for value in option.values -%}
+                  <input type="radio" id="oc-{{ section.id }}-{{ opt_index }}-{{ forloop.index0 }}" name="oc-opcion-{{ opt_index }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
+                  <label for="oc-{{ section.id }}-{{ opt_index }}-{{ forloop.index0 }}">{{ value }}</label>
+                {%- endfor -%}
+              </div>
+            </fieldset>
+          {%- endfor -%}
+          <script type="application/json" data-oc-variantes>
+            [{%- for x in product.variants -%}{"id":{{ x.id }},"options":{{ x.options | json }},"price":{{ x.price }},"compare_at_price":{{ x.compare_at_price | default: 0 }},"available":{{ x.available }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]
+          </script>
+        {%- endunless -%}
+        <input type="hidden" name="id" value="{{ v.id }}">
+        <button type="submit" name="add" class="oc-btn oc-btn--primario oc-compra__boton"
+                data-texto="{{ section.settings.boton_texto | escape }}" data-agotado="{{ section.settings.agotado_texto | escape }}" data-no-disponible="{{ section.settings.no_disponible_texto | escape }}"
+                {% unless v.available %}disabled{% endunless %}>
+          {%- if v.available -%}{{ section.settings.boton_texto }}{%- else -%}{{ section.settings.agotado_texto }}{%- endif -%}
+        </button>
+      {%- endform -%}
+
+      {%- if section.settings.envio_texto != blank -%}
+        <div class="oc-envio">{% render 'oc-icono', nombre: 'calendario' %}<span>{{ section.settings.envio_texto }}</span></div>
+      {%- endif -%}
+
+      <div class="oc-confianza">
+        <div>{% render 'oc-icono', nombre: 'envio' %}{{ section.settings.confianza_1 }}</div>
+        <div>{% render 'oc-icono', nombre: 'devolucion' %}{{ section.settings.confianza_2 }}</div>
+        <div>{% render 'oc-icono', nombre: 'seguro' %}{{ section.settings.confianza_3 }}</div>
+      </div>
+
+      {%- if product.description != blank -%}
+        <div class="oc-desc rte">{{ product.description }}</div>
+      {%- endif -%}
+
+      {%- assign caracteristicas = section.blocks | where: 'type', 'caracteristica' -%}
+      {%- if caracteristicas.size > 0 -%}
+        <div class="oc-caracteristicas">
+          {%- for block in caracteristicas -%}
+            <div {{ block.shopify_attributes }}><strong>{{ block.settings.titulo }}</strong><span class="oc-sub">{{ block.settings.texto | newline_to_br }}</span></div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.incluye != blank -%}
+        <div style="display:grid;gap:8px">
+          <strong>{{ section.settings.incluye_titulo }}</strong>
+          <ul class="oc-incluye oc-sub">
+            {%- assign lineas = section.settings.incluye | newline_to_br | split: '<br />' -%}
+            {%- for l in lineas -%}{%- assign t = l | strip -%}{%- if t != blank -%}<li>{{ t }}</li>{%- endif -%}{%- endfor -%}
+          </ul>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+  {{ product | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "OC – Producto",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Drop de temporada" },
+    { "type": "textarea", "id": "intro", "label": "Frase corta bajo el título (opcional)" },
+    { "type": "checkbox", "id": "mostrar_ahorro", "label": "Mostrar % de descuento", "default": true },
+    { "type": "text", "id": "texto_impuestos", "label": "Texto bajo el precio", "default": "IVA incluido" },
+    { "type": "header", "content": "Botón de compra" },
+    { "type": "text", "id": "boton_texto", "label": "Texto del botón", "default": "Añadir al carrito" },
+    { "type": "text", "id": "agotado_texto", "label": "Texto si está agotado", "default": "Agotado" },
+    { "type": "text", "id": "no_disponible_texto", "label": "Texto si la combinación no existe", "default": "No disponible" },
+    { "type": "header", "content": "Envío y confianza" },
+    { "type": "text", "id": "envio_texto", "label": "Plazo de entrega (pon el real)", "default": "Entrega estimada en 7–12 días laborables" },
+    { "type": "text", "id": "confianza_1", "label": "Garantía 1", "default": "Envío a toda España" },
+    { "type": "text", "id": "confianza_2", "label": "Garantía 2", "default": "14 días para devolver" },
+    { "type": "text", "id": "confianza_3", "label": "Garantía 3", "default": "Pago 100% seguro" },
+    { "type": "header", "content": "Qué incluye" },
+    { "type": "text", "id": "incluye_titulo", "label": "Título", "default": "Qué incluye" },
+    { "type": "textarea", "id": "incluye", "label": "Elementos (uno por línea; vacío para ocultar)" },
+    { "type": "header", "content": "Diseño" },
+    { "type": "color", "id": "fondo", "label": "Color de fondo", "default": "#FBF8F4" },
+    { "type": "range", "id": "heading_size", "label": "Tamaño máximo del título (px)", "min": 24, "max": 64, "step": 2, "unit": "px", "default": 42 },
+    { "type": "range", "id": "body_size", "label": "Tamaño del texto (px)", "min": 13, "max": 22, "step": 1, "unit": "px", "default": 16 },
+    { "type": "header", "content": "Espaciado" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 64 }
+  ],
+  "blocks": [
+    {
+      "type": "caracteristica",
+      "name": "Característica",
+      "settings": [
+        { "type": "text", "id": "titulo", "label": "Título", "default": "Característica" },
+        { "type": "textarea", "id": "texto", "label": "Texto", "default": "Describe aquí un beneficio concreto." }
+      ]
+    }
+  ],
+  "presets": [ { "name": "OC – Producto" } ]
+}
+{% endschema %}
