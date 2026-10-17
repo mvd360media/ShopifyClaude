@@ -1,0 +1,231 @@
+<title>Fase 1 · Lanzamiento Tienda</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Karla:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: una columna de lectura (checklist operativo), aviso de calendario arriba, secciones por bloque con progreso propio */
+:root {
+  --bg: #f3f4f1;
+  --surface: #ffffff;
+  --fg: #23271f;
+  --muted: #646b5e;
+  --line: #d9ddd3;
+  --accent: #4f6b52;
+  --accent-soft: #e3ebe2;
+  --warn: #9a4b1c;
+  --warn-soft: #f6e6da;
+  --display: "Newsreader", Georgia, serif;
+  --body: "Karla", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #171a16; --surface: #20241f; --fg: #e6e9e1; --muted: #9ba293; --line: #343a31;
+    --accent: #9cc29f; --accent-soft: #273328; --warn: #f0a877; --warn-soft: #3a2619; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #171a16; --surface: #20241f; --fg: #e6e9e1; --muted: #9ba293; --line: #343a31;
+  --accent: #9cc29f; --accent-soft: #273328; --warn: #f0a877; --warn-soft: #3a2619; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+}
+.wrap { max-width: 760px; margin: 0 auto; display: grid; gap: 36px; }
+header { display: grid; gap: 10px; }
+.eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+h1 { font-family: var(--display); font-weight: 400; font-size: clamp(32px, 6vw, 46px); line-height: 1.08; margin: 0; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 600; font-size: 24px; margin: 0; text-wrap: balance; }
+p { margin: 0; max-width: 65ch; }
+.lead { color: var(--muted); font-size: 17px; }
+.overall { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+.bar { flex: 1 1 200px; height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.bar > i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+
+.alert { background: var(--warn-soft); border-left: 3px solid var(--warn); padding: 20px 22px; display: grid; gap: 14px; }
+.alert h2 { color: var(--warn); font-size: 21px; }
+.timeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.tl { display: grid; gap: 2px; font-size: 14px; }
+.tl b { font-family: var(--mono); font-weight: 500; font-size: 13px; }
+.tl span { color: var(--muted); }
+.tl.no b { text-decoration: line-through; color: var(--warn); }
+
+section.block { display: grid; gap: 14px; }
+.block-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+.count { font-family: var(--mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.note { font-size: 14.5px; color: var(--muted); }
+ul.tasks { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+ul.tasks li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+ul.tasks li:last-child { border-bottom: 0; }
+ul.tasks input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent); cursor: pointer; }
+ul.tasks label { cursor: pointer; display: grid; gap: 4px; min-width: 0; }
+ul.tasks .t { font-weight: 500; }
+ul.tasks .d { font-size: 14.5px; color: var(--muted); }
+li.done .t { text-decoration: line-through; color: var(--muted); }
+.tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 1px 7px; border-radius: 3px; margin-left: 6px; vertical-align: 2px; }
+.tag.today { background: var(--accent-soft); color: var(--accent); }
+.tag.risk { background: var(--warn-soft); color: var(--warn); }
+.conf { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+
+.dns-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 14px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+th { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+tr:last-child td { border-bottom: 0; }
+td code { font-family: var(--mono); font-size: 13.5px; }
+button.copy { font: 500 12px var(--body); border: 1px solid var(--line); background: var(--bg); color: var(--fg); padding: 3px 9px; border-radius: 3px; cursor: pointer; }
+button.copy:focus-visible, ul.tasks input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.ask { background: var(--surface); border: 1px solid var(--line); padding: 20px 22px; display: grid; gap: 10px; }
+.ask ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+footer { font-size: 13px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .bar > i { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Seasonal Gift Boutique · Fase 1 de 4 · 17 oct 2026</div>
+    <h1>Infraestructura y lanzamiento de la tienda</h1>
+    <p class="lead">Checklist operativo para dejar Shopify, el dominio de Hostinger, DSers, los pagos y la parte legal listos antes de la primera campaña. Marca cada tarea al terminarla; el progreso se guarda en este navegador.</p>
+    <div class="overall"><span id="overallTxt">0 de 0 tareas</span><div class="bar"><i id="overallBar"></i></div></div>
+  </header>
+
+  <aside class="alert">
+    <h2>Halloween ya no es viable como primera campaña</h2>
+    <p>Quedan 14 días para el 31 de octubre. El envío AliExpress a España tarda unos 7–15 días hábiles, y aún falta montar la tienda, el dominio y los anuncios. La primera campaña real es <strong>Black Friday + Navidad + Reyes</strong>.</p>
+    <div class="timeline">
+      <div class="tl no"><b>31 oct</b><span>Halloween</span></div>
+      <div class="tl"><b>27 nov</b><span>Black Friday</span></div>
+      <div class="tl"><b>30 nov</b><span>Cyber Monday</span></div>
+      <div class="tl"><b>~5–8 dic</b><span>Último pedido para llegar en Navidad</span></div>
+      <div class="tl"><b>~18–20 dic</b><span>Último pedido para Reyes (6 ene)</span></div>
+    </div>
+    <p class="note">Fechas de corte estimadas con 15 días hábiles de envío más margen; se ajustan cuando veamos los tiempos reales del proveedor.</p>
+  </aside>
+
+  <section class="block" data-block="dominio">
+    <div class="block-head"><h2>1 · Dominio de Hostinger a Shopify</h2><span class="count"></span></div>
+    <p class="note">Primero esto: los cambios de DNS tardan entre minutos y 48 horas en propagarse, así que conviene lanzarlo hoy y avanzar con el resto mientras tanto.</p>
+    <div class="dns-wrap">
+      <table>
+        <thead><tr><th>Tipo</th><th>Nombre</th><th>Apunta a</th><th>TTL</th><th></th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td><code>@</code></td><td><code>23.227.38.65</code></td><td>3600</td><td><button class="copy" data-copy="23.227.38.65">Copiar</button></td></tr>
+          <tr><td>CNAME</td><td><code>www</code></td><td><code>shops.myshopify.com</code></td><td>3600</td><td><button class="copy" data-copy="shops.myshopify.com">Copiar</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="tasks">
+      <li><input type="checkbox" id="d1"><label for="d1"><span class="t">Comprobar si usas email con el dominio en Hostinger<span class="tag risk">Antes de tocar nada</span></span><span class="d">Si tienes correo (info@tudominio…) en Hostinger, no borres los registros MX, TXT (SPF/DKIM) ni el de autodiscover. Solo se cambian A de <code>@</code> y CNAME de <code>www</code>.</span></label></li>
+      <li><input type="checkbox" id="d2"><label for="d2"><span class="t">Shopify → Configuración → Dominios → Conectar dominio existente<span class="tag today">Hoy</span></span><span class="d">Escribe el dominio sin www. Shopify te mostrará los registros que espera; deben coincidir con la tabla de arriba.</span></label></li>
+      <li><input type="checkbox" id="d3"><label for="d3"><span class="t">Hostinger hPanel → Dominios → tu dominio → DNS / Nameservers<span class="tag today">Hoy</span></span><span class="d">Confirma que el dominio usa los nameservers de Hostinger. Si apunta a otros (p. ej. Cloudflare), los DNS se editan allí, no en Hostinger.</span></label></li>
+      <li><input type="checkbox" id="d4"><label for="d4"><span class="t">Borrar el registro A de <code>@</code> existente (y cualquier AAAA de <code>@</code>)<span class="tag today">Hoy</span></span><span class="d">Hostinger suele traer un A apuntando a su hosting. Si conviven dos registros A, el dominio falla de forma intermitente.</span></label></li>
+      <li><input type="checkbox" id="d5"><label for="d5"><span class="t">Crear A <code>@</code> → 23.227.38.65 y editar CNAME <code>www</code> → shops.myshopify.com<span class="tag today">Hoy</span></span><span class="d">Si ya existe un CNAME para www, edítalo en lugar de añadir otro.</span></label></li>
+      <li><input type="checkbox" id="d6"><label for="d6"><span class="t">Volver a Shopify y pulsar «Verificar conexión»</span><span class="d">Si falla, espera y reintenta. Puedes comprobar la propagación en dnschecker.org.</span></label></li>
+      <li><input type="checkbox" id="d7"><label for="d7"><span class="t">Marcar el dominio como principal y confirmar SSL activo</span><span class="d">Shopify emite el certificado solo. Elige si el principal es con o sin www; el otro redirige automáticamente.</span></label></li>
+    </ul>
+  </section>
+
+  <section class="block" data-block="dsers">
+    <div class="block-head"><h2>2 · Verificación de DSers</h2><span class="count"></span></div>
+    <p class="note">No tengo acceso a tu panel. Estas comprobaciones te dicen en 5 minutos si DSers está bien conectado. Pásame el resultado de cada una.</p>
+    <ul class="tasks">
+      <li><input type="checkbox" id="s1"><label for="s1"><span class="t">Shopify → Apps: DSers aparece instalada y abre sin error</span><span class="d">Si pide reinstalar o permisos nuevos, acéptalos.</span></label></li>
+      <li><input type="checkbox" id="s2"><label for="s2"><span class="t">DSers → Configuración → Cuenta: tienda Shopify vinculada</span><span class="d">Debe figurar tu dominio .myshopify.com como tienda activa.</span></label></li>
+      <li><input type="checkbox" id="s3"><label for="s3"><span class="t">Cuenta de AliExpress vinculada y autorización vigente<span class="tag risk">Fallo frecuente</span></span><span class="d">La autorización de AliExpress caduca y hay que renovarla. Si está caducada, los pedidos no se envían al proveedor.</span></label></li>
+      <li><input type="checkbox" id="s4"><label for="s4"><span class="t">Prueba real: importar 1 producto y enviarlo a Shopify como borrador</span><span class="d">Si aparece en Shopify → Productos con imágenes y variantes, la conexión de catálogo funciona. Déjalo en borrador; no lo publiques todavía.</span></label></li>
+      <li><input type="checkbox" id="s5"><label for="s5"><span class="t">Anotar si ves la opción de método de envío por defecto para España</span><span class="d">Lo configuramos en la Fase 2. Ahora solo confirmamos que el ajuste existe en tu cuenta.</span></label></li>
+    </ul>
+  </section>
+
+  <section class="block" data-block="pagos">
+    <div class="block-head"><h2>3 · Pasarelas de pago para España</h2><span class="count"></span></div>
+    <ul class="tasks">
+      <li><input type="checkbox" id="p1"><label for="p1"><span class="t">Activar Shopify Payments</span><span class="d">Tarjetas, Apple Pay y Google Pay sin comisión extra por transacción. Pide NIF/CIF, IBAN y documento de identidad; la verificación puede tardar varios días.</span></label></li>
+      <li><input type="checkbox" id="p2"><label for="p2"><span class="t">Conectar PayPal</span><span class="d">En España sigue siendo un método que muchos compradores esperan ver.</span></label></li>
+      <li><input type="checkbox" id="p3"><label for="p3"><span class="t">Valorar pago a plazos (Klarna u otro) después del primer mes</span><span class="d">Con tickets de regalo bajos aporta poco al principio. No es bloqueante para lanzar.</span></label></li>
+      <li><input type="checkbox" id="p4"><label for="p4"><span class="t">Moneda EUR, impuestos con IVA incluido en el precio</span><span class="d">En venta a consumidores en la UE el precio mostrado debe incluir IVA.</span></label></li>
+    </ul>
+  </section>
+
+  <section class="block" data-block="legal">
+    <div class="block-head"><h2>4 · Legal y políticas</h2><span class="count"></span></div>
+    <ul class="tasks">
+      <li><input type="checkbox" id="l1"><label for="l1"><span class="t">Definir forma jurídica antes de cobrar<span class="tag risk">Bloqueante</span></span><span class="d">Vender de forma habitual en España exige alta como autónomo o sociedad. Shopify Payments y el aviso legal necesitan estos datos.</span></label></li>
+      <li><input type="checkbox" id="l2"><label for="l2"><span class="t">Aviso legal (LSSI): titular, NIF, domicilio, email</span><span class="d">Obligatorio en España. Lo creamos como página y lo enlazamos en el pie.</span></label></li>
+      <li><input type="checkbox" id="l3"><label for="l3"><span class="t">Política de devoluciones con 14 días de desistimiento</span><span class="d">Mínimo legal en la UE. Hay que aclarar quién paga la devolución y a qué dirección se envía (nunca a China sin decirlo).</span></label></li>
+      <li><input type="checkbox" id="l4"><label for="l4"><span class="t">Privacidad (RGPD), términos y política de envíos</span><span class="d">Shopify → Configuración → Políticas genera borradores. Hay que adaptarlos, no publicarlos tal cual.</span></label></li>
+      <li><input type="checkbox" id="l5"><label for="l5"><span class="t">Banner de cookies activo para visitantes de la UE</span><span class="d">Shopify → Configuración → Privacidad de clientes.</span></label></li>
+      <li><input type="checkbox" id="l6"><label for="l6"><span class="t">Plazos de entrega reales en la ficha y en la política de envíos</span><span class="d">Prometer 3–5 días con envío desde China genera reclamaciones y contracargos.</span></label></li>
+    </ul>
+  </section>
+
+  <section class="block" data-block="marca">
+    <div class="block-head"><h2>5 · Branding base (siguiente paso, tras validar 1–4)</h2><span class="count"></span></div>
+    <ul class="tasks">
+      <li><input type="checkbox" id="b1"><label for="b1"><span class="t">Nombre de marca definitivo y coincidente con el dominio</span><span class="d">Si el dominio actual no encaja con «regalos / bienestar / estética», conviene decidirlo ahora, no después del lanzamiento.</span></label></li>
+      <li><input type="checkbox" id="b2"><label for="b2"><span class="t">Paleta neutra fija + 1 color de acento intercambiable por temporada</span><span class="d">La marca no cambia; cambian el banner, el acento y las colecciones.</span></label></li>
+      <li><input type="checkbox" id="b3"><label for="b3"><span class="t">Tema: Dawn (gratuito) como base</span><span class="d">Rápido, mantenido por Shopify y suficiente para cambiar banners y colecciones por temporada.</span></label></li>
+    </ul>
+  </section>
+
+  <div class="ask">
+    <h2>Qué necesito de ti para avanzar</h2>
+    <ol>
+      <li>El dominio exacto y si tiene email activo en Hostinger.</li>
+      <li>El resultado de las 5 comprobaciones de DSers.</li>
+      <li>Si ya eres autónomo o tienes sociedad.</li>
+    </ol>
+  </div>
+
+  <footer>Fase 1 · Infraestructura. No pasamos a la Fase 2 (logística DSers) hasta cerrar los bloques 1–4.</footer>
+</div>
+
+<script>
+(function () {
+  var KEY = "fase1-checklist";
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { state = {}; }
+  var boxes = Array.prototype.slice.call(document.querySelectorAll("ul.tasks input[type=checkbox]"));
+
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  function render() {
+    var done = 0;
+    boxes.forEach(function (b) {
+      b.checked = !!state[b.id];
+      b.closest("li").classList.toggle("done", b.checked);
+      if (b.checked) done++;
+    });
+    document.querySelectorAll("section.block").forEach(function (s) {
+      var bs = s.querySelectorAll("ul.tasks input");
+      var d = 0; bs.forEach(function (b) { if (b.checked) d++; });
+      s.querySelector(".count").textContent = d + " / " + bs.length;
+    });
+    document.getElementById("overallTxt").textContent = done + " de " + boxes.length + " tareas";
+    document.getElementById("overallBar").style.width = (boxes.length ? (done / boxes.length * 100) : 0) + "%";
+  }
+  boxes.forEach(function (b) {
+    b.addEventListener("change", function () { state[b.id] = b.checked; save(); render(); });
+  });
+  document.querySelectorAll("button.copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var v = btn.getAttribute("data-copy");
+      var ok = function () { btn.textContent = "Copiado"; setTimeout(function () { btn.textContent = "Copiar"; }, 1500); };
+      try {
+        navigator.clipboard.writeText(v).then(ok, function () { selectCell(btn); });
+      } catch (e) { selectCell(btn); }
+    });
+  });
+  function selectCell(btn) {
+    var code = btn.closest("tr").querySelector("td:nth-child(3) code");
+    var r = document.createRange(); r.selectNodeContents(code);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    btn.textContent = "Seleccionado";
+  }
+  render();
+})();
+</script>
