@@ -10,7 +10,8 @@
         "boton_texto": "Ver el drop de Navidad",
         "boton2_texto": "Ideas por persona",
         "boton2_url": "#regalos",
-        "boton_url": "/collections/navidad"
+        "boton_url": "/collections/navidad",
+        "imagen": "shopify://shop_images/oc-h-hero.jpg"
       }
     },
     "marquesina": {
@@ -38,7 +39,8 @@
           "settings": {
             "titulo": "Para ella",
             "subtitulo": "Ver ideas",
-            "url": "/collections/para-ella"
+            "url": "/collections/para-ella",
+            "imagen": "shopify://shop_images/oc-t-ella.jpg"
           }
         },
         "r2": {
@@ -46,7 +48,8 @@
           "settings": {
             "titulo": "Para él",
             "subtitulo": "Ver ideas",
-            "url": "/collections/para-el"
+            "url": "/collections/para-el",
+            "imagen": "shopify://shop_images/oc-t-el.jpg"
           }
         },
         "r3": {
@@ -54,7 +57,8 @@
           "settings": {
             "titulo": "Amigo invisible",
             "subtitulo": "Aciertos seguros",
-            "url": "/collections/amigo-invisible"
+            "url": "/collections/amigo-invisible",
+            "imagen": "shopify://shop_images/oc-t-amigo.jpg"
           }
         },
         "r4": {
@@ -62,7 +66,8 @@
           "settings": {
             "titulo": "Menos de 20 €",
             "subtitulo": "Detalles que suman",
-            "url": "/collections/menos-de-20"
+            "url": "/collections/menos-de-20",
+            "imagen": "shopify://shop_images/oc-t-menos20.jpg"
           }
         }
       },

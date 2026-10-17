@@ -35,7 +35,7 @@
 - Tipografía: Bricolage Grotesque (titulares, Google Fonts en layout/theme.liquid) + DM Sans (texto; dm_sans en ajustes del tema).
 - Botones píldora, esquinas 16–32px, ojo animado como elemento de marca.
 - Sin reseñas inventadas: se añadirán cuando haya reseñas reales.
-- Imágenes con IA: aprobadas por el usuario; clave pendiente (variable de entorno OPENAI_API_KEY).
+- Imágenes con IA: aprobadas por el usuario. La variable OPENAI_API_KEY de la sesión 2 seguía recortada; la usuaria pegó una clave nueva en el chat (guardada solo en el scratchpad, nunca en el repo). Recomendado: revocarla en OpenAI y crear otra al terminar.
 - Textos en imágenes de producto en inglés: traducir o regenerar en español.
 - Marca: Ojo Con Ese Detalle. Tono cercano, emocional, tipo "OhMyGift".
 - Modelo: colecciones de temporada (drops) + productos fijos. Primera campaña: Black Friday / Navidad / Reyes.
@@ -56,14 +56,21 @@
 - Máscara LED — gid://shopify/Product/16649284485511 — plantilla "oc"
   - Quitadas imágenes con claims médicos / antes-después. Descripción sin imágenes de AliExpress (incluían un anuncio de otra tienda); añadidas autonomía y "se envía sin caja original".
   - Opción "Autonomía por carga": "1,5–2 h" (39,90 €) y "30–40 min" (29,90 €) — precios intercambiados por indicación de la usuaria (2026-10-17).
-  - Imágenes con texto en inglés a rehacer en español: MediaImage 77748808515975 (Multi-effect care), 77748808548743 (Wireless operation), 77748808614279 (400mAh 1.5-2h No box), 77748808647047 (400mAh 30-40min No box). Las dos últimas son imágenes de variante.
+  - Imágenes en español (gpt-image-2, 2026-10-17), sustituyen a las de inglés en el mismo orden: 77762749989255 (Cuidado completo), 77762770403719 (Sin cables), 77762783445383 (var. 1,5–2 h), 77762796814727 (var. 30–40 min). Las dos últimas vinculadas a su variante.
 - Calendario de Adviento — gid://shopify/Product/16649471754631 — plantilla "oc"
   - Quitada imagen con marca de agua de otra tienda. Descripción reescrita (coincide con las fotos). Título sin "2026".
   - Opción "Diseño": "Merry Christmas" / "Advent (texto en alemán)". Opción "Size" eliminada.
-  - Imagen con texto en inglés a rehacer: MediaImage 77756163391879 ("Back Details / Wood Rod").
+  - "Parte trasera / Varilla de madera" en español: 77762798584199 (posición 3). Orden nuevo: portada Merry Christmas primero (antes salía la parte trasera como foto principal).
   - Stock 1 unidad por variante (revisar sincronización de DSers).
 - compareAtPrice borrado en ambos (DSers ponía el coste del proveedor).
 - Ambos publicados en Tienda online (2026-10-17 21:59 UTC).
+
+## Imágenes de la tienda (Contenido → Archivos)
+- oc-favicon.png (ojo de marca, dibujado, no IA) → ajuste favicon del tema.
+- oc-h-hero.jpg (high) → oc-hero.imagen. oc-t-ella / oc-t-el / oc-t-amigo / oc-t-menos20 (medium) → tarjetas de oc-regalos.
+- Todas las imágenes de producto y de portada tienen texto alternativo en español.
+- Gasto aproximado en OpenAI: ~0,9 $ (9 medium + 1 high, con referencias).
+- Herramienta: herramientas/subir.py (subir_archivo, subir_media_producto).
 
 ## Colecciones
 - Navidad (navidad, creada por la usuaria) = drop de Navidad: calendario + máscara (máscara añadida). Enlazada en oc-drop, botón del hero y CTA.
@@ -87,12 +94,12 @@
 7. Comprobar OPENAI_API_KEY con GET https://api.openai.com/v1/models (200 = válida).
 
 ## Pendiente
-- [ ] Clave OpenAI válida: la variable OPENAI_API_KEY contiene una clave recortada con "..." (copiada de la lista de OpenAI). Hay que crear una nueva y copiarla entera.
-- [ ] Con la clave: rehacer en español las 5 imágenes con texto en inglés (lista arriba) conservando orden e imagen de variante
-- [ ] Con la clave: imágenes de portada (hero, 4 tarjetas "regalos por persona") y favicon/logo con el ojo
+- [ ] Revocar en OpenAI la clave pegada en el chat y crear otra (actualizar la variable de entorno)
 - [ ] Datos del titular (nombre o razón social, NIF, dirección) → completar y publicar Aviso legal y Privacidad, y enlazarlas en el footer
 - [ ] Confirmar plazos reales del proveedor (ahora prudentes: 7–15 días laborables)
 - [ ] Publicar el tema como activo cuando la usuaria dé el visto bueno
+- [x] 5 imágenes de producto rehechas en español
+- [x] Imágenes de portada (hero + 4 tarjetas) y favicon
 - [x] Productos publicados en Tienda online
 - [x] Colecciones creadas, publicadas y enlazadas en portada
 - [x] Precios de la máscara corregidos
