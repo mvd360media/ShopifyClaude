@@ -11,6 +11,13 @@
 {% endstyle %}
 
 {%- assign coleccion = section.settings.coleccion -%}
+{%- assign oc_terminada = false -%}
+{%- if section.settings.ocultar_al_terminar and section.settings.fecha_fin != blank -%}
+  {%- assign oc_hoy = 'now' | date: '%Y%m%d' | plus: 0 -%}
+  {%- assign oc_fin = section.settings.fecha_fin | date: '%Y%m%d' | plus: 0 -%}
+  {%- if oc_fin > 0 and oc_hoy >= oc_fin -%}{%- assign oc_terminada = true -%}{%- endif -%}
+{%- endif -%}
+{%- if oc_terminada == false or request.design_mode -%}
 <section class="oc-drop oc-section">
   <div class="oc-container">
     <div class="oc-drop__cabecera oc-reveal">
@@ -48,8 +55,8 @@
       {%- else -%}
         {%- for i in (1..section.settings.columnas) -%}
           <div class="oc-card">
-            <div class="oc-card__media"><div class="oc-hueco">Elige la colección del drop<br>(Editor → esta sección)</div></div>
-            <span class="oc-card__titulo">Producto del drop</span>
+            <div class="oc-card__media"><div class="oc-hueco">Elige la colección<br>(Editor → esta sección)</div></div>
+            <span class="oc-card__titulo">Producto de la colección</span>
             <span class="oc-card__precio">--,-- €</span>
           </div>
         {%- endfor -%}
@@ -63,25 +70,27 @@
     {%- endif -%}
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {
-  "name": "OC – Drop de temporada",
+  "name": "OC – Temporada",
   "tag": "div",
   "settings": [
-    { "type": "collection", "id": "coleccion", "label": "Colección del drop" },
+    { "type": "collection", "id": "coleccion", "label": "Colección de la temporada" },
     { "type": "range", "id": "limite", "label": "Número de productos", "min": 2, "max": 16, "step": 1, "default": 8 },
     { "type": "range", "id": "columnas", "label": "Productos por fila (ordenador)", "min": 2, "max": 5, "step": 1, "default": 4 },
     { "type": "header", "content": "Textos" },
     { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Edición de temporada" },
-    { "type": "text", "id": "titulo", "label": "Título", "default": "El drop de Navidad" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Especial Navidad" },
     { "type": "textarea", "id": "texto", "label": "Texto", "default": "Una selección pensada para esta temporada. Cuando termine, la colección se retira y llega la siguiente." },
     { "type": "text", "id": "texto_oferta", "label": "Etiqueta de oferta", "default": "Oferta" },
-    { "type": "text", "id": "boton_texto", "label": "Texto del botón", "default": "Ver todo el drop" },
+    { "type": "text", "id": "boton_texto", "label": "Texto del botón", "default": "Ver toda la colección" },
     { "type": "header", "content": "Fecha de fin de la colección" },
     { "type": "text", "id": "fecha_fin", "label": "Fecha de fin (formato AAAA-MM-DD; vacío para ocultar)", "default": "2027-01-06", "info": "Pon solo la fecha real en que retirarás la colección." },
+    { "type": "checkbox", "id": "ocultar_al_terminar", "label": "Ocultar la sección cuando llegue la fecha de fin", "default": true, "info": "En el editor se sigue viendo para que puedas cambiarla." },
     { "type": "text", "id": "texto_fin", "label": "Texto antes de la cuenta atrás", "default": "Disponible durante" },
-    { "type": "text", "id": "texto_terminado", "label": "Texto cuando termine", "default": "Drop terminado" },
+    { "type": "text", "id": "texto_terminado", "label": "Texto cuando termine", "default": "Colección terminada" },
     { "type": "header", "content": "Diseño" },
     { "type": "color", "id": "fondo", "label": "Color de fondo", "default": "#FBF8F4" },
     { "type": "range", "id": "heading_size", "label": "Tamaño máximo del título (px)", "min": 24, "max": 80, "step": 2, "unit": "px", "default": 52 },
@@ -89,6 +98,6 @@
     { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 80 },
     { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 80 }
   ],
-  "presets": [ { "name": "OC – Drop de temporada" } ]
+  "presets": [ { "name": "OC – Temporada" } ]
 }
 {% endschema %}

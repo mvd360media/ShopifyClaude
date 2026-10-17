@@ -37,6 +37,7 @@
 - Sin reseñas inventadas: se añadirán cuando haya reseñas reales.
 - Imágenes con IA: aprobadas por el usuario. La variable OPENAI_API_KEY de la sesión 2 seguía recortada; la usuaria pegó una clave nueva en el chat (guardada solo en el scratchpad, nunca en el repo). Recomendado: revocarla en OpenAI y crear otra al terminar.
 - Textos en imágenes de producto en inglés: traducir o regenerar en español.
+- Vocabulario: NO usar "drop" en textos visibles; usar "colección de temporada" / "Especial X".
 - Marca: Ojo Con Ese Detalle. Tono cercano, emocional, tipo "OhMyGift".
 - Modelo: colecciones de temporada (drops) + productos fijos. Primera campaña: Black Friday / Navidad / Reyes.
 
@@ -73,8 +74,11 @@
 - Herramienta: herramientas/subir.py (subir_archivo, subir_media_producto).
 
 ## Colecciones
-- Navidad (navidad, creada por la usuaria) = drop de Navidad: calendario + máscara (máscara añadida). Enlazada en oc-drop, botón del hero y CTA.
-- Black friday (black-friday, creada por la usuaria): máscara.
+- REGLA de la usuaria: cada producto va en la temporada que ella indica. Máscara = Black Friday. Calendario = Navidad. No mezclar.
+- Black friday (black-friday): máscara. Sección de portada "black_friday" (fin 2026-12-01). Botón del hero y CTA apuntan aquí (temporada más próxima).
+- Navidad (navidad): calendario. Sección de portada "drop" (fin 2027-01-06).
+- Las secciones de temporada se ocultan solas al llegar su fecha de fin (ajuste ocultar_al_terminar). El 1 de diciembre hay que cambiar el botón del hero y el CTA a Navidad.
+- Ambas con descripción y SEO (título y meta descripción).
 - Para ella (para-ella): máscara + calendario. Para él (para-el): calendario. Amigo invisible (amigo-invisible): calendario. Menos de 20 € (menos-de-20): automática, precio de variante < 20.
 - Todas publicadas en Tienda online y enlazadas en las tarjetas de oc-regalos.
 
@@ -94,6 +98,8 @@
 7. Comprobar OPENAI_API_KEY con GET https://api.openai.com/v1/models (200 = válida).
 
 ## Pendiente
+- [ ] 1 dic 2026: hero (botón) + CTA + barra de anuncios → Navidad
+- [ ] Decidir con la usuaria: menú por temporadas, hero de marca vs campaña, colecciones por persona automáticas por etiqueta
 - [ ] Revocar en OpenAI la clave pegada en el chat y crear otra (actualizar la variable de entorno)
 - [ ] Datos del titular (nombre o razón social, NIF, dirección) → completar y publicar Aviso legal y Privacidad, y enlazarlas en el footer
 - [ ] Confirmar plazos reales del proveedor (ahora prudentes: 7–15 días laborables)
