@@ -24,11 +24,19 @@
             "heading": "Cómo funciona",
             "subtext": "<p>Cada temporada lanzamos un drop: una colección de regalos y caprichos elegidos con ojo. Cuando termina, llega la siguiente.</p>"
           }
+        },
+        "info": {
+          "type": "text",
+          "settings": {
+            "heading": "Información",
+            "subtext": "<p><a href=\"/pages/envios\">Envíos y plazos</a><br><a href=\"/pages/devoluciones\">Devoluciones</a><br><a href=\"/pages/terminos\">Términos y condiciones</a><br><a href=\"/pages/contact\">Contacto</a></p>"
+          }
         }
       },
       "block_order": [
         "marca",
         "enlaces",
+        "info",
         "texto"
       ],
       "settings": {

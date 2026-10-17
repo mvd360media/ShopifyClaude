@@ -2,7 +2,9 @@
   "sections": {
     "principal": {
       "type": "oc-producto",
-      "settings": {}
+      "settings": {
+        "envio_texto": "Entrega estimada en 7–15 días laborables"
+      }
     },
     "marquesina": {
       "type": "oc-marquesina",
@@ -11,13 +13,42 @@
     "faq": {
       "type": "oc-faq",
       "blocks": {
-        "p1": { "type": "pregunta", "settings": { "pregunta": "¿Cuánto tarda en llegar?", "respuesta": "Preparamos tu pedido en 1–3 días laborables. La entrega en España tarda normalmente entre 7 y 12 días laborables. Te enviamos el número de seguimiento por email." } },
-        "p2": { "type": "pregunta", "settings": { "pregunta": "¿Puedo devolverlo?", "respuesta": "Sí. Tienes 14 días desde que lo recibes para devolverlo sin dar explicaciones. Escríbenos y te indicamos cómo hacerlo." } },
-        "p3": { "type": "pregunta", "settings": { "pregunta": "¿Es para regalar? ¿Llega a tiempo?", "respuesta": "Para fechas señaladas, pide con al menos 15 días de margen. En cada drop indicamos la fecha límite recomendada." } }
+        "p1": {
+          "type": "pregunta",
+          "settings": {
+            "pregunta": "¿Cuánto tarda en llegar?",
+            "respuesta": "Preparamos tu pedido en 1–3 días laborables y lo recibes en España en un plazo total de 7 a 15 días laborables. Te enviamos el número de seguimiento por email."
+          }
+        },
+        "p2": {
+          "type": "pregunta",
+          "settings": {
+            "pregunta": "¿Puedo devolverlo?",
+            "respuesta": "Sí. Tienes 14 días desde que lo recibes para devolverlo sin dar explicaciones. Escríbenos y te indicamos cómo hacerlo."
+          }
+        },
+        "p3": {
+          "type": "pregunta",
+          "settings": {
+            "pregunta": "¿Es para regalar? ¿Llega a tiempo?",
+            "respuesta": "Para fechas señaladas, pide con al menos 3 semanas de margen. En cada drop indicamos la fecha límite recomendada."
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3"],
-      "settings": { "titulo": "Dudas sobre este producto", "fondo": "#F3ECE3" }
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "titulo": "Dudas sobre este producto",
+        "fondo": "#F3ECE3"
+      }
     }
   },
-  "order": ["principal", "marquesina", "faq"]
+  "order": [
+    "principal",
+    "marquesina",
+    "faq"
+  ]
 }

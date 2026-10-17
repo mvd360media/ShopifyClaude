@@ -4,12 +4,12 @@
 - Dominio: ojoconesedetalle.es (DNS apuntado a Shopify, verificación en curso)
 - Carpeta del tema: tema/ (este repositorio)
 - Tema base: Dawn (Shopify/dawn main, commit 258f00f 2026-08-10)
-- Entorno: Node v22.22.0, Shopify CLI 4.9.4 — OK
+- Entorno: Node v22.22.0, Shopify CLI 4.9.4 — OK (reinstalado 2026-10-17, sesión 2)
 - Tema de trabajo: "Ojo Con Ese Detalle (Claude)" #211921994119 (sin publicar)
   - Vista previa: https://ccdf97-s7.myshopify.com?preview_theme_id=211921994119
   - Editor: https://ccdf97-s7.myshopify.com/admin/themes/211921994119/editor
 - Tema activo actual: Helio #211593757063 (no tocar)
-- Última publicación: 2026-10-17 portada y plantilla de producto (sin publicar)
+- Última publicación: 2026-10-17 (sesión 2) enlaces de colecciones, plazos, footer legal (tema sin publicar)
 
 ## Conexión (entorno en la nube)
 - Dominios permitidos añadidos por el usuario: accounts/admin/partners.shopify.com,
@@ -17,7 +17,8 @@
 - Ejecutar el CLI con NODE_USE_ENV_PROXY=1 (Node no usa el proxy por defecto).
 - Login del tema: flujo con código (el usuario abre el enlace).
 - store auth: redirige a 127.0.0.1; el usuario pega la URL de error y se entrega con curl local.
-- Producto: la tienda NO tiene productos todavía (2026-10-17).
+- La tienda está ABIERTA al público (sin contraseña): todo lo publicado en Tienda online se puede comprar.
+- Sin permisos para menús (navegación) ni políticas legales de Shopify: enlaces legales van en un bloque de texto del footer.
 
 ## Fases completadas
 - [x] 0 Entorno
@@ -25,7 +26,7 @@
 - [x] 2 Proyecto (Dawn subido como tema sin publicar)
 - [x] 3 Diseño (estilo aprobado por el usuario)
 - [x] 4 Construcción (portada)
-- [ ] 5 Páginas
+- [x] 5 Páginas (falta aviso legal y privacidad: datos del titular)
 - [ ] 6 Publicación
 
 ## Decisiones de diseño
@@ -54,7 +55,7 @@
 ## Productos (revisados 2026-10-17)
 - Máscara LED — gid://shopify/Product/16649284485511 — plantilla "oc"
   - Quitadas imágenes con claims médicos / antes-después. Descripción sin imágenes de AliExpress (incluían un anuncio de otra tienda); añadidas autonomía y "se envía sin caja original".
-  - Opción "Autonomía por carga": "1,5–2 h" (29,90 €) y "30–40 min" (39,90 €) — según imágenes del proveedor. OJO: la de más autonomía es la más barata → confirmar precios con el usuario.
+  - Opción "Autonomía por carga": "1,5–2 h" (39,90 €) y "30–40 min" (29,90 €) — precios intercambiados por indicación de la usuaria (2026-10-17).
   - Imágenes con texto en inglés a rehacer en español: MediaImage 77748808515975 (Multi-effect care), 77748808548743 (Wireless operation), 77748808614279 (400mAh 1.5-2h No box), 77748808647047 (400mAh 30-40min No box). Las dos últimas son imágenes de variante.
 - Calendario de Adviento — gid://shopify/Product/16649471754631 — plantilla "oc"
   - Quitada imagen con marca de agua de otra tienda. Descripción reescrita (coincide con las fotos). Título sin "2026".
@@ -62,7 +63,18 @@
   - Imagen con texto en inglés a rehacer: MediaImage 77756163391879 ("Back Details / Wood Rod").
   - Stock 1 unidad por variante (revisar sincronización de DSers).
 - compareAtPrice borrado en ambos (DSers ponía el coste del proveedor).
-- Ninguno publicado en el canal Tienda online (publishedAt null).
+- Ambos publicados en Tienda online (2026-10-17 21:59 UTC).
+
+## Colecciones
+- Navidad (navidad, creada por la usuaria) = drop de Navidad: calendario + máscara (máscara añadida). Enlazada en oc-drop, botón del hero y CTA.
+- Black friday (black-friday, creada por la usuaria): máscara.
+- Para ella (para-ella): máscara + calendario. Para él (para-el): calendario. Amigo invisible (amigo-invisible): calendario. Menos de 20 € (menos-de-20): automática, precio de variante < 20.
+- Todas publicadas en Tienda online y enlazadas en las tarjetas de oc-regalos.
+
+## Páginas legales (script: docs/legales/paginas.py)
+- Publicadas: Envíos y plazos (/pages/envios), Devoluciones (/pages/devoluciones), Términos (/pages/terminos).
+- En borrador: Aviso legal (/pages/aviso-legal) y Privacidad (/pages/privacidad) — falta nombre/razón social, NIF y dirección ([PENDIENTE] en el texto). Al publicarlas, añadir sus enlaces al bloque "Información" del footer.
+- Plazo de entrega prudente: 1–3 días de preparación, 7–15 días laborables en total. Fechas límite: Navidad 1 dic, Reyes 12 dic. Mismo texto en FAQ de portada, plantilla de producto y página de envíos.
 
 ## Cómo retomar en una sesión nueva (entorno en la nube)
 1. npm install -g @shopify/cli@latest
@@ -75,10 +87,12 @@
 7. Comprobar OPENAI_API_KEY con GET https://api.openai.com/v1/models (200 = válida).
 
 ## Pendiente
-- [ ] Clave OpenAI válida (en esta sesión la variable tiene una clave recortada; el valor nuevo se aplica en sesión nueva)
-- [ ] Rehacer en español las 5 imágenes con texto en inglés (lista arriba) y sustituirlas conservando el orden y la imagen de variante
-- [ ] Generar imágenes de portada: hero, 4 tarjetas "regalos por persona", favicon/logo con el ojo
-- [ ] Publicar productos en Tienda online (con write_publications o el usuario a mano)
-- [ ] Crear colecciones (Drop de Navidad, Para ella, Para él, Amigo invisible, Menos de 20 €), publicarlas y enlazarlas en la portada (oc-drop.coleccion y URLs de oc-regalos)
-- [ ] Confirmar precios de las variantes de la máscara
-- [ ] Políticas legales, plazos de entrega reales tras ver tiempos del proveedor
+- [ ] Clave OpenAI válida: la variable OPENAI_API_KEY contiene una clave recortada con "..." (copiada de la lista de OpenAI). Hay que crear una nueva y copiarla entera.
+- [ ] Con la clave: rehacer en español las 5 imágenes con texto en inglés (lista arriba) conservando orden e imagen de variante
+- [ ] Con la clave: imágenes de portada (hero, 4 tarjetas "regalos por persona") y favicon/logo con el ojo
+- [ ] Datos del titular (nombre o razón social, NIF, dirección) → completar y publicar Aviso legal y Privacidad, y enlazarlas en el footer
+- [ ] Confirmar plazos reales del proveedor (ahora prudentes: 7–15 días laborables)
+- [ ] Publicar el tema como activo cuando la usuaria dé el visto bueno
+- [x] Productos publicados en Tienda online
+- [x] Colecciones creadas, publicadas y enlazadas en portada
+- [x] Precios de la máscara corregidos

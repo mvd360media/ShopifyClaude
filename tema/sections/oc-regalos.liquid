@@ -23,7 +23,7 @@
       {%- for block in section.blocks -%}
         <a class="oc-regalo oc-reveal" style="--oc-delay: {{ forloop.index0 | times: 0.08 }}s" href="{{ block.settings.url | default: '/collections/all' }}" {{ block.shopify_attributes }}>
           {%- if block.settings.imagen != blank -%}
-            <img src="{{ block.settings.imagen | image_url: width: 800 }}" alt="{{ block.settings.imagen.alt | escape }}" loading="lazy">
+            <img src="{{ block.settings.imagen | image_url: width: 800 }}" alt="{{ block.settings.imagen.alt | escape }}" width="{{ block.settings.imagen.width }}" height="{{ block.settings.imagen.height }}" loading="lazy">
           {%- else -%}
             <div class="oc-hueco">Elige una imagen</div>
           {%- endif -%}

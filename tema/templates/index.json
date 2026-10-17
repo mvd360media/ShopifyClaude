@@ -9,7 +9,8 @@
         "sello": "Disponible hasta el 6 de enero",
         "boton_texto": "Ver el drop de Navidad",
         "boton2_texto": "Ideas por persona",
-        "boton2_url": "#regalos"
+        "boton2_url": "#regalos",
+        "boton_url": "/collections/navidad"
       }
     },
     "marquesina": {
@@ -25,18 +26,52 @@
         "titulo": "El drop de Navidad",
         "texto": "Una selección pensada para estas fiestas. El 6 de enero se retira y llega la siguiente colección.",
         "fecha_fin": "2027-01-06",
-        "texto_fin": "Disponible durante"
+        "texto_fin": "Disponible durante",
+        "coleccion": "navidad"
       }
     },
     "regalos": {
       "type": "oc-regalos",
       "blocks": {
-        "r1": { "type": "tarjeta", "settings": { "titulo": "Para ella", "subtitulo": "Ver ideas" } },
-        "r2": { "type": "tarjeta", "settings": { "titulo": "Para él", "subtitulo": "Ver ideas" } },
-        "r3": { "type": "tarjeta", "settings": { "titulo": "Amigo invisible", "subtitulo": "Aciertos seguros" } },
-        "r4": { "type": "tarjeta", "settings": { "titulo": "Menos de 20 €", "subtitulo": "Detalles que suman" } }
+        "r1": {
+          "type": "tarjeta",
+          "settings": {
+            "titulo": "Para ella",
+            "subtitulo": "Ver ideas",
+            "url": "/collections/para-ella"
+          }
+        },
+        "r2": {
+          "type": "tarjeta",
+          "settings": {
+            "titulo": "Para él",
+            "subtitulo": "Ver ideas",
+            "url": "/collections/para-el"
+          }
+        },
+        "r3": {
+          "type": "tarjeta",
+          "settings": {
+            "titulo": "Amigo invisible",
+            "subtitulo": "Aciertos seguros",
+            "url": "/collections/amigo-invisible"
+          }
+        },
+        "r4": {
+          "type": "tarjeta",
+          "settings": {
+            "titulo": "Menos de 20 €",
+            "subtitulo": "Detalles que suman",
+            "url": "/collections/menos-de-20"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4"],
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ],
       "settings": {
         "eyebrow": "¿Para quién es?",
         "titulo": "Encuentra el detalle perfecto",
@@ -46,11 +81,36 @@
     "ventajas": {
       "type": "oc-ventajas",
       "blocks": {
-        "v1": { "type": "ventaja", "settings": { "icono": "ojo", "titulo": "Seleccionado con ojo", "texto": "Cada producto pasa un filtro: que sorprenda, que sea útil y que quede bonito al regalarlo." } },
-        "v2": { "type": "ventaja", "settings": { "icono": "calendario", "titulo": "Colecciones de temporada", "texto": "Navidad, San Valentín, primavera… Cada época trae su drop. Lo que hoy ves, mañana cambia." } },
-        "v3": { "type": "ventaja", "settings": { "icono": "seguro", "titulo": "Compra sin riesgo", "texto": "Pago seguro, seguimiento del envío y 14 días para devolver si no te convence." } }
+        "v1": {
+          "type": "ventaja",
+          "settings": {
+            "icono": "ojo",
+            "titulo": "Seleccionado con ojo",
+            "texto": "Cada producto pasa un filtro: que sorprenda, que sea útil y que quede bonito al regalarlo."
+          }
+        },
+        "v2": {
+          "type": "ventaja",
+          "settings": {
+            "icono": "calendario",
+            "titulo": "Colecciones de temporada",
+            "texto": "Navidad, San Valentín, primavera… Cada época trae su drop. Lo que hoy ves, mañana cambia."
+          }
+        },
+        "v3": {
+          "type": "ventaja",
+          "settings": {
+            "icono": "seguro",
+            "titulo": "Compra sin riesgo",
+            "texto": "Pago seguro, seguimiento del envío y 14 días para devolver si no te convence."
+          }
+        }
       },
-      "block_order": ["v1", "v2", "v3"],
+      "block_order": [
+        "v1",
+        "v2",
+        "v3"
+      ],
       "settings": {
         "eyebrow": "Por qué Ojo Con Ese Detalle",
         "titulo": "Elegido con ojo, enviado con cariño"
@@ -59,13 +119,49 @@
     "faq": {
       "type": "oc-faq",
       "blocks": {
-        "q1": { "type": "pregunta", "settings": { "pregunta": "¿Cuánto tarda mi pedido?", "respuesta": "Preparamos tu pedido en 1–3 días laborables. La entrega en España tarda normalmente entre 7 y 12 días laborables. Te enviamos el número de seguimiento por email." } },
-        "q2": { "type": "pregunta", "settings": { "pregunta": "¿Llega a tiempo para Navidad o Reyes?", "respuesta": "Para Navidad, pide antes del 8 de diciembre. Para Reyes, antes del 20 de diciembre. Después de esas fechas no podemos garantizar la entrega a tiempo." } },
-        "q3": { "type": "pregunta", "settings": { "pregunta": "¿Puedo devolver un producto?", "respuesta": "Sí. Tienes 14 días desde que lo recibes para devolverlo sin dar explicaciones. Escríbenos y te indicamos cómo hacerlo." } },
-        "q4": { "type": "pregunta", "settings": { "pregunta": "¿Qué pasa cuando termina un drop?", "respuesta": "La colección se retira de la tienda y llega la siguiente. Algunos favoritos se quedan de forma permanente." } },
-        "q5": { "type": "pregunta", "settings": { "pregunta": "¿Cómo puedo pagar?", "respuesta": "Con tarjeta y los demás métodos que aparecen al finalizar la compra. El pago es 100% seguro." } }
+        "q1": {
+          "type": "pregunta",
+          "settings": {
+            "pregunta": "¿Cuánto tarda mi pedido?",
+            "respuesta": "Preparamos tu pedido en 1–3 días laborables y lo recibes en España en un plazo total de 7 a 15 días laborables. Te enviamos el número de seguimiento por email."
+          }
+        },
+        "q2": {
+          "type": "pregunta",
+          "settings": {
+            "pregunta": "¿Llega a tiempo para Navidad o Reyes?",
+            "respuesta": "Para Navidad, pide antes del 1 de diciembre. Para Reyes, antes del 12 de diciembre. Después de esas fechas no podemos garantizar que llegue a tiempo."
+          }
+        },
+        "q3": {
+          "type": "pregunta",
+          "settings": {
+            "pregunta": "¿Puedo devolver un producto?",
+            "respuesta": "Sí. Tienes 14 días desde que lo recibes para devolverlo sin dar explicaciones. Escríbenos y te indicamos cómo hacerlo."
+          }
+        },
+        "q4": {
+          "type": "pregunta",
+          "settings": {
+            "pregunta": "¿Qué pasa cuando termina un drop?",
+            "respuesta": "La colección se retira de la tienda y llega la siguiente. Algunos favoritos se quedan de forma permanente."
+          }
+        },
+        "q5": {
+          "type": "pregunta",
+          "settings": {
+            "pregunta": "¿Cómo puedo pagar?",
+            "respuesta": "Con tarjeta y los demás métodos que aparecen al finalizar la compra. El pago es 100% seguro."
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
       "settings": {
         "eyebrow": "Antes de pedir",
         "titulo": "Preguntas frecuentes"
@@ -76,9 +172,18 @@
       "settings": {
         "titulo": "¿Ya sabes qué regalar?",
         "texto": "Pide con tiempo: así llega antes de la fecha y tú quedas como un rey.",
-        "boton_texto": "Ver el drop de Navidad"
+        "boton_texto": "Ver el drop de Navidad",
+        "boton_url": "/collections/navidad"
       }
     }
   },
-  "order": ["hero", "marquesina", "drop", "regalos", "ventajas", "faq", "cta"]
+  "order": [
+    "hero",
+    "marquesina",
+    "drop",
+    "regalos",
+    "ventajas",
+    "faq",
+    "cta"
+  ]
 }
