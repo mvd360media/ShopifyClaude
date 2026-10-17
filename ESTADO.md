@@ -53,7 +53,7 @@
 
 ## Productos (revisados 2026-10-17)
 - Máscara LED — gid://shopify/Product/16649284485511 — plantilla "oc"
-  - Quitadas imágenes con claims médicos / antes-después. Descripción sin imágenes de AliExpress (copia original: herramientas/ no; se reescribió con nota de autonomía y "sin caja original").
+  - Quitadas imágenes con claims médicos / antes-después. Descripción sin imágenes de AliExpress (incluían un anuncio de otra tienda); añadidas autonomía y "se envía sin caja original".
   - Opción "Autonomía por carga": "1,5–2 h" (29,90 €) y "30–40 min" (39,90 €) — según imágenes del proveedor. OJO: la de más autonomía es la más barata → confirmar precios con el usuario.
   - Imágenes con texto en inglés a rehacer en español: MediaImage 77748808515975 (Multi-effect care), 77748808548743 (Wireless operation), 77748808614279 (400mAh 1.5-2h No box), 77748808647047 (400mAh 30-40min No box). Las dos últimas son imágenes de variante.
 - Calendario de Adviento — gid://shopify/Product/16649471754631 — plantilla "oc"
