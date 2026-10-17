@@ -108,7 +108,7 @@ footer { font-size: 13px; color: var(--muted); }
   </aside>
 
   <section class="block" data-block="dominio">
-    <div class="block-head"><h2>1 · Dominio de Hostinger a Shopify</h2><span class="count"></span></div>
+    <div class="block-head"><h2>1 · ojoconesedetalle.es → Shopify</h2><span class="count"></span></div>
     <p class="note">Primero esto: los cambios de DNS tardan entre minutos y 48 horas en propagarse, así que conviene lanzarlo hoy y avanzar con el resto mientras tanto.</p>
     <div class="dns-wrap">
       <table>
@@ -120,7 +120,7 @@ footer { font-size: 13px; color: var(--muted); }
       </table>
     </div>
     <ul class="tasks">
-      <li><input type="checkbox" id="d1"><label for="d1"><span class="t">Comprobar si usas email con el dominio en Hostinger<span class="tag risk">Antes de tocar nada</span></span><span class="d">Si tienes correo (info@tudominio…) en Hostinger, no borres los registros MX, TXT (SPF/DKIM) ni el de autodiscover. Solo se cambian A de <code>@</code> y CNAME de <code>www</code>.</span></label></li>
+      <li><input type="checkbox" id="d1"><label for="d1"><span class="t">Dominio comprado: ojoconesedetalle.es + redes sociales creadas</span><span class="d">Dominio nuevo y sin email, así que no hay registros MX que proteger. Un .es recién comprado puede tardar unas horas en activarse.</span></label></li>
       <li><input type="checkbox" id="d2"><label for="d2"><span class="t">Shopify → Configuración → Dominios → Conectar dominio existente<span class="tag today">Hoy</span></span><span class="d">Escribe el dominio sin www. Shopify te mostrará los registros que espera; deben coincidir con la tabla de arriba.</span></label></li>
       <li><input type="checkbox" id="d3"><label for="d3"><span class="t">Hostinger hPanel → Dominios → tu dominio → DNS / Nameservers<span class="tag today">Hoy</span></span><span class="d">Confirma que el dominio usa los nameservers de Hostinger. Si apunta a otros (p. ej. Cloudflare), los DNS se editan allí, no en Hostinger.</span></label></li>
       <li><input type="checkbox" id="d4"><label for="d4"><span class="t">Borrar el registro A de <code>@</code> existente (y cualquier AAAA de <code>@</code>)<span class="tag today">Hoy</span></span><span class="d">Hostinger suele traer un A apuntando a su hosting. Si conviven dos registros A, el dominio falla de forma intermitente.</span></label></li>
