@@ -87,7 +87,7 @@
 - Todas publicadas en Tienda online y enlazadas en las tarjetas de oc-regalos.
 
 ## Páginas, políticas y blog (2026-10-17, sesión 3)
-- Políticas de Shopify (se ven en el pago): Envíos (SHIPPING_POLICY), Devoluciones (REFUND_POLICY), Términos (TERMS_OF_SERVICE) con nuestros textos; Privacidad = la generada por Shopify. Falta Aviso legal (LEGAL_NOTICE o página aviso-legal en borrador).
+- Políticas de Shopify (se ven en el pago): Envíos (SHIPPING_POLICY), Devoluciones (REFUND_POLICY), Términos (TERMS_OF_SERVICE) con nuestros textos; Privacidad = la generada por Shopify. Aviso legal = política LEGAL_NOTICE (/policies/legal-notice) con titular, NIE y domicilio; /pages/aviso-legal redirige ahí y está en el menú del pie. Privacidad: gestionada automáticamente por Shopify (no se puede editar por API hasta que la usuaria desactive la gestión automática); le faltan nombre del titular y NIE y deja un hueco de teléfono.
 - Páginas /pages/envios, /devoluciones, /terminos, /privacidad BORRADAS y redirigidas a /policies/... (evita contenido duplicado).
 - Páginas nuevas: Quiénes somos (/pages/quienes-somos), Preguntas frecuentes (/pages/preguntas-frecuentes), con título y descripción SEO.
 - Blog renombrado: "Ideas de regalo" (/blogs/ideas-de-regalo; /blogs/noticias redirige). Artículos (docs/blog/articulos.py): rellenar calendario de adviento, amigo invisible < 20 €, máscara LED qué es y cómo se usa.
@@ -118,6 +118,7 @@
 7. Comprobar OPENAI_API_KEY con GET https://api.openai.com/v1/models (200 = válida).
 
 ## Pendiente
+- [ ] Privacidad: la usuaria desactiva la gestión automática (Configuración → Políticas) para añadir titular y NIE, o añade un teléfono de contacto en Configuración → Detalles de la tienda
 - [ ] 1 dic 2026: hero (imagen oc-h-hero.jpg, textos y botón) + CTA + barra de anuncios → Navidad
 - [ ] Dar de alta la tienda en Google Search Console y enviar el sitemap (la usuaria, con su cuenta de Google)
 - [ ] Enero: cambiar la tarjeta "Amigo invisible" por la temporada siguiente (San Valentín)
