@@ -44,10 +44,17 @@
       <h1 class="oc-compra__titulo oc-h">{{ product.title }}</h1>
       {%- if section.settings.intro != blank -%}<p class="oc-compra__intro oc-sub">{{ section.settings.intro | newline_to_br }}</p>{%- endif -%}
 
+      {%- capture oc_rebaja -%}{% render 'oc-rebaja', product: product %}{%- endcapture -%}
+      {%- assign oc_rebaja = oc_rebaja | strip | plus: 0 -%}
+      {%- assign v_precio = v.price | minus: oc_rebaja | at_least: 0 -%}
+      {%- assign v_tachado = v.compare_at_price | default: 0 -%}
+      {%- if oc_rebaja > 0 and v_tachado < v.price -%}{%- assign v_tachado = v.price -%}{%- endif -%}
       <div class="oc-compra__precio">
-        <span data-oc-precio>{{ v.price | money }}</span>
-        <s data-oc-tachado>{% if v.compare_at_price > v.price %}{{ v.compare_at_price | money }}{% endif %}</s>
-        {%- if v.compare_at_price > v.price and section.settings.mostrar_ahorro -%}
+        <span data-oc-precio>{{ v_precio | money }}</span>
+        <s data-oc-tachado>{% if v_tachado > v_precio %}{{ v_tachado | money }}{% endif %}</s>
+        {%- if oc_rebaja > 0 -%}
+          <span class="oc-compra__ahorro">-{{ oc_rebaja | money_without_trailing_zeros }} {{ settings.oc_camp_etiqueta }}</span>
+        {%- elsif v.compare_at_price > v.price and section.settings.mostrar_ahorro -%}
           <span class="oc-compra__ahorro">-{{ v.compare_at_price | minus: v.price | times: 100 | divided_by: v.compare_at_price }}%</span>
         {%- endif -%}
       </div>
@@ -68,7 +75,7 @@
             </fieldset>
           {%- endfor -%}
           <script type="application/json" data-oc-variantes>
-            [{%- for x in product.variants -%}{"id":{{ x.id }},"options":{{ x.options | json }},"price":{{ x.price }},"compare_at_price":{{ x.compare_at_price | default: 0 }},"available":{{ x.available }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]
+            [{%- for x in product.variants -%}{"id":{{ x.id }},"options":{{ x.options | json }},{%- assign x_tachado = x.compare_at_price | default: 0 -%}{%- if oc_rebaja > 0 and x_tachado < x.price -%}{%- assign x_tachado = x.price -%}{%- endif -%}"price":{{ x.price | minus: oc_rebaja | at_least: 0 }},"compare_at_price":{{ x_tachado }},"available":{{ x.available }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]
           </script>
         {%- endunless -%}
         <input type="hidden" name="id" value="{{ v.id }}">

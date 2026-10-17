@@ -43,12 +43,17 @@
               {%- else -%}
                 <div class="oc-hueco">Sin foto</div>
               {%- endif -%}
-              {%- if p.compare_at_price > p.price -%}<span class="oc-card__etiqueta">{{ section.settings.texto_oferta }}</span>{%- endif -%}
+              {%- capture oc_rebaja -%}{% render 'oc-rebaja', product: p %}{%- endcapture -%}
+              {%- assign oc_rebaja = oc_rebaja | strip | plus: 0 -%}
+              {%- assign p_precio = p.price | minus: oc_rebaja | at_least: 0 -%}
+              {%- assign p_tachado = p.compare_at_price | default: 0 -%}
+              {%- if oc_rebaja > 0 and p_tachado < p.price -%}{%- assign p_tachado = p.price -%}{%- endif -%}
+              {%- if p_tachado > p_precio -%}<span class="oc-card__etiqueta">{% if oc_rebaja > 0 and settings.oc_camp_etiqueta != blank %}{{ settings.oc_camp_etiqueta }}{% else %}{{ section.settings.texto_oferta }}{% endif %}</span>{%- endif -%}
             </div>
             <span class="oc-card__titulo">{{ p.title }}</span>
             <span class="oc-card__precio">
-              {{ p.price | money }}
-              {%- if p.compare_at_price > p.price -%} <s>{{ p.compare_at_price | money }}</s>{%- endif -%}
+              {%- if p.price_varies -%}Desde {% endif -%}{{ p_precio | money }}
+              {%- if p_tachado > p_precio -%} <s>{{ p_tachado | money }}</s>{%- endif -%}
             </span>
           </a>
         {%- endfor -%}

@@ -25,18 +25,18 @@
             "subtext": "<p>Cada temporada lanzamos una colección de regalos y caprichos elegidos con ojo. Cuando termina, llega la siguiente.</p>"
           }
         },
-        "info": {
-          "type": "text",
+        "tienda": {
+          "type": "link_list",
           "settings": {
-            "heading": "Información",
-            "subtext": "<p><a href=\"/pages/envios\">Envíos y plazos</a><br><a href=\"/pages/devoluciones\">Devoluciones</a><br><a href=\"/pages/terminos\">Términos y condiciones</a><br><a href=\"/pages/contact\">Contacto</a></p>"
+            "heading": "Tienda",
+            "menu": "main-menu"
           }
         }
       },
       "block_order": [
         "marca",
+        "tienda",
         "enlaces",
-        "info",
         "texto"
       ],
       "settings": {

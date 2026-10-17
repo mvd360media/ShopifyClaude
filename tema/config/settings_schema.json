@@ -1466,5 +1466,78 @@
         "label": "t:settings_schema.customer_accounts.settings.customer_account_menu.label"
       }
     ]
+  },
+  {
+    "name": "Ojo Con: SEO y campaña",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Marca y buscadores"
+      },
+      {
+        "type": "text",
+        "id": "oc_marca",
+        "label": "Nombre de la marca (títulos de Google)",
+        "default": "Ojo Con Ese Detalle"
+      },
+      {
+        "type": "text",
+        "id": "oc_seo_titulo_inicio",
+        "label": "Título de la página de inicio en Google",
+        "info": "Unos 50–60 caracteres."
+      },
+      {
+        "type": "textarea",
+        "id": "oc_seo_descripcion_inicio",
+        "label": "Descripción de la página de inicio en Google",
+        "info": "Unos 140–160 caracteres."
+      },
+      {
+        "type": "image_picker",
+        "id": "oc_seo_imagen",
+        "label": "Imagen al compartir en redes (si la página no tiene otra)"
+      },
+      {
+        "type": "header",
+        "content": "Rebaja de campaña"
+      },
+      {
+        "type": "paragraph",
+        "content": "Muestra el precio tachado y rebajado en la tienda. Debe coincidir con el descuento automático creado en Shopify → Descuentos (mismo importe, colección y fechas). El precio tachado debe ser el más bajo de los 30 días anteriores al inicio."
+      },
+      {
+        "type": "checkbox",
+        "id": "oc_camp_activa",
+        "label": "Activar la rebaja de campaña",
+        "default": false
+      },
+      {
+        "type": "collection",
+        "id": "oc_camp_coleccion",
+        "label": "Colección rebajada"
+      },
+      {
+        "type": "number",
+        "id": "oc_camp_importe",
+        "label": "Rebaja por producto (€)",
+        "default": 5
+      },
+      {
+        "type": "text",
+        "id": "oc_camp_inicio",
+        "label": "Primer día (AAAA-MM-DD)"
+      },
+      {
+        "type": "text",
+        "id": "oc_camp_fin",
+        "label": "Último día (AAAA-MM-DD)"
+      },
+      {
+        "type": "text",
+        "id": "oc_camp_etiqueta",
+        "label": "Etiqueta",
+        "default": "Black Friday"
+      }
+    ]
   }
 ]

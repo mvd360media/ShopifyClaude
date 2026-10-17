@@ -25,6 +25,19 @@
   assign price = target.price | default: 1999
   assign price_min = product.price_min
   assign price_max = product.price_max
+  # Ojo Con: rebaja de campaña (ver snippets/oc-rebaja.liquid)
+  capture oc_rebaja
+    render 'oc-rebaja', product: product
+  endcapture
+  assign oc_rebaja = oc_rebaja | strip | plus: 0
+  if oc_rebaja > 0 and target != null
+    if compare_at_price == blank or compare_at_price < price
+      assign compare_at_price = price
+    endif
+    assign price = price | minus: oc_rebaja | at_least: 0
+    assign price_min = price_min | minus: oc_rebaja | at_least: 0
+    assign price_max = price_max | minus: oc_rebaja | at_least: 0
+  endif
   assign available = target.available | default: false
   assign money_price = price | money
   assign money_price_min = price_min | money

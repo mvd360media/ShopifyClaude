@@ -9,7 +9,7 @@
   - Vista previa: https://ccdf97-s7.myshopify.com?preview_theme_id=211921994119
   - Editor: https://ccdf97-s7.myshopify.com/admin/themes/211921994119/editor
 - Tema activo actual: Helio #211593757063 (no tocar)
-- Última publicación: 2026-10-17 (sesión 2) enlaces de colecciones, plazos, footer legal (tema sin publicar)
+- Última publicación: 2026-10-17 (sesión 3) estructura SEO, menús, blog, campaña Black Friday (tema sin publicar)
 
 ## Conexión (entorno en la nube)
 - Dominios permitidos añadidos por el usuario: accounts/admin/partners.shopify.com,
@@ -18,7 +18,7 @@
 - Login del tema: flujo con código (el usuario abre el enlace).
 - store auth: redirige a 127.0.0.1; el usuario pega la URL de error y se entrega con curl local.
 - La tienda está ABIERTA al público (sin contraseña): todo lo publicado en Tienda online se puede comprar.
-- Sin permisos para menús (navegación) ni políticas legales de Shopify: enlaces legales van en un bloque de texto del footer.
+- store auth (sesión 3) añade: read/write_online_store_navigation, read/write_legal_policies, read/write_discounts, read_inventory.
 
 ## Fases completadas
 - [x] 0 Entorno
@@ -56,7 +56,9 @@
 ## Productos (revisados 2026-10-17)
 - Máscara LED — gid://shopify/Product/16649284485511 — plantilla "oc"
   - Quitadas imágenes con claims médicos / antes-después. Descripción sin imágenes de AliExpress (incluían un anuncio de otra tienda); añadidas autonomía y "se envía sin caja original".
-  - Opción "Autonomía por carga": "1,5–2 h" (39,90 €) y "30–40 min" (29,90 €) — precios intercambiados por indicación de la usuaria (2026-10-17).
+  - Opción "Autonomía por carga": "1,5–2 h" 44,90 € y "30–40 min" 34,90 € desde 2026-10-17 (antes 39,90/29,90 unas horas).
+  - Black Friday: descuento automático "Black Friday 2026 – 5 € menos" (DiscountAutomaticNode/2432608698759), colección black-friday, 20–30 nov 2026 (hora de Madrid) → 39,90 / 29,90.
+  - LEGAL (Omnibus): NO bajar el precio entre el 21 oct y el 19 nov; el precio tachado debe ser el más bajo de los 30 días previos al 20 nov.
   - Imágenes en español (gpt-image-2, 2026-10-17), sustituyen a las de inglés en el mismo orden: 77762749989255 (Cuidado completo), 77762770403719 (Sin cables), 77762783445383 (var. 1,5–2 h), 77762796814727 (var. 30–40 min). Las dos últimas vinculadas a su variante.
 - Calendario de Adviento — gid://shopify/Product/16649471754631 — plantilla "oc"
   - Quitada imagen con marca de agua de otra tienda. Descripción reescrita (coincide con las fotos). Título sin "2026".
@@ -79,10 +81,28 @@
 - Navidad (navidad): calendario. Sección de portada "drop" (fin 2027-01-06).
 - Las secciones de temporada se ocultan solas al llegar su fecha de fin (ajuste ocultar_al_terminar). El 1 de diciembre hay que cambiar el botón del hero y el CTA a Navidad.
 - Ambas con descripción y SEO (título y meta descripción).
-- Para ella (para-ella): máscara + calendario. Para él (para-el): calendario. Amigo invisible (amigo-invisible): calendario. Menos de 20 € (menos-de-20): automática, precio de variante < 20.
+- AUTOMÁTICAS por etiqueta: Para ella (etiqueta para-ella), Para él (para-el), Amigo invisible (amigo-invisible). Menos de 20 € automática por precio < 20 €. Al subir un producto, basta con ponerle la etiqueta.
+- Etiquetas actuales: máscara = para-ella; calendario = para-ella, para-el, amigo-invisible.
+- Todas con descripción y SEO.
 - Todas publicadas en Tienda online y enlazadas en las tarjetas de oc-regalos.
 
-## Páginas legales (script: docs/legales/paginas.py)
+## Páginas, políticas y blog (2026-10-17, sesión 3)
+- Políticas de Shopify (se ven en el pago): Envíos (SHIPPING_POLICY), Devoluciones (REFUND_POLICY), Términos (TERMS_OF_SERVICE) con nuestros textos; Privacidad = la generada por Shopify. Falta Aviso legal (LEGAL_NOTICE o página aviso-legal en borrador).
+- Páginas /pages/envios, /devoluciones, /terminos, /privacidad BORRADAS y redirigidas a /policies/... (evita contenido duplicado).
+- Páginas nuevas: Quiénes somos (/pages/quienes-somos), Preguntas frecuentes (/pages/preguntas-frecuentes), con título y descripción SEO.
+- Blog renombrado: "Ideas de regalo" (/blogs/ideas-de-regalo; /blogs/noticias redirige). Artículos (docs/blog/articulos.py): rellenar calendario de adviento, amigo invisible < 20 €, máscara LED qué es y cómo se usa.
+- Menú principal: Inicio · Temporadas (Black Friday, Navidad y Reyes) · Regalos (Para ella, Para él, Amigo invisible, Menos de 20 €, Ver todos) · Ideas de regalo · Quiénes somos · Contacto.
+- Menú pie (Ayuda): Preguntas frecuentes, Envíos, Devoluciones, Términos, Privacidad, Contacto, Buscar. Pie: marca · Tienda (menú principal) · Ayuda · Cómo funciona.
+- Colección "Página de inicio" (frontpage, vacía) despublicada.
+
+## SEO técnico del tema
+- Título y descripción de la portada: Configuración del tema → "Ojo Con: SEO y campaña" (oc_seo_titulo_inicio, oc_seo_descripcion_inicio, oc_seo_imagen para redes).
+- layout/theme.liquid: la marca no se repite en el título si ya está (comparación sin mayúsculas); "Página N" en español.
+- header.liquid: el logo ya no es h1 en la portada (el h1 es el de oc-hero). Un solo h1 por página verificado en portada, producto, colección, artículo, página y política.
+- Datos estructurados: producto (oc-producto), artículo, organización y web (header).
+- Rebaja de campaña en el tema: snippets/oc-rebaja.liquid, usado en snippets/price.liquid (Dawn, tarjetas), oc-producto y oc-drop. Ajustes en "Ojo Con: SEO y campaña" (activa, colección, importe, primer y último día, etiqueta). Debe coincidir con el descuento automático.
+
+## Páginas legales (antiguo script: docs/legales/paginas.py — ya sustituidas por políticas)
 - Publicadas: Envíos y plazos (/pages/envios), Devoluciones (/pages/devoluciones), Términos (/pages/terminos).
 - En borrador: Aviso legal (/pages/aviso-legal) y Privacidad (/pages/privacidad) — falta nombre/razón social, NIF y dirección ([PENDIENTE] en el texto). Al publicarlas, añadir sus enlaces al bloque "Información" del footer.
 - Plazo de entrega prudente: 1–3 días de preparación, 7–15 días laborables en total. Fechas límite: Navidad 1 dic, Reyes 12 dic. Mismo texto en FAQ de portada, plantilla de producto y página de envíos.
@@ -98,8 +118,9 @@
 7. Comprobar OPENAI_API_KEY con GET https://api.openai.com/v1/models (200 = válida).
 
 ## Pendiente
-- [ ] 1 dic 2026: hero (botón) + CTA + barra de anuncios → Navidad
-- [ ] Decidir con la usuaria: menú por temporadas, hero de marca vs campaña, colecciones por persona automáticas por etiqueta
+- [ ] 1 dic 2026: hero (imagen oc-h-hero.jpg, textos y botón) + CTA + barra de anuncios → Navidad
+- [ ] Dar de alta la tienda en Google Search Console y enviar el sitemap (la usuaria, con su cuenta de Google)
+- [ ] Enero: cambiar la tarjeta "Amigo invisible" por la temporada siguiente (San Valentín)
 - [ ] Revocar en OpenAI la clave pegada en el chat y crear otra (actualizar la variable de entorno)
 - [ ] Datos del titular (nombre o razón social, NIF, dirección) → completar y publicar Aviso legal y Privacidad, y enlazarlas en el footer
 - [ ] Confirmar plazos reales del proveedor (ahora prudentes: 7–15 días laborables)

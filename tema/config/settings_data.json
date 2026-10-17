@@ -191,7 +191,17 @@
           }
         }
       },
-      "favicon": "shopify://shop_images/oc-favicon.png"
+      "favicon": "shopify://shop_images/oc-favicon.png",
+      "oc_marca": "Ojo Con Ese Detalle",
+      "oc_seo_titulo_inicio": "Regalos originales para cada temporada | Ojo Con Ese Detalle",
+      "oc_seo_descripcion_inicio": "Regalos originales y caprichos elegidos uno a uno: ideas para ella, para él, amigo invisible y menos de 20 €. Colecciones de Black Friday y Navidad. Envío a España.",
+      "oc_seo_imagen": "shopify://shop_images/oc-h-blackfriday.jpg",
+      "oc_camp_activa": true,
+      "oc_camp_coleccion": "black-friday",
+      "oc_camp_importe": 5,
+      "oc_camp_inicio": "2026-11-20",
+      "oc_camp_fin": "2026-11-30",
+      "oc_camp_etiqueta": "Black Friday"
     }
   }
 }

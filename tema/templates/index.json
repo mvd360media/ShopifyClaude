@@ -3,15 +3,15 @@
     "hero": {
       "type": "oc-hero",
       "settings": {
-        "eyebrow": "Black Friday · Navidad · Reyes",
+        "eyebrow": "Black Friday · del 20 al 30 de noviembre",
         "titulo": "Ojo con ese detalle",
-        "bajada": "Regalos y caprichos de temporada que no vas a ver en todas partes. Elegidos uno a uno, para quedar bien sin pensarlo mucho.",
-        "sello": "Envío a toda España",
+        "bajada": "Regalos originales y caprichos de temporada que no vas a ver en todas partes. Elegidos uno a uno, para quedar bien sin pensarlo mucho.",
+        "sello": "−5 € del 20 al 30 nov",
         "boton_texto": "Ver Black Friday",
         "boton2_texto": "Ideas por persona",
         "boton2_url": "#regalos",
         "boton_url": "/collections/black-friday",
-        "imagen": "shopify://shop_images/oc-h-hero.jpg"
+        "imagen": "shopify://shop_images/oc-h-blackfriday.jpg"
       }
     },
     "marquesina": {
@@ -179,7 +179,7 @@
       "type": "oc-cta",
       "settings": {
         "titulo": "¿Ya sabes qué regalar?",
-        "texto": "Black Friday termina el 30 de noviembre. Pide con tiempo y quedas como un rey.",
+        "texto": "Black Friday: 5 € menos del 20 al 30 de noviembre. Adelanta tus regalos y quedas como un rey.",
         "boton_texto": "Ver Black Friday",
         "boton_url": "/collections/black-friday"
       }
@@ -187,9 +187,9 @@
     "black_friday": {
       "type": "oc-drop",
       "settings": {
-        "eyebrow": "Primero en llegar",
+        "eyebrow": "Del 20 al 30 de noviembre",
         "titulo": "Especial Black Friday",
-        "texto": "Nuestra selección para Black Friday y Cyber Monday. Disponible hasta el 30 de noviembre.",
+        "texto": "Nuestra selección para Black Friday y Cyber Monday: del 20 al 30 de noviembre, 5 € menos en cada producto de la colección. Ideal para adelantar los regalos de Navidad.",
         "fecha_fin": "2026-12-01",
         "texto_fin": "Termina en",
         "texto_terminado": "Colección terminada",

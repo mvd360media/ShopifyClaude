@@ -11,19 +11,32 @@
   elsif request.page_type == 'password'
     assign og_url = request.origin
   endif
+
+  if request.page_type == 'index'
+    if settings.oc_seo_titulo_inicio != blank
+      assign og_title = settings.oc_seo_titulo_inicio
+    endif
+    if settings.oc_seo_descripcion_inicio != blank
+      assign og_description = settings.oc_seo_descripcion_inicio
+    endif
+  endif
+  assign og_imagen = page_image
+  if og_imagen == blank
+    assign og_imagen = settings.oc_seo_imagen
+  endif
 %}
 
-<meta property="og:site_name" content="{{ shop.name }}">
+<meta property="og:site_name" content="{{ settings.oc_marca | default: shop.name }}">
 <meta property="og:url" content="{{ og_url }}">
 <meta property="og:title" content="{{ og_title | escape }}">
 <meta property="og:type" content="{{ og_type }}">
 <meta property="og:description" content="{{ og_description | escape }}">
 
-{%- if page_image -%}
-  <meta property="og:image" content="http:{{ page_image | image_url }}">
-  <meta property="og:image:secure_url" content="https:{{ page_image | image_url }}">
-  <meta property="og:image:width" content="{{ page_image.width }}">
-  <meta property="og:image:height" content="{{ page_image.height }}">
+{%- if og_imagen -%}
+  <meta property="og:image" content="http:{{ og_imagen | image_url }}">
+  <meta property="og:image:secure_url" content="https:{{ og_imagen | image_url }}">
+  <meta property="og:image:width" content="{{ og_imagen.width }}">
+  <meta property="og:image:height" content="{{ og_imagen.height }}">
 {%- endif -%}
 
 {%- if request.page_type == 'product' -%}

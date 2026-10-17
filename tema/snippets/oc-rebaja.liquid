@@ -1,0 +1,22 @@
+{%- comment -%}
+  Devuelve (como texto) los céntimos de rebaja de la campaña activa para un producto, o 0.
+  La campaña se configura en Configuración del tema → "Ojo Con: SEO y campaña" y debe
+  coincidir con el descuento automático creado en Shopify (Descuentos).
+  Uso: {%- capture r -%}{% render 'oc-rebaja', product: product %}{%- endcapture -%}
+{%- endcomment -%}
+{%- liquid
+  assign oc_r = 0
+  if settings.oc_camp_activa and settings.oc_camp_coleccion != blank and product != blank
+    assign oc_hoy = 'now' | date: '%Y%m%d' | plus: 0
+    assign oc_ini = settings.oc_camp_inicio | date: '%Y%m%d' | plus: 0
+    assign oc_fin = settings.oc_camp_fin | date: '%Y%m%d' | plus: 0
+    if oc_ini > 0 and oc_fin > 0 and oc_hoy >= oc_ini and oc_hoy <= oc_fin
+      for c in product.collections
+        if c.id == settings.oc_camp_coleccion.id
+          assign oc_r = settings.oc_camp_importe | times: 100 | round
+        endif
+      endfor
+    endif
+  endif
+  echo oc_r
+-%}

@@ -15,15 +15,31 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    {%- liquid
+      assign oc_marca = settings.oc_marca | default: shop.name
+      assign oc_titulo = page_title
+      assign oc_descripcion = page_description
+      if request.page_type == 'index'
+        if settings.oc_seo_titulo_inicio != blank
+          assign oc_titulo = settings.oc_seo_titulo_inicio
+        endif
+        if settings.oc_seo_descripcion_inicio != blank
+          assign oc_descripcion = settings.oc_seo_descripcion_inicio
+        endif
+      endif
+      assign oc_titulo_min = oc_titulo | downcase
+      assign oc_marca_min = oc_marca | downcase
+      assign oc_tienda_min = shop.name | downcase
+    -%}
     <title>
-      {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
-      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {{ oc_titulo }}
+      {%- if current_tags %} &ndash; {{ current_tags | join: ', ' }}{% endif -%}
+      {%- if current_page != 1 %} &ndash; Página {{ current_page }}{% endif -%}
+      {%- unless oc_titulo_min contains oc_marca_min or oc_titulo_min contains oc_tienda_min %} &ndash; {{ oc_marca }}{% endunless -%}
     </title>
 
-    {% if page_description %}
-      <meta name="description" content="{{ page_description | escape }}">
+    {% if oc_descripcion != blank %}
+      <meta name="description" content="{{ oc_descripcion | escape }}">
     {% endif %}
 
     {% render 'meta-tags' %}
