@@ -52,8 +52,12 @@
 - Footer y barra de anuncios configurados en español
 
 ## Pendiente
-- [ ] Clave de OpenAI → generar imágenes de portada, tarjetas y favicon/logo
-- [ ] Importar productos con DSers → asignar plantilla "oc" + revisar textos/imágenes (traducir lo que esté en inglés)
+- [ ] Clave de OpenAI → generar imágenes (la variable OPENAI_API_KEY existe pero la clave es inválida: parece copiada recortada)
+- [x] Productos importados (2): plantilla "oc" asignada y vendor "Ojo Con Ese Detalle" (2026-10-17)
+  - Máscara LED (gid://shopify/Product/16649284485511): imágenes 2,3,6 con claims médicos y antes/después; 4,5,7,8 con texto en inglés; variantes "400mah no box"/"No Box" confusas; ambas sin caja
+  - Calendario adviento (gid://shopify/Product/16649471754631): imagen 1 con marca de agua de otra tienda; 2 con texto en inglés; 6 en alemán (¿variante A2?); descripción habla de diseño "2026" que no coincide con las fotos; stock 1 unidad
+  - compareAtPrice menor que el precio en ambos (parece el coste del proveedor): revisar regla de precios de DSers
+  - Productos NO publicados en el canal Tienda online (publishedAt null) → no se ven en la web
 - [ ] Crear colecciones (Drop Navidad, Para ella, Para él, Amigo invisible, Menos de 20 €) y enlazarlas
-- [ ] Nombre de la tienda en Configuración → Detalles (sale "Mi tienda")
+- [x] Nombre de la tienda: Ojo con ese detalle
 - [ ] Políticas legales, plazos de entrega reales tras ver tiempos del proveedor
