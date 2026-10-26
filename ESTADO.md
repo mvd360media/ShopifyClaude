@@ -124,6 +124,16 @@
 - Privacidad: gestión automática DESACTIVADA por la usuaria (2026-10-26). Publicada = texto de Shopify + responsable + apartado de personalizados insertado antes del primer h2 (copia en privacidad-completa.html). Quitado el hueco "llámenos al ,". Si Shopify cambia su plantilla, ya no se actualiza sola.
 - La tienda tiene 6 productos personalizados importados en inglés (sin publicar, precio = coste). Máscara y calendario pasaron a borrador.
 
+## SEO productos personalizados (2026-10-26) — prompt de la usuaria, docs/seo/
+- Metacampos de producto creados: custom.material, medida_colgante, personalizacion, plazo_entrega, aviso_fechas (subtitulo ya existía). Acceso tienda online.
+- Colecciones: regalos-personalizados y mascotas (ya existían, publicadas; añadida descripción y SEO), recuerdo-mascotas y joyeria-personalizada (nuevas, SIN publicar). Productos asignados según la tabla; P2 añadido a navidad.
+- P1 colgante (16661035155847): aplicados título, descripción aprobada, SEO, tipo, proveedor Ojoconesedetalle, categoría Joyería > Collares (aa-6-8), etiquetas, metacampos, nombres de opciones (Colgante / Largo de cadena; 1 colgante 20 mm; 40/45/50 cm). Redirección 301 ya existía.
+- P1 BLOQUEADO: borrar 29 variantes (el sistema de seguridad lo impide; la usuaria lo hace a mano), imágenes (las 4 muestran 2-3 colgantes; la 4 es una tabla de tipografías en inglés). El SKU del proveedor indica color Rose gold.
+- Bloques de metacampos en la plantilla de producto de Helio (tema activo): BLOQUEADO (despliegue en producción); pasos manuales dados.
+- Apps de personalización: ningún plan gratuito revisado cumple todo (EasyFlow, Easify, Globo, Ultimate Product Options sin subida de archivos en gratis; Uploadly gratis = 20 pedidos y 60 días).
+- Recordatorios programados: 25/11 (aviso Reyes) y 8/12 (vaciar aviso) del colgante.
+- P2: propuesta en docs/seo/P2-propuesta.md, pendiente de aprobación.
+
 ## Pendiente
 - [ ] Confirmar qué producto es el "Colgante personalizado con foto de mascota" y adaptar su ficha (español, 20 mm, 40/45/50 cm, foto + texto 20 caracteres, fechas límite, precio de venta)
 - [ ] Operativa: no enviar pedidos personalizados al fabricante hasta pasadas 2 h (plazo de cancelación)
