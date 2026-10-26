@@ -90,20 +90,20 @@ App de opciones de producto con campo de subida de archivo (obligatorio). Etique
 
 ## 8. Fechas límite de pedido (temporada 2026-2027)
 
-Supuestos sin datos reales del proveedor (sustituir tras el pedido de prueba).
-Fórmula: fecha límite = entrega objetivo − (1 día envío de foto + fabricación + envío + margen).
+Dato real (AliExpress, 26/10/2026): el envío se inicia en 5 días, entrega 8-15 nov → 13-20 días desde el pedido.
+Fórmula: 1 día (enviar foto) + 20 días (peor caso AliExpress) + 7 días (margen de temporada alta) = 28 días.
 
-| Escenario | Días totales | Navidad (entrega 22/12) | Reyes (entrega 4/1) |
+| Ocasión | Entrega objetivo | Fecha límite publicada (28 días) | Límite sin margen (21 días) |
 |---|---|---|---|
-| Optimista (1+3+10+3) | 17 | 5 dic | 18 dic |
-| Realista (1+5+15+5) | 26 | 26 nov | 9 dic |
-| Prudente (1+7+20+5) | 33 | 19 nov | 2 dic |
+| Navidad | 22/12/2026 | 24 nov | 1 dic |
+| Reyes | 4/1/2027 | 7 dic | 14 dic |
+| San Valentín | 12/2/2027 | 15 ene (Año Nuevo chino 6/2) | 22 ene |
+| Día del Padre | 17/3/2027 | 17 feb (confirmar reapertura proveedor) | 24 feb |
+| Día de la Madre | 30/4/2027 | 2 abr | 9 abr |
 
-Publicar el escenario prudente hasta tener datos reales.
+Revisar cada lunes el plazo "Envío: X-Y" de AliExpress y recalcular.
 
 Mensajes:
-- Hasta el 19/11: "🎄 Pide antes del 19 de noviembre para recibirlo antes de Navidad."
-- 20/11 a 2/12: "👑 ¿Es para Reyes? Pide antes del 2 de diciembre para recibirlo a tiempo."
-- Desde el 3/12: "Producto personalizado: lo fabricamos después de tu pedido. Plazo estimado de entrega: X-Y días."
-
-Resto del año: San Valentín (14/2, choca con el Año Nuevo chino, 6/2/2027), Día del Padre (19/3), Día de la Madre (2/5/2027).
+- Hasta el 24/11: "🎄 Pide antes del 24 de noviembre para recibirlo antes de Navidad."
+- 25/11 a 7/12: "👑 ¿Es para Reyes? Pide antes del 7 de diciembre para recibirlo a tiempo."
+- Resto del año: "Producto personalizado: lo fabricamos después de tu pedido. Plazo estimado de entrega: 2-3 semanas."
