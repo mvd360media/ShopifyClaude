@@ -128,7 +128,8 @@
 - Metacampos de producto creados: custom.material, medida_colgante, personalizacion, plazo_entrega, aviso_fechas (subtitulo ya existía). Acceso tienda online.
 - Colecciones: regalos-personalizados y mascotas (ya existían, publicadas; añadida descripción y SEO), recuerdo-mascotas y joyeria-personalizada (nuevas, SIN publicar). Productos asignados según la tabla; P2 añadido a navidad.
 - P1 colgante (16661035155847): aplicados título, descripción aprobada, SEO, tipo, proveedor Ojoconesedetalle, categoría Joyería > Collares (aa-6-8), etiquetas, metacampos, nombres de opciones (Colgante / Largo de cadena; 1 colgante 20 mm; 40/45/50 cm). Redirección 301 ya existía.
-- P1 BLOQUEADO: borrar 29 variantes (el sistema de seguridad lo impide; la usuaria lo hace a mano), imágenes (las 4 muestran 2-3 colgantes; la 4 es una tabla de tipografías en inglés). El SKU del proveedor indica color Rose gold.
+- P1 variantes: la usuaria borró las sobrantes (queda «Double-sided custom», a borrar). Añadida opción Color (Rosado = variantes originales enlazadas a Rose gold; Dorado y Plateado = 6 variantes NUEVAS sin SKU, hay que enlazarlas en DSers a Gold/Steel). Precio 4,62 = coste, pendiente precio de venta. Descripción, meta y subtítulo mencionan el color.
+- P1 pendiente: imágenes (las 4 muestran 2-3 colgantes; la 4 es una tabla de tipografías en inglés). El SKU del proveedor indica color Rose gold.
 - Bloques de metacampos en la plantilla de producto de Helio (tema activo): BLOQUEADO (despliegue en producción); pasos manuales dados.
 - Apps de personalización: ningún plan gratuito revisado cumple todo (EasyFlow, Easify, Globo, Ultimate Product Options sin subida de archivos en gratis; Uploadly gratis = 20 pedidos y 60 días).
 - Recordatorios programados: 25/11 (aviso Reyes) y 8/12 (vaciar aviso) del colgante.
