@@ -13,12 +13,13 @@ Colgante Personalizado con Foto de tu Mascota – Collar de Acero Inoxidable
 
 ```html
 <p><strong>Colgante personalizado con la foto de tu mascota: lleva siempre contigo a tu perro o tu gato.</strong></p>
-<p>Este <strong>collar personalizado con foto</strong> reproduce la imagen de tu mascota en un colgante redondo de <strong>acero inoxidable</strong>. Tú eliges la foto y el largo de la cadena. Es un <strong>regalo personalizado</strong> para cualquier amante de los animales, para una mamá perruna o para recordar a una mascota que ya no está.</p>
+<p>Este <strong>collar personalizado con foto</strong> reproduce la imagen de tu mascota en un colgante redondo de <strong>acero inoxidable</strong>, junto con su nombre o un texto corto. Tú eliges la foto, el texto y el largo de la cadena. Es un <strong>regalo personalizado</strong> para cualquier amante de los animales, para una mamá perruna o para recordar a una mascota que ya no está.</p>
 
 <h2>Cómo personalizar tu colgante</h2>
 <ol>
 <li>Elige el <strong>largo de la cadena</strong>: 40, 45 o 50 cm.</li>
-<li><strong>Sube la foto</strong> de tu mascota.</li>
+<li><strong>Sube la foto</strong> de tu mascota (JPG o PNG, hasta 10 MB).</li>
+<li>Escribe el <strong>nombre o texto</strong> que quieres (máximo 20 caracteres).</li>
 <li>Añade el colgante al carrito y finaliza tu pedido.</li>
 </ol>
 
@@ -27,6 +28,7 @@ Colgante Personalizado con Foto de tu Mascota – Collar de Acero Inoxidable
 <li>Usa una foto <strong>nítida y con buena luz</strong>, mejor de día.</li>
 <li>Elige una imagen en la que se vea bien la <strong>cara de tu mascota</strong>, de frente.</li>
 <li>Sube el archivo original, sin capturas de pantalla ni filtros.</li>
+<li>Solo se admiten fotos en <strong>JPG o PNG</strong>. Si usas iPhone y tu foto no se sube, ve a Ajustes &gt; Cámara &gt; Formatos y elige «Más compatible».</li>
 </ul>
 <p>El colgante mide 20 mm de diámetro, así que el resultado final depende de la calidad de la foto.</p>
 
@@ -43,12 +45,14 @@ Colgante Personalizado con Foto de tu Mascota – Collar de Acero Inoxidable
 <li><strong>Colgante:</strong> redondo, 20 mm de diámetro</li>
 <li><strong>Cadena:</strong> de eslabones</li>
 <li><strong>Largos disponibles:</strong> 40, 45 o 50 cm</li>
-<li><strong>Personalización:</strong> con la foto de tu mascota</li>
+<li><strong>Personalización:</strong> foto de tu mascota y texto de hasta 20 caracteres</li>
 </ul>
 
 <h2>Preguntas frecuentes</h2>
 <p><strong>¿Puedo poner la foto de cualquier mascota?</strong><br>Sí: perro, gato o cualquier otra mascota. Te recomendamos una foto nítida y de frente.</p>
+<p><strong>¿Qué texto puedo añadir?</strong><br>El nombre de tu mascota o un texto corto de hasta 20 caracteres, incluidos los espacios.</p>
 <p><strong>¿Qué largo de cadena elijo?</strong><br>40 cm queda cerca de la base del cuello; 45 y 50 cm caen más abajo, sobre el pecho.</p>
+<p><strong>¿Cuánto tarda en llegar?</strong><br>Lo fabricamos después de tu pedido. El plazo estimado de entrega es de 2 a 3 semanas.</p>
 <p><strong>¿Puedo devolverlo?</strong><br>Al ser un producto personalizado, no se aplica el derecho de desistimiento de 14 días. Si llega defectuoso o dañado, tienes 3 años de garantía legal.</p>
 
 <p><strong>Sube la foto de tu mascota y crea hoy tu colgante personalizado.</strong></p>
@@ -62,9 +66,21 @@ Importadas del proveedor: "Main Stone Color" (nº de colgantes y tamaño) y "Len
 - Eliminar "NO carving" y los valores de 2, 3 y 4 colgantes y de 15 mm
 - 3 variantes. Comprobar después el enlace con el SKU del proveedor en la app de importación.
 
-## 4. Subida de la foto
+## 4. Campos de personalización (app de opciones de producto)
 
-App de opciones de producto con campo de subida de archivo (obligatorio). Etiqueta: "Foto de tu mascota".
+Formulario del proveedor en AliExpress ("Personalizar ahora"): Imagen obligatoria (JPEG/PNG, máx. 10 MB) + Texto obligatorio (máx. 20 caracteres).
+
+| Campo | Tipo | Obligatorio | Restricción | Texto de ayuda |
+|---|---|---|---|---|
+| Foto de tu mascota | Subida de archivo | Sí | JPG, PNG · máx. 10 MB | Foto nítida y de frente. JPG o PNG, hasta 10 MB. |
+| Nombre o texto | Texto de una línea | Sí | Máx. 20 caracteres | Ej.: Kira · Máximo 20 caracteres, incluidos espacios. |
+
+Proceso por pedido:
+1. Shopify > Pedidos > pedido: descargar foto, copiar texto y variante.
+2. AliExpress: misma variante > "Personalizar ahora" > subir foto + texto > Guardar.
+3. Pegar el texto también en "Nota para el vendedor".
+4. Pagar con la dirección del cliente.
+5. Copiar nº de seguimiento en Shopify y marcar como preparado.
 
 ## 5. Organización
 
