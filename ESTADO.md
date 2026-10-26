@@ -119,7 +119,7 @@
 
 ## Políticas (2026-10-26) — textos en docs/legales/politicas/
 - Publicadas: Envío, Reembolso, Términos, Contacto (CONTACT_INFORMATION), Aviso legal. Todas con apartado "Productos personalizados".
-- Decisiones de la usuaria: envío a toda España; IVA de importación del colgante NO incluido (puede haber cargos); devoluciones a Calle Colón, 1, 46016 Tavernes Blanques (CP deducido, confirmar), a cargo del cliente; cancelar personalizados en 24 h; respuesta en 48 h laborables; fotos borradas 30 días tras la entrega; transferencia a China por art. 49.1.b RGPD.
+- Decisiones de la usuaria: envío a toda España; IVA de importación del colgante NO incluido (puede haber cargos); devoluciones a Calle Colón, 1, 46016 Tavernes Blanques (CP deducido, confirmar), a cargo del cliente; cancelar personalizados en 2 h; respuesta en 48 h laborables; fotos borradas 30 días tras la entrega; transferencia a China por art. 49.1.b RGPD.
 - Plazos 2–3 semanas y fechas límite (Navidad 24 nov, Reyes 7 dic 2026) SOLO para el colgante personalizado.
 - Privacidad: apartado listo (privacidad-completa.html) pero Shopify la gestiona en automático; hay que desactivarlo para publicarlo.
 - La tienda tiene 6 productos personalizados importados en inglés (sin publicar, precio = coste). Máscara y calendario pasaron a borrador.
@@ -127,7 +127,7 @@
 ## Pendiente
 - [ ] Privacidad: la usuaria desactiva la gestión automática → publicar docs/legales/politicas/privacidad-completa.html
 - [ ] Confirmar qué producto es el "Colgante personalizado con foto de mascota" y adaptar su ficha (español, 20 mm, 40/45/50 cm, foto + texto 20 caracteres, fechas límite, precio de venta)
-- [ ] Operativa: no enviar pedidos personalizados al fabricante hasta pasadas 24 h (plazo de cancelación)
+- [ ] Operativa: no enviar pedidos personalizados al fabricante hasta pasadas 2 h (plazo de cancelación)
 - [ ] 1 dic 2026: hero (imagen oc-h-hero.jpg, textos y botón) + CTA + barra de anuncios → Navidad
 - [ ] Dar de alta la tienda en Google Search Console y enviar el sitemap (la usuaria, con su cuenta de Google)
 - [ ] Enero: cambiar la tarjeta "Amigo invisible" por la temporada siguiente (San Valentín)
