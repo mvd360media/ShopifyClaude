@@ -13,12 +13,11 @@ Colgante Personalizado con Foto de tu Mascota – Collar de Acero Inoxidable
 
 ```html
 <p><strong>Colgante personalizado con la foto de tu mascota: lleva siempre contigo a tu perro o tu gato.</strong></p>
-<p>Este <strong>collar personalizado con foto</strong> reproduce la imagen de tu mascota en un colgante redondo de <strong>acero inoxidable</strong>. Tú eliges la foto, el color y el largo de la cadena. Es un <strong>regalo personalizado</strong> para cualquier amante de los animales, para una mamá perruna o para recordar a una mascota que ya no está.</p>
+<p>Este <strong>collar personalizado con foto</strong> reproduce la imagen de tu mascota en un colgante redondo de <strong>acero inoxidable</strong>. Tú eliges la foto y el largo de la cadena. Es un <strong>regalo personalizado</strong> para cualquier amante de los animales, para una mamá perruna o para recordar a una mascota que ya no está.</p>
 
 <h2>Cómo personalizar tu colgante</h2>
 <ol>
-<li>Elige el <strong>color</strong>: dorado, plateado o rosado.</li>
-<li>Elige el <strong>largo de la cadena</strong>: 35, 40, 45 o 50 cm.</li>
+<li>Elige el <strong>largo de la cadena</strong>: 40, 45 o 50 cm.</li>
 <li><strong>Sube la foto</strong> de tu mascota.</li>
 <li>Añade el colgante al carrito y finaliza tu pedido.</li>
 </ol>
@@ -29,7 +28,7 @@ Colgante Personalizado con Foto de tu Mascota – Collar de Acero Inoxidable
 <li>Elige una imagen en la que se vea bien la <strong>cara de tu mascota</strong>, de frente.</li>
 <li>Sube el archivo original, sin capturas de pantalla ni filtros.</li>
 </ul>
-<p>El colgante mide 20 x 20 mm, así que el resultado final depende de la calidad de la foto.</p>
+<p>El colgante mide 20 mm de diámetro, así que el resultado final depende de la calidad de la foto.</p>
 
 <h2>Un regalo con mucho significado</h2>
 <ul>
@@ -41,16 +40,15 @@ Colgante Personalizado con Foto de tu Mascota – Collar de Acero Inoxidable
 <h2>Características (según el fabricante)</h2>
 <ul>
 <li><strong>Material:</strong> acero inoxidable</li>
-<li><strong>Colgante:</strong> redondo, 20 x 20 mm</li>
-<li><strong>Cadena:</strong> de eslabones, con 5 cm de extensión</li>
-<li><strong>Largos disponibles:</strong> 35, 40, 45 o 50 cm (+5 cm de extensión)</li>
-<li><strong>Colores:</strong> dorado, plateado o rosado</li>
+<li><strong>Colgante:</strong> redondo, 20 mm de diámetro</li>
+<li><strong>Cadena:</strong> de eslabones</li>
+<li><strong>Largos disponibles:</strong> 40, 45 o 50 cm</li>
 <li><strong>Personalización:</strong> con la foto de tu mascota</li>
 </ul>
 
 <h2>Preguntas frecuentes</h2>
 <p><strong>¿Puedo poner la foto de cualquier mascota?</strong><br>Sí: perro, gato o cualquier otra mascota. Te recomendamos una foto nítida y de frente.</p>
-<p><strong>¿Qué largo de cadena elijo?</strong><br>35-40 cm queda a la altura del cuello; 45-50 cm, más abajo, sobre el pecho. Todos los largos incluyen 5 cm de extensión para ajustarlo.</p>
+<p><strong>¿Qué largo de cadena elijo?</strong><br>40 cm queda cerca de la base del cuello; 45 y 50 cm caen más abajo, sobre el pecho.</p>
 <p><strong>¿Puedo devolverlo?</strong><br>Al ser un producto personalizado, no se aplica el derecho de desistimiento de 14 días. Si llega defectuoso o dañado, tienes 3 años de garantía legal.</p>
 
 <p><strong>Sube la foto de tu mascota y crea hoy tu colgante personalizado.</strong></p>
@@ -58,9 +56,11 @@ Colgante Personalizado con Foto de tu Mascota – Collar de Acero Inoxidable
 
 ## 3. Variantes
 
-- Opción 1: Color → Dorado, Plateado, Rosado
-- Opción 2: Largo de cadena → 35 cm, 40 cm, 45 cm, 50 cm
-- 12 variantes. Mismo precio salvo que el proveedor cobre distinto.
+Importadas del proveedor: "Main Stone Color" (nº de colgantes y tamaño) y "Length" (con "Double-sided custom" mezclado). Sin opción de color.
+- Opción 1: renombrar a "Colgante" → conservar solo "1 colgante 20 mm"
+- Opción 2: renombrar a "Largo de cadena" → 40 cm, 45 cm, 50 cm (eliminar "Double-sided custom")
+- Eliminar "NO carving" y los valores de 2, 3 y 4 colgantes y de 15 mm
+- 3 variantes. Comprobar después el enlace con el SKU del proveedor en la app de importación.
 
 ## 4. Subida de la foto
 
@@ -77,13 +77,13 @@ App de opciones de producto con campo de subida de archivo (obligatorio). Etique
 ## 6. SEO
 
 - Título: Colgante con Foto de tu Mascota | Ojoconesedetalle
-- Meta: Colgante personalizado con la foto de tu perro o gato, en acero inoxidable. Elige color y largo de cadena. Un regalo único para amantes de las mascotas.
+- Meta: Colgante personalizado con la foto de tu perro o gato, en acero inoxidable. Elige el largo de la cadena. Un regalo único para amantes de las mascotas.
 - URL: colgante-personalizado-foto-mascota
 
 ## 7. Metacampos
 
 | Nombre | Clave | Tipo | Valor |
 |---|---|---|---|
-| Subtítulo (ya existe) | custom.subtitulo | Texto de una sola línea | Con la foto de tu perro o gato, en acero inoxidable. Elige color y largo de cadena. |
+| Subtítulo (ya existe) | custom.subtitulo | Texto de una sola línea | Con la foto de tu perro o gato, en acero inoxidable. Elige el largo de la cadena. |
 | Material | custom.material | Texto de una sola línea | Acero inoxidable |
-| Medida del colgante | custom.medida_colgante | Texto de una sola línea | 20 x 20 mm |
+| Medida del colgante | custom.medida_colgante | Texto de una sola línea | 20 mm de diámetro |
