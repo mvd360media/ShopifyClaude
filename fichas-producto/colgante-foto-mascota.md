@@ -87,3 +87,23 @@ App de opciones de producto con campo de subida de archivo (obligatorio). Etique
 | Subtítulo (ya existe) | custom.subtitulo | Texto de una sola línea | Con la foto de tu perro o gato, en acero inoxidable. Elige el largo de la cadena. |
 | Material | custom.material | Texto de una sola línea | Acero inoxidable |
 | Medida del colgante | custom.medida_colgante | Texto de una sola línea | 20 mm de diámetro |
+
+## 8. Fechas límite de pedido (temporada 2026-2027)
+
+Supuestos sin datos reales del proveedor (sustituir tras el pedido de prueba).
+Fórmula: fecha límite = entrega objetivo − (1 día envío de foto + fabricación + envío + margen).
+
+| Escenario | Días totales | Navidad (entrega 22/12) | Reyes (entrega 4/1) |
+|---|---|---|---|
+| Optimista (1+3+10+3) | 17 | 5 dic | 18 dic |
+| Realista (1+5+15+5) | 26 | 26 nov | 9 dic |
+| Prudente (1+7+20+5) | 33 | 19 nov | 2 dic |
+
+Publicar el escenario prudente hasta tener datos reales.
+
+Mensajes:
+- Hasta el 19/11: "🎄 Pide antes del 19 de noviembre para recibirlo antes de Navidad."
+- 20/11 a 2/12: "👑 ¿Es para Reyes? Pide antes del 2 de diciembre para recibirlo a tiempo."
+- Desde el 3/12: "Producto personalizado: lo fabricamos después de tu pedido. Plazo estimado de entrega: X-Y días."
+
+Resto del año: San Valentín (14/2, choca con el Año Nuevo chino, 6/2/2027), Día del Padre (19/3), Día de la Madre (2/5/2027).
