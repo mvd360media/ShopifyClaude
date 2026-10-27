@@ -133,7 +133,8 @@
 - Bloques de metacampos en la plantilla de producto de Helio (tema activo): BLOQUEADO (despliegue en producción); pasos manuales dados.
 - Apps de personalización: ningún plan gratuito revisado cumple todo (EasyFlow, Easify, Globo, Ultimate Product Options sin subida de archivos en gratis; Uploadly gratis = 20 pedidos y 60 días).
 - Recordatorios programados: 25/11 (aviso Reyes) y 8/12 (vaciar aviso) del colgante.
-- P2: propuesta en docs/seo/P2-propuesta.md, pendiente de aprobación.
+- P1: «Double-sided custom» borrado por la usuaria (verificado: 9 variantes). Largos ordenados 40/45/50. SKU legibles en las variantes nuevas (COLGANTE-FOTO-20MM-DORADO-40CM...).
+- P2 APLICADO (2026-10-27): adorno de madera con forma de huella (no bola). Título, descripción (con 2 [PENDIENTE]: límite del nombre y plazo), SEO, URL adorno-navidad-personalizado-mascota + 301, tipo, categoría hg-3-58-7, etiquetas, metacampos, opción «Diseño» (Navideño/Sencillo/Alas de ángel · perro/gato), fotos ordenadas (principal = huella navideña sola), alt y nombres de archivo en español. Sin publicar.
 
 ## Pendiente
 - [ ] Confirmar qué producto es el "Colgante personalizado con foto de mascota" y adaptar su ficha (español, 20 mm, 40/45/50 cm, foto + texto 20 caracteres, fechas límite, precio de venta)
