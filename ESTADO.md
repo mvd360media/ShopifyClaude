@@ -160,23 +160,23 @@
 - Portada: regalos personalizados en general + campaña mascotas; sin sección Black Friday. Carrito con sugerencias de «Regalos personalizados». Colecciones con segunda foto al pasar el ratón.
 - Página nueva: /pages/como-elegir-la-foto.
 
+## Precios, plazos y fechas (2026-10-27, noche)
+- Precios: colgante 34,90 (coste 13,78) · adorno 24,90 (11,76) · collar nombre 29,90 (11,60–12,96) · llavero 29,90 (14,05) · collar proyección 34,90 (15,62–16) · colgante cenizas 39,90 (19,44).
+- Todas las variantes de los 6 productos: «seguir vendiendo sin stock» (CONTINUE).
+- Fechas límite automáticas: metacampos custom.fecha_navidad / custom.fecha_reyes + snippets/oc-aviso.liquid (texto junto al botón y etiqueta de tarjeta; cambian solos). Fórmula: 1 día + peor caso del proveedor + 7 días, contando desde el 22/12 y el 4/1.
+  Colgante 24/11 y 7/12 · Adorno 29/11 y 12/12 · Collar nombre 15/11 y 28/11 · Llavero 28/11 y 11/12 · Proyección 24/11 y 7/12 · Cenizas 27/11 y 10/12. Recordatorios manuales cancelados (ya no hacen falta).
+- Plazos: collar con nombre 3–4 semanas (peor caso ~30 días: en el límite legal), resto 2–3 semanas.
+- Nombre comercial Movida 360 delante en las políticas; la titular (nombre y NIE) se mantiene en aviso legal, contacto y privacidad (obligatorio por la LSSI).
+- Política de envío: apartado de personalizados con los 6 productos, plazos y fechas; IVA de importación incluido en todos (confirmar con la usuaria para P3–P6).
+- Menú: Inicio · Regalos personalizados (Joyería, Mascotas, Recuerdo de mascotas, Navidad, Ver todos) · Para quién (Para ella, Para él, Para mascotas, Amigo invisible) · Ideas de regalo · Cómo elegir la foto · Quiénes somos · Contacto. Colección nueva Para mascotas (etiqueta para-mascotas). Publicadas: para-mascotas, recuerdo-mascotas, joyeria-personalizada. Recordatorio el 8/1/2027 para quitar Amigo invisible.
+- WhatsApp: 34603603668 (botón flotante).
+- Blog: 6 artículos nuevos EN BORRADOR (docs/blog/articulos_productos.py) — publicar junto con los productos. Fichas enlazan a sus artículos («Te puede interesar»).
+- Collar de proyección: quedan 21 modelos con nombre en español. Foto «Fotos de compradores» traducida (decisión de la usuaria: se queda).
+- Máscara y calendario vuelven a estar activos y publicados.
+
 ## Pendiente
-- [ ] Precios de venta P3–P6 (falta el coste total de cada uno) y plazos/fechas límite P3–P6
-- [ ] Reducir variantes P3 (184) y P5 (75): propuesta en el chat; las borra la usuaria
-- [ ] Menú nuevo (propuesto, sin aplicar), publicar colecciones recuerdo-mascotas y joyeria-personalizada, publicar los 6 productos
-- [ ] Judge.me (instala la usuaria; bloque de aplicación en la ficha), Search & Discovery (filtros), número de WhatsApp
-- [ ] Pedido de prueba con foto tras publicar
-- [ ] Confirmar qué producto es el "Colgante personalizado con foto de mascota" y adaptar su ficha (español, 20 mm, 40/45/50 cm, foto + texto 20 caracteres, fechas límite, precio de venta)
-- [ ] Operativa: no enviar pedidos personalizados al fabricante hasta pasadas 2 h (plazo de cancelación)
-- [ ] 1 dic 2026: hero (imagen oc-h-hero.jpg, textos y botón) + CTA + barra de anuncios → Navidad
-- [ ] Dar de alta la tienda en Google Search Console y enviar el sitemap (la usuaria, con su cuenta de Google)
-- [ ] Enero: cambiar la tarjeta "Amigo invisible" por la temporada siguiente (San Valentín)
-- [ ] Revocar en OpenAI la clave pegada en el chat y crear otra (actualizar la variable de entorno)
-- [ ] Datos del titular (nombre o razón social, NIF, dirección) → completar y publicar Aviso legal y Privacidad, y enlazarlas en el footer
-- [ ] Confirmar plazos reales del proveedor (ahora prudentes: 7–15 días laborables)
-- [ ] Publicar el tema como activo cuando la usuaria dé el visto bueno
-- [x] 5 imágenes de producto rehechas en español
-- [x] Imágenes de portada (hero + 4 tarjetas) y favicon
-- [x] Productos publicados en Tienda online
-- [x] Colecciones creadas, publicadas y enlazadas en portada
-- [x] Precios de la máscara corregidos
+- [ ] PUBLICAR los 6 productos personalizados y los 6 artículos (esperando confirmación de la usuaria)
+- [ ] Pedido de prueba con foto (descuento 100 %) tras publicar
+- [ ] Judge.me, Search & Discovery (filtros), canales de Google y Meta, Search Console (la usuaria)
+- [ ] Decidir si vuelve la sección Black Friday a la portada (la máscara está activa; descuento automático programado 20–30 nov)
+- [ ] Confirmar que en P3–P6 el IVA de importación también lo paga la usuaria

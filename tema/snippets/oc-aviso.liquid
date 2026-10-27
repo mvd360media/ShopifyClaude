@@ -1,0 +1,50 @@
+{%- comment -%}
+  Aviso de fecha límite de un producto. Usa los metacampos custom.fecha_navidad y custom.fecha_reyes
+  y cambia solo según el día: primero Navidad, después Reyes y, pasadas las dos, nada.
+  Si el producto no tiene fechas, usa el texto fijo de custom.aviso_fechas.
+  Uso: {% render 'oc-aviso', product: producto %} (texto) o {% render 'oc-aviso', product: producto, modo: 'etiqueta' %}
+{%- endcomment -%}
+{%- liquid
+  assign meses = 'enero,febrero,marzo,abril,mayo,junio,julio,agosto,septiembre,octubre,noviembre,diciembre' | split: ','
+  assign hoy = 'now' | date: '%Y%m%d' | plus: 0
+  assign nav = product.metafields.custom.fecha_navidad.value
+  assign rey = product.metafields.custom.fecha_reyes.value
+  assign nav_n = 0
+  assign rey_n = 0
+  if nav != blank
+    assign nav_n = nav | date: '%Y%m%d' | plus: 0
+  endif
+  if rey != blank
+    assign rey_n = rey | date: '%Y%m%d' | plus: 0
+  endif
+  if nav_n > 0 and hoy <= nav_n
+    assign mes = nav | date: '%m' | plus: 0 | minus: 1
+    assign dia = nav | date: '%d' | plus: 0
+    if modo == 'etiqueta'
+      echo '🎄 Llega antes de Navidad'
+    else
+      echo '🎄 Pide hasta el ' | append: dia | append: ' de ' | append: meses[mes] | append: ' para recibirlo antes de Navidad.'
+    endif
+  elsif rey_n > 0 and hoy <= rey_n
+    assign mes = rey | date: '%m' | plus: 0 | minus: 1
+    assign dia = rey | date: '%d' | plus: 0
+    if modo == 'etiqueta'
+      echo '👑 Llega para Reyes'
+    else
+      echo '👑 ¿Es para Reyes? Pide hasta el ' | append: dia | append: ' de ' | append: meses[mes] | append: ' para recibirlo a tiempo.'
+    endif
+  elsif nav_n == 0 and rey_n == 0
+    assign fijo = product.metafields.custom.aviso_fechas.value
+    if fijo != blank
+      if modo == 'etiqueta'
+        if fijo contains 'Navidad'
+          echo '🎄 Llega antes de Navidad'
+        elsif fijo contains 'Reyes'
+          echo '👑 Llega para Reyes'
+        endif
+      else
+        echo fijo
+      endif
+    endif
+  endif
+-%}

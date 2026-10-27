@@ -49,10 +49,11 @@ FICHAS = {
 <h2>Preguntas frecuentes</h2>
 <p><strong>¿Qué puedo personalizar?</strong><br>El nombre, la tipografía, el color y el largo de la cadena.</p>
 <p><strong>¿Puedo poner dos nombres?</strong><br>Sí, con las tipografías «Dos nombres» e «Infinito».</p>
-<p><strong>¿Cuánto tarda en llegar?</strong><br>[PENDIENTE: plazo de envío del proveedor]</p>
+<p><strong>¿Cuánto tarda en llegar?</strong><br>Lo fabricamos después de tu pedido. El plazo estimado de entrega es de 3 a 4 semanas. Junto al botón de compra verás la fecha límite para recibirlo antes de Navidad o de Reyes.</p>
 {PAGO}
 {DEV}
-<p><strong>Elige tu tipografía, escribe el nombre y crea hoy tu collar.</strong></p>""",
+<p><strong>Elige tu tipografía, escribe el nombre y crea hoy tu collar.</strong></p>
+<p><strong>Te puede interesar:</strong> <a href="/blogs/ideas-de-regalo/collar-con-nombre-personalizado-como-elegir">Cómo elegir tipografía, color y largo de tu collar con nombre</a></p>""",
  pers=dict(titulo="Personaliza tu collar", foto_activa=False, texto_activo=True, texto_etiqueta="Nombre", texto_obligatorio=True, texto_max=15,
            texto_ayuda="Revisa bien la ortografía: lo cortamos tal y como lo escribes. Para dos nombres, elige la tipografía «Dos nombres» o «Infinito».",
            tipo_activa=False, confirmacion_texto="He revisado el nombre. Sé que los productos personalizados no se pueden devolver por desistimiento."),
@@ -97,10 +98,11 @@ FICHAS = {
 <h2>Preguntas frecuentes</h2>
 <p><strong>¿Qué puedo personalizar?</strong><br>La foto de tu mascota por delante y un texto corto por detrás.</p>
 <p><strong>¿Sale la foto en color?</strong><br>No: se graba con láser sobre el acero, en tonos grises.</p>
-<p><strong>¿Cuánto tarda en llegar?</strong><br>[PENDIENTE: plazo de envío del proveedor]</p>
+<p><strong>¿Cuánto tarda en llegar?</strong><br>Lo fabricamos después de tu pedido. El plazo estimado de entrega es de 2 a 3 semanas. Junto al botón de compra verás la fecha límite para recibirlo antes de Navidad o de Reyes.</p>
 {PAGO}
 {DEV}
-<p><strong>Sube la foto de tu mascota y crea hoy tu llavero.</strong></p>""",
+<p><strong>Sube la foto de tu mascota y crea hoy tu llavero.</strong></p>
+<p><strong>Te puede interesar:</strong> <a href="/blogs/ideas-de-regalo/frases-para-grabar-colgante-llavero-mascota">40 frases cortas para grabar en el llavero</a> · <a href="/blogs/ideas-de-regalo/regalos-para-amantes-de-los-perros-y-gatos">Regalos para amantes de los perros y los gatos</a></p>""",
  pers=dict(titulo="Personaliza tu llavero", foto_activa=True, foto_etiqueta="Foto de tu mascota", foto_obligatoria=True, foto_max_mb=10,
            foto_ayuda="JPG o PNG, hasta 10 MB. Mejor una foto nítida, de frente y con buena luz.",
            texto_activo=True, texto_etiqueta="Texto para el reverso", texto_obligatorio=False, texto_max=40,
@@ -144,10 +146,11 @@ FICHAS = {
 <h2>Preguntas frecuentes</h2>
 <p><strong>¿Cómo se ve la foto?</strong><br>Acerca la piedra al ojo, mejor con luz, y mira a través de ella.</p>
 <p><strong>¿Qué puedo personalizar?</strong><br>La foto, la plantilla, el modelo y el color.</p>
-<p><strong>¿Cuánto tarda en llegar?</strong><br>[PENDIENTE: plazo de envío del proveedor]</p>
+<p><strong>¿Cuánto tarda en llegar?</strong><br>Lo fabricamos después de tu pedido. El plazo estimado de entrega es de 2 a 3 semanas. Junto al botón de compra verás la fecha límite para recibirlo antes de Navidad o de Reyes.</p>
 {PAGO}
 {DEV}
-<p><strong>Elige tu foto favorita y guárdala para siempre en un collar.</strong></p>""",
+<p><strong>Elige tu foto favorita y guárdala para siempre en un collar.</strong></p>
+<p><strong>Te puede interesar:</strong> <a href="/blogs/ideas-de-regalo/collar-con-foto-dentro-como-funciona">Cómo funciona el collar con foto dentro</a></p>""",
  pers=dict(titulo="Personaliza tu collar", foto_activa=True, foto_etiqueta="Foto", foto_obligatoria=True, foto_max_mb=15,
            foto_ayuda="JPG o PNG, hasta 15 MB. Mejor una foto nítida y con buena luz.",
            texto_activo=False, texto_etiqueta="Texto", texto_obligatorio=False, texto_max=20, texto_ayuda="",
@@ -195,10 +198,11 @@ FICHAS = {
 <h2>Preguntas frecuentes</h2>
 <p><strong>¿Qué puedo guardar dentro?</strong><br>Una pequeña cantidad de cenizas o un poco de pelo.</p>
 <p><strong>¿Qué puedo personalizar?</strong><br>La foto y el nombre por delante, y hasta tres frases cortas por detrás.</p>
-<p><strong>¿Cuánto tarda en llegar?</strong><br>[PENDIENTE: plazo de envío del proveedor]</p>
+<p><strong>¿Cuánto tarda en llegar?</strong><br>Lo fabricamos después de tu pedido. El plazo estimado de entrega es de 2 a 3 semanas. Junto al botón de compra verás la fecha límite para recibirlo antes de Navidad o de Reyes.</p>
 {PAGO}
 {DEV}
-<p><strong>Sube su foto y crea un recuerdo para llevarlo siempre contigo.</strong></p>""",
+<p><strong>Sube su foto y crea un recuerdo para llevarlo siempre contigo.</strong></p>
+<p><strong>Te puede interesar:</strong> <a href="/blogs/ideas-de-regalo/colgante-para-cenizas-de-mascota">Colgante para cenizas: qué es y cómo se rellena</a> · <a href="/blogs/ideas-de-regalo/frases-para-grabar-colgante-llavero-mascota">Frases cortas de recuerdo para grabar</a></p>""",
  pers=dict(titulo="Personaliza tu colgante", foto_activa=True, foto_etiqueta="Foto de tu mascota", foto_obligatoria=True, foto_max_mb=10,
            foto_ayuda="JPG o PNG, hasta 10 MB. Mejor una foto con la cara bien visible y buena luz.",
            texto_activo=True, texto_etiqueta="Nombre de tu mascota", texto_obligatorio=True, texto_max=15,

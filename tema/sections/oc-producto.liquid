@@ -85,7 +85,8 @@
         {%- assign pers = section.blocks | where: 'type', 'personalizacion' | first -%}
         {%- assign pers_extras = section.blocks | where: 'type', 'texto_extra' -%}
         {%- if pers -%}{% render 'oc-personalizacion', block: pers, extras: pers_extras, section_id: section.id %}{%- endif -%}
-        {%- assign oc_aviso = product.metafields.custom.aviso_fechas.value -%}
+        {%- capture oc_aviso -%}{% render 'oc-aviso', product: product %}{%- endcapture -%}
+        {%- assign oc_aviso = oc_aviso | strip -%}
         {%- if oc_aviso != blank -%}<p class="oc-aviso-fechas">{{ oc_aviso }}</p>{%- endif -%}
         <input type="hidden" name="id" value="{{ v.id }}">
         <button type="submit" name="add" class="oc-btn oc-btn--primario oc-compra__boton"
