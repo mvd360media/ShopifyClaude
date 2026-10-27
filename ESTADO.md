@@ -177,8 +177,8 @@
 ## Pendiente
 - [x] 2026-10-27: PUBLICADOS los 6 productos personalizados y los 6 artículos. Prueba real de carrito OK: foto subida a cdn.shopify.com/.../uploads, texto y tipografía como propiedades; sugerencias del carrito y WhatsApp visibles.
 - [ ] Pedido de prueba completo (pago con descuento 100 %) para ver la foto en el pedido del panel
-- [ ] Máscara y calendario: la usuaria ya no los vende → pasar a borrador + redirecciones + quitar enlaces del blog (pendiente de su sí)
+- [x] Máscara y calendario en BORRADOR (ya no se venden). Redirecciones 301: máscara → /collections/regalos-personalizados, calendario → /collections/navidad (también las direcciones antiguas en inglés). Artículo de la máscara en borrador con 301 al blog. Enlaces al calendario cambiados por el adorno. Descuento automático de Black Friday BORRADO y rebaja de campaña del tema desactivada (oc_camp_activa=false).
+- [x] Search & Discovery: filtros comprobados en la tienda (Disponibilidad, Precio, Tipo, Color, Para quién, Ocasión). Ojo: el filtro Color usa la opción «Color» (colgante y collar de proyección); el collar con nombre la tiene como «Color y largo».
 - [ ] Judge.me, Search & Discovery (filtros), canales de Google y Meta, Search Console (la usuaria)
-- [ ] Decidir si vuelve la sección Black Friday a la portada (la máscara está activa; descuento automático programado 20–30 nov)
 - [x] IVA de importación P3–P6 lo paga la usuaria (confirmado)
 - Reseñas: aviso «Opiniones de compradores de este mismo producto en AliExpress» encima de los bloques de app (ajuste resenas_aviso de oc-producto); estrellas activadas en las colecciones. Judge.me (Reviews + Importer) instalado por la usuaria. Search & Discovery instalado.
