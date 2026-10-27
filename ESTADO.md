@@ -175,8 +175,10 @@
 - Máscara y calendario vuelven a estar activos y publicados.
 
 ## Pendiente
-- [ ] PUBLICAR los 6 productos personalizados y los 6 artículos (esperando confirmación de la usuaria)
-- [ ] Pedido de prueba con foto (descuento 100 %) tras publicar
+- [x] 2026-10-27: PUBLICADOS los 6 productos personalizados y los 6 artículos. Prueba real de carrito OK: foto subida a cdn.shopify.com/.../uploads, texto y tipografía como propiedades; sugerencias del carrito y WhatsApp visibles.
+- [ ] Pedido de prueba completo (pago con descuento 100 %) para ver la foto en el pedido del panel
+- [ ] Máscara y calendario: la usuaria ya no los vende → pasar a borrador + redirecciones + quitar enlaces del blog (pendiente de su sí)
 - [ ] Judge.me, Search & Discovery (filtros), canales de Google y Meta, Search Console (la usuaria)
 - [ ] Decidir si vuelve la sección Black Friday a la portada (la máscara está activa; descuento automático programado 20–30 nov)
-- [ ] Confirmar que en P3–P6 el IVA de importación también lo paga la usuaria
+- [x] IVA de importación P3–P6 lo paga la usuaria (confirmado)
+- Reseñas: aviso «Opiniones de compradores de este mismo producto en AliExpress» encima de los bloques de app (ajuste resenas_aviso de oc-producto); estrellas activadas en las colecciones. Judge.me (Reviews + Importer) instalado por la usuaria. Search & Discovery instalado.

@@ -111,9 +111,9 @@
         <div class="oc-desc rte">{{ product.description }}</div>
       {%- endif -%}
 
-      {%- for block in section.blocks -%}
-        {%- if block.type == '@app' -%}<div class="oc-app">{% render block %}</div>{%- endif -%}
-      {%- endfor -%}
+      {%- assign oc_apps = section.blocks | where: 'type', '@app' -%}
+      {%- if oc_apps.size > 0 and section.settings.resenas_aviso != blank -%}<p class="oc-resenas-aviso">{{ section.settings.resenas_aviso }}</p>{%- endif -%}
+      {%- for block in oc_apps -%}<div class="oc-app">{% render block %}</div>{%- endfor -%}
 
       {%- assign caracteristicas = section.blocks | where: 'type', 'caracteristica' -%}
       {%- if caracteristicas.size > 0 -%}
@@ -159,6 +159,8 @@
     { "type": "text", "id": "confianza_1", "label": "Garantía 1", "default": "Envío a toda España" },
     { "type": "text", "id": "confianza_2", "label": "Garantía 2", "default": "14 días para devolver" },
     { "type": "text", "id": "confianza_3", "label": "Garantía 3", "default": "Pago 100% seguro" },
+    { "type": "header", "content": "Reseñas" },
+    { "type": "text", "id": "resenas_aviso", "label": "Aviso sobre el origen de las reseñas", "default": "Opiniones de compradores de este mismo producto en AliExpress.", "info": "Obligatorio si muestras reseñas que no son de tu tienda. Se ve encima del bloque de la aplicación de reseñas." },
     { "type": "header", "content": "Qué incluye" },
     { "type": "text", "id": "incluye_titulo", "label": "Título", "default": "Qué incluye" },
     { "type": "textarea", "id": "incluye", "label": "Elementos (uno por línea; vacío para ocultar)" },

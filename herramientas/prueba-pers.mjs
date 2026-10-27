@@ -37,7 +37,7 @@ await p.screenshot({ path: out + '-2.png', fullPage: true });
 const [resp] = await Promise.all([p.waitForNavigation({ timeout: 60000 }).catch(() => null), p.click('.oc-compra__boton')]);
 await p.waitForTimeout(1500);
 console.log('tras enviar:', p.url().slice(0, 90));
-const cart = await p.evaluate(async () => { try { const r = await fetch('/cart.js'); return await r.json(); } catch (e) { return String(e); } });
+const cart = await p.evaluate(async () => { try { const r = await fetch('/cart.js'); const j = await r.json(); await fetch('/cart/clear.js', {method:'POST'}); return j; } catch (e) { return String(e); } });
 console.log('carrito:', JSON.stringify(cart?.items?.map(i => ({ t: i.title, v: i.variant_title, props: i.properties })) ?? cart).slice(0, 800));
 await p.screenshot({ path: out + '-3.png', fullPage: false });
 await b.close();
