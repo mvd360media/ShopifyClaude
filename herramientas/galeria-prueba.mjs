@@ -1,0 +1,17 @@
+import { chromium } from 'playwright';
+const [,, url, out] = process.argv;
+const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell', args: ['--no-sandbox'] });
+const p = await b.newPage({ viewport: { width: 1366, height: 900 } });
+await p.goto(url, { waitUntil: 'load', timeout: 90000 }); await p.waitForTimeout(2500);
+const foto = () => p.evaluate(() => { const i = document.querySelector('.oc-galeria__principal img'); return i.src.split('/files/')[1].split('?')[0] + ' | ' + (document.querySelector('[data-oc-contador-fotos]')||{}).textContent; });
+console.log('al abrir:', await foto());
+const miniVisible = await p.evaluate(() => { const r = document.querySelector('.oc-galeria__miniaturas').getBoundingClientRect(); return [Math.round(r.top), Math.round(r.left), Math.round(r.height)]; });
+console.log('miniaturas (arriba, izquierda, alto):', miniVisible);
+await p.screenshot({ path: out + '-1.png' });
+const labels = p.locator('.oc-opcion').first().locator('label');
+await labels.nth(5).click(); await p.waitForTimeout(600);
+console.log('tras elegir', (await labels.nth(5).textContent()).trim(), '->', await foto());
+await p.click('[data-oc-sig]'); await p.waitForTimeout(300);
+console.log('flecha siguiente ->', await foto());
+await p.screenshot({ path: out + '-2.png' });
+await b.close();

@@ -207,3 +207,17 @@
 .oc-pers__opcional { font-weight: 400; color: var(--oc-tinta-suave); font-size: 13px; }
 .oc-app { margin-top: 8px; }
 .oc-resenas-aviso { margin: 8px 0 0; font-size: 13px; color: var(--oc-tinta-suave); font-style: italic; }
+
+/* GALERÍA: miniaturas siempre visibles, flechas y contador */
+.oc-galeria__principal { position: relative; }
+.oc-galeria__flecha { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 0; background: rgba(255,255,255,.92); color: var(--oc-tinta); font-size: 28px; line-height: 1; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.15); display: grid; place-items: center; }
+.oc-galeria__flecha--ant { left: 12px; } .oc-galeria__flecha--sig { right: 12px; }
+.oc-galeria__flecha:focus-visible { outline: 3px solid var(--oc-coral); outline-offset: 2px; }
+.oc-galeria__contador { position: absolute; bottom: 12px; right: 12px; background: rgba(30,27,46,.8); color: #fff; font-size: 13px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+@media (min-width: 990px) {
+  .oc-galeria { grid-template-columns: 84px minmax(0, 1fr); align-items: start; top: 24px; }
+  .oc-galeria__principal { order: 2; max-height: calc(100vh - 140px); aspect-ratio: 1; }
+  .oc-galeria__miniaturas { order: 1; flex-direction: column; overflow-x: hidden; overflow-y: auto; max-height: calc(100vh - 140px); padding: 0 4px 0 0; }
+  .oc-galeria__miniaturas button { flex: 0 0 76px; width: 76px; }
+}
+@media (min-width: 990px) { .oc-galeria__principal img { object-fit: contain; } }

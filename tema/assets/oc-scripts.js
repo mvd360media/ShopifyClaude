@@ -33,16 +33,38 @@
 
   function initGaleria() {
     document.querySelectorAll('[data-oc-galeria]').forEach(function (g) {
+      if (g.dataset.ocListo) return;
+      g.dataset.ocListo = '1';
       var principal = g.querySelector('.oc-galeria__principal img');
-      g.querySelectorAll('.oc-galeria__miniaturas button').forEach(function (b) {
-        b.addEventListener('click', function () {
-          principal.src = b.getAttribute('data-src');
-          principal.srcset = '';
-          principal.alt = b.getAttribute('data-alt') || '';
-          g.querySelectorAll('.oc-galeria__miniaturas button').forEach(function (x) { x.setAttribute('aria-current', 'false'); });
-          b.setAttribute('aria-current', 'true');
-        });
+      var botones = Array.prototype.slice.call(g.querySelectorAll('.oc-galeria__miniaturas button'));
+      var contador = g.querySelector('[data-oc-contador-fotos]');
+      if (!principal || !botones.length) return;
+      var actual = Math.max(0, botones.findIndex(function (b) { return b.getAttribute('aria-current') === 'true'; }));
+      var mostrar = function (i, desplazar) {
+        actual = (i + botones.length) % botones.length;
+        var b = botones[actual];
+        principal.src = b.getAttribute('data-src');
+        principal.srcset = '';
+        principal.alt = b.getAttribute('data-alt') || '';
+        botones.forEach(function (x) { x.setAttribute('aria-current', 'false'); });
+        b.setAttribute('aria-current', 'true');
+        if (contador) contador.textContent = (actual + 1) + ' / ' + botones.length;
+        if (desplazar !== false) b.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      };
+      botones.forEach(function (b, i) { b.addEventListener('click', function () { mostrar(i); }); });
+      var ant = g.querySelector('[data-oc-ant]'), sig = g.querySelector('[data-oc-sig]');
+      if (ant) ant.addEventListener('click', function () { mostrar(actual - 1); });
+      if (sig) sig.addEventListener('click', function () { mostrar(actual + 1); });
+      g.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') mostrar(actual - 1);
+        if (e.key === 'ArrowRight') mostrar(actual + 1);
       });
+      // permite que las variantes muestren su foto
+      g.ocMostrarMedia = function (id) {
+        var i = botones.findIndex(function (b) { return b.getAttribute('data-media-id') === String(id); });
+        if (i > -1) mostrar(i);
+      };
+      if (contador) contador.textContent = (actual + 1) + ' / ' + botones.length;
     });
   }
 
@@ -69,6 +91,8 @@
         var v = variantes.find(function (x) { return x.options.every(function (o, i) { return o === sel[i]; }); });
         if (!v) { boton.disabled = true; boton.textContent = boton.getAttribute('data-no-disponible'); return; }
         input.value = v.id;
+        var galeria = document.querySelector('[data-oc-galeria]');
+        if (v.media && galeria && galeria.ocMostrarMedia) galeria.ocMostrarMedia(v.media);
         precio.textContent = dinero(v.price);
         if (tachado) {
           tachado.textContent = v.compare_at_price > v.price ? dinero(v.compare_at_price) : '';

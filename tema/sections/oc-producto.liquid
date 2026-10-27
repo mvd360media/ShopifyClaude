@@ -14,26 +14,30 @@
 <section class="oc-producto oc-section" data-oc-producto data-oc-moneda="{{ shop.money_format | escape }}">
   <div class="oc-container oc-producto__grid">
     <div class="oc-galeria" data-oc-galeria>
+      {%- assign primera = product.selected_variant.featured_media | default: product.featured_media -%}
+      {%- assign imagenes = product.media | where: 'media_type', 'image' -%}
       <div class="oc-galeria__principal">
-        {%- assign primera = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
         {%- if primera -%}
           <img src="{{ primera | image_url: width: 1400 }}"
                srcset="{{ primera | image_url: width: 700 }} 700w, {{ primera | image_url: width: 1400 }} 1400w"
-               sizes="(max-width: 990px) 100vw, 55vw"
+               sizes="(max-width: 990px) 100vw, 50vw"
                alt="{{ primera.alt | default: product.title | escape }}" loading="eager" fetchpriority="high" width="1400" height="1400">
+          {%- if imagenes.size > 1 -%}
+            <button type="button" class="oc-galeria__flecha oc-galeria__flecha--ant" data-oc-ant aria-label="Foto anterior">‹</button>
+            <button type="button" class="oc-galeria__flecha oc-galeria__flecha--sig" data-oc-sig aria-label="Foto siguiente">›</button>
+            <span class="oc-galeria__contador" data-oc-contador-fotos aria-live="polite"></span>
+          {%- endif -%}
         {%- else -%}
           <div class="oc-hueco">Este producto aún no tiene fotos</div>
         {%- endif -%}
       </div>
-      {%- if product.media.size > 1 -%}
-        <div class="oc-galeria__miniaturas" role="list">
-          {%- for m in product.media -%}
-            {%- if m.media_type == 'image' -%}
-              <button type="button" role="listitem" aria-label="Ver foto {{ forloop.index }}" aria-current="{% if m.id == primera.id %}true{% else %}false{% endif %}"
-                      data-src="{{ m | image_url: width: 1400 }}" data-alt="{{ m.alt | default: product.title | escape }}">
-                <img src="{{ m | image_url: width: 160 }}" alt="" loading="lazy" width="160" height="160">
-              </button>
-            {%- endif -%}
+      {%- if imagenes.size > 1 -%}
+        <div class="oc-galeria__miniaturas" role="list" aria-label="Fotos del producto">
+          {%- for m in imagenes -%}
+            <button type="button" role="listitem" aria-label="Ver foto {{ forloop.index }} de {{ imagenes.size }}" aria-current="{% if m.id == primera.id %}true{% else %}false{% endif %}"
+                    data-media-id="{{ m.id }}" data-src="{{ m | image_url: width: 1400 }}" data-alt="{{ m.alt | default: product.title | escape }}">
+              <img src="{{ m | image_url: width: 160 }}" alt="" loading="lazy" width="160" height="160">
+            </button>
           {%- endfor -%}
         </div>
       {%- endif -%}
@@ -79,7 +83,7 @@
             </fieldset>
           {%- endfor -%}
           <script type="application/json" data-oc-variantes>
-            [{%- for x in product.variants -%}{"id":{{ x.id }},"options":{{ x.options | json }},{%- assign x_tachado = x.compare_at_price | default: 0 -%}{%- if oc_rebaja > 0 and x_tachado < x.price -%}{%- assign x_tachado = x.price -%}{%- endif -%}"price":{{ x.price | minus: oc_rebaja | at_least: 0 }},"compare_at_price":{{ x_tachado }},"available":{{ x.available }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]
+            [{%- for x in product.variants -%}{"id":{{ x.id }},"options":{{ x.options | json }},{%- assign x_tachado = x.compare_at_price | default: 0 -%}{%- if oc_rebaja > 0 and x_tachado < x.price -%}{%- assign x_tachado = x.price -%}{%- endif -%}"price":{{ x.price | minus: oc_rebaja | at_least: 0 }},"compare_at_price":{{ x_tachado }},"media":{{ x.featured_media.id | default: 0 }},"available":{{ x.available }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]
           </script>
         {%- endunless -%}
         {%- assign pers = section.blocks | where: 'type', 'personalizacion' | first -%}

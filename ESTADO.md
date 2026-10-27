@@ -174,7 +174,14 @@
 - Collar de proyección: quedan 21 modelos con nombre en español. Foto «Fotos de compradores» traducida (decisión de la usuaria: se queda).
 - Máscara y calendario vuelven a estar activos y publicados.
 
+## Galería y colecciones (2026-10-27, noche)
+- Galería de oc-producto rehecha: foto inicial = foto principal del producto (o la de la variante si viene ?variant=); al elegir variante muestra su foto; flechas, contador «n / total» y teclado; en ordenador miniaturas en columna a la izquierda, siempre visibles. Probado en el collar con nombre.
+- Collar con nombre: foto principal = varios collares en mano; tipografías ordenadas B01…B18 y luego por nombre. Collar de proyección: 2.ª foto = la de la mascota.
+- Navidad: los 6 personalizados. Mascotas: + collar de proyección. Amigo invisible: etiqueta en los 6.
+- Configuración leída: plan Basic; impuestos incluidos; IVA en envíos DESACTIVADO; envía a ~40 países (debería ser solo España); zona España incluye Canarias, Ceuta y Melilla; tarifas Estándar 6,99 € y 0 €; sin pasarela de pago. Sin permisos para cambiar envíos, mercados ni pagos.
+
 ## Pendiente
+- [ ] Pasarela de pago, envíos solo a España (decidir Canarias/Ceuta/Melilla), IVA en envíos, facturas, email de dominio (la usuaria; pasos en el chat)
 - [x] 2026-10-27: PUBLICADOS los 6 productos personalizados y los 6 artículos. Prueba real de carrito OK: foto subida a cdn.shopify.com/.../uploads, texto y tipografía como propiedades; sugerencias del carrito y WhatsApp visibles.
 - [ ] Pedido de prueba completo (pago con descuento 100 %) para ver la foto en el pedido del panel
 - [x] Máscara y calendario en BORRADOR (ya no se venden). Redirecciones 301: máscara → /collections/regalos-personalizados, calendario → /collections/navidad (también las direcciones antiguas en inglés). Artículo de la máscara en borrador con 301 al blog. Enlaces al calendario cambiados por el adorno. Descuento automático de Black Friday BORRADO y rebaja de campaña del tema desactivada (oc_camp_activa=false).
