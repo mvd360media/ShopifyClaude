@@ -42,7 +42,8 @@
     <div class="oc-compra">
       {%- if section.settings.eyebrow != blank -%}<span class="oc-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
       <h1 class="oc-compra__titulo oc-h">{{ product.title }}</h1>
-      {%- if section.settings.intro != blank -%}<p class="oc-compra__intro oc-sub">{{ section.settings.intro | newline_to_br }}</p>{%- endif -%}
+      {%- assign oc_subtitulo = product.metafields.custom.subtitulo.value | default: section.settings.intro -%}
+      {%- if oc_subtitulo != blank -%}<p class="oc-compra__intro oc-sub">{{ oc_subtitulo | newline_to_br }}</p>{%- endif -%}
 
       {%- capture oc_rebaja -%}{% render 'oc-rebaja', product: product %}{%- endcapture -%}
       {%- assign oc_rebaja = oc_rebaja | strip | plus: 0 -%}
@@ -69,7 +70,10 @@
               <div class="oc-opcion__valores">
                 {%- for value in option.values -%}
                   <input type="radio" id="oc-{{ section.id }}-{{ opt_index }}-{{ forloop.index0 }}" name="oc-opcion-{{ opt_index }}" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %}>
-                  <label for="oc-{{ section.id }}-{{ opt_index }}-{{ forloop.index0 }}">{{ value }}</label>
+                  <label for="oc-{{ section.id }}-{{ opt_index }}-{{ forloop.index0 }}">
+                    {%- if value.swatch.color -%}<span class="oc-muestra" style="--oc-muestra: {{ value.swatch.color }}" aria-hidden="true"></span>{%- elsif value.swatch.image -%}<span class="oc-muestra" style="background-image: url({{ value.swatch.image | image_url: width: 60 }})" aria-hidden="true"></span>{%- endif -%}
+                    {{ value }}
+                  </label>
                 {%- endfor -%}
               </div>
             </fieldset>
@@ -78,6 +82,10 @@
             [{%- for x in product.variants -%}{"id":{{ x.id }},"options":{{ x.options | json }},{%- assign x_tachado = x.compare_at_price | default: 0 -%}{%- if oc_rebaja > 0 and x_tachado < x.price -%}{%- assign x_tachado = x.price -%}{%- endif -%}"price":{{ x.price | minus: oc_rebaja | at_least: 0 }},"compare_at_price":{{ x_tachado }},"available":{{ x.available }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]
           </script>
         {%- endunless -%}
+        {%- assign pers = section.blocks | where: 'type', 'personalizacion' | first -%}
+        {%- if pers -%}{% render 'oc-personalizacion', block: pers, section_id: section.id %}{%- endif -%}
+        {%- assign oc_aviso = product.metafields.custom.aviso_fechas.value -%}
+        {%- if oc_aviso != blank -%}<p class="oc-aviso-fechas">{{ oc_aviso }}</p>{%- endif -%}
         <input type="hidden" name="id" value="{{ v.id }}">
         <button type="submit" name="add" class="oc-btn oc-btn--primario oc-compra__boton"
                 data-texto="{{ section.settings.boton_texto | escape }}" data-agotado="{{ section.settings.agotado_texto | escape }}" data-no-disponible="{{ section.settings.no_disponible_texto | escape }}"
@@ -86,8 +94,9 @@
         </button>
       {%- endform -%}
 
-      {%- if section.settings.envio_texto != blank -%}
-        <div class="oc-envio">{% render 'oc-icono', nombre: 'calendario' %}<span>{{ section.settings.envio_texto }}</span></div>
+      {%- assign oc_plazo = product.metafields.custom.plazo_entrega.value | default: section.settings.envio_texto -%}
+      {%- if oc_plazo != blank -%}
+        <div class="oc-envio">{% render 'oc-icono', nombre: 'calendario' %}<span>{{ oc_plazo }}</span></div>
       {%- endif -%}
 
       <div class="oc-confianza">
@@ -156,6 +165,34 @@
     { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 64 }
   ],
   "blocks": [
+    {
+      "type": "personalizacion",
+      "name": "Personalización",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "titulo", "label": "Título", "default": "Personaliza tu pedido" },
+        { "type": "header", "content": "Foto" },
+        { "type": "checkbox", "id": "foto_activa", "label": "Pedir una foto", "default": true },
+        { "type": "text", "id": "foto_etiqueta", "label": "Nombre del campo", "default": "Foto de tu mascota", "info": "Es el nombre con el que te llega en el pedido." },
+        { "type": "checkbox", "id": "foto_obligatoria", "label": "Obligatoria", "default": true },
+        { "type": "range", "id": "foto_max_mb", "label": "Tamaño máximo", "min": 1, "max": 20, "step": 1, "unit": "MB", "default": 10 },
+        { "type": "text", "id": "foto_ayuda", "label": "Texto de ayuda", "default": "JPG o PNG, hasta 10 MB. Mejor una foto nítida, de frente y con buena luz." },
+        { "type": "header", "content": "Texto" },
+        { "type": "checkbox", "id": "texto_activo", "label": "Pedir un texto", "default": true },
+        { "type": "text", "id": "texto_etiqueta", "label": "Nombre del campo", "default": "Nombre o texto" },
+        { "type": "checkbox", "id": "texto_obligatorio", "label": "Obligatorio", "default": true },
+        { "type": "range", "id": "texto_max", "label": "Máximo de caracteres", "min": 1, "max": 60, "step": 1, "default": 20 },
+        { "type": "text", "id": "texto_ayuda", "label": "Texto de ayuda", "default": "Revísalo bien: lo grabamos tal y como lo escribes." },
+        { "type": "header", "content": "Tipografía" },
+        { "type": "checkbox", "id": "tipo_activa", "label": "Pedir la tipografía", "default": false },
+        { "type": "text", "id": "tipo_etiqueta", "label": "Nombre del campo", "default": "Tipografía" },
+        { "type": "text", "id": "tipo_opciones", "label": "Opciones (separadas por comas)", "default": "F.1, F.2, F.3, F.4, F.6, F.8, F.16" },
+        { "type": "text", "id": "tipo_ayuda", "label": "Texto de ayuda", "default": "Mira los modelos de letra en la última foto." },
+        { "type": "header", "content": "Aviso final" },
+        { "type": "checkbox", "id": "confirmacion", "label": "Pedir que confirme que ha revisado los datos", "default": true },
+        { "type": "text", "id": "confirmacion_texto", "label": "Texto de la confirmación", "default": "He revisado la foto y el texto. Sé que los productos personalizados no se pueden devolver por desistimiento." }
+      ]
+    },
     {
       "type": "caracteristica",
       "name": "Característica",

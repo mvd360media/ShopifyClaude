@@ -1,0 +1,50 @@
+{
+  "sections": {
+    "principal": {
+      "type": "oc-producto",
+      "blocks": {
+        "personalizacion": {
+          "type": "personalizacion",
+          "settings": {
+            "titulo": "Personaliza tu adorno",
+            "foto_activa": false,
+            "foto_etiqueta": "Foto",
+            "foto_obligatoria": false,
+            "foto_max_mb": 10,
+            "foto_ayuda": "",
+            "texto_activo": true,
+            "texto_etiqueta": "Nombre de tu mascota",
+            "texto_obligatorio": true,
+            "texto_max": 12,
+            "texto_ayuda": "Revisa la ortografía, las mayúsculas y las minúsculas: lo cortamos tal y como lo escribes.",
+            "tipo_activa": false,
+            "tipo_etiqueta": "Tipografía",
+            "tipo_opciones": "",
+            "tipo_ayuda": "",
+            "confirmacion": true,
+            "confirmacion_texto": "He revisado el nombre. Sé que los productos personalizados no se pueden devolver por desistimiento."
+          }
+        }
+      },
+      "block_order": [
+        "personalizacion"
+      ],
+      "settings": {
+        "eyebrow": "Hecho a medida bajo pedido",
+        "envio_texto": "",
+        "confianza_1": "Envío a toda España",
+        "confianza_2": "Garantía legal de 3 años",
+        "confianza_3": "Pago 100% seguro",
+        "mostrar_ahorro": true
+      }
+    },
+    "marquesina": {
+      "type": "oc-marquesina",
+      "settings": {}
+    }
+  },
+  "order": [
+    "principal",
+    "marquesina"
+  ]
+}

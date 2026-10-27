@@ -83,7 +83,59 @@
     });
   }
 
-  function init() { initReveal(); initCuentaAtras(); initGaleria(); initVariantes(); }
+
+  function initPersonalizacion() {
+    document.querySelectorAll('[data-oc-pers]').forEach(function (pers) {
+      if (pers.dataset.ocListo) return;
+      pers.dataset.ocListo = '1';
+      var form = pers.closest('form');
+      var error = pers.querySelector('[data-oc-error]');
+      var texto = pers.querySelector('[data-oc-contador]');
+      if (texto) {
+        var cuenta = pers.querySelector('[data-oc-cuenta]');
+        var contar = function () { cuenta.textContent = Array.from(texto.value).length; };
+        texto.addEventListener('input', contar);
+        contar();
+      }
+      var fallo = function (campo, mensaje) {
+        error.textContent = mensaje;
+        error.hidden = false;
+        if (campo) { campo.setAttribute('aria-invalid', 'true'); campo.focus(); }
+        return false;
+      };
+      var validar = function () {
+        pers.querySelectorAll('[aria-invalid]').forEach(function (c) { c.removeAttribute('aria-invalid'); });
+        error.hidden = true;
+        var campos = pers.querySelectorAll('input, select');
+        for (var i = 0; i < campos.length; i++) {
+          var c = campos[i];
+          var nombre = c.getAttribute('data-oc-nombre') || (c.labels && c.labels[0] ? c.labels[0].textContent.replace('*', '').trim() : '');
+          if (c.type === 'file') {
+            var f = c.files[0];
+            if (!f) { if (c.hasAttribute('data-oc-obligatorio')) return fallo(c, 'Sube la foto para continuar.'); continue; }
+            if (!/\.(jpe?g|png)$/i.test(f.name)) return fallo(c, 'La foto tiene que ser JPG o PNG.');
+            var max = parseFloat(c.getAttribute('data-oc-max-mb')) || 10;
+            if (f.size > max * 1024 * 1024) return fallo(c, 'La foto pesa más de ' + max + ' MB. Prueba con otra o redúcela.');
+          } else if (c.type === 'checkbox') {
+            if (c.hasAttribute('data-oc-obligatorio') && !c.checked) return fallo(c, 'Marca la casilla para confirmar que has revisado tus datos.');
+          } else {
+            var valor = c.value.trim();
+            if (c.hasAttribute('data-oc-obligatorio') && !valor) return fallo(c, 'Completa «' + nombre + '» para continuar.');
+            var lim = parseInt(c.getAttribute('maxlength'), 10);
+            if (lim && Array.from(valor).length > lim) return fallo(c, '«' + nombre + '» admite como máximo ' + lim + ' caracteres.');
+          }
+        }
+        return true;
+      };
+      var fichero = pers.querySelector('[data-oc-fichero]');
+      var foto = pers.querySelector('input[type=file]');
+      if (foto && fichero) foto.addEventListener('change', function () { fichero.textContent = foto.files[0] ? foto.files[0].name : 'Ninguna foto elegida'; });
+      pers.querySelectorAll('input, select').forEach(function (c) { c.addEventListener('change', function () { if (!error.hidden) validar(); }); });
+      if (form) form.addEventListener('submit', function (e) { if (!validar()) e.preventDefault(); });
+    });
+  }
+
+  function init() { initReveal(); initCuentaAtras(); initGaleria(); initVariantes(); initPersonalizacion(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
   document.addEventListener('shopify:section:load', init);
 })();

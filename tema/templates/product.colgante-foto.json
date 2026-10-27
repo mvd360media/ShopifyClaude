@@ -1,0 +1,50 @@
+{
+  "sections": {
+    "principal": {
+      "type": "oc-producto",
+      "blocks": {
+        "personalizacion": {
+          "type": "personalizacion",
+          "settings": {
+            "titulo": "Personaliza tu colgante",
+            "foto_activa": true,
+            "foto_etiqueta": "Foto de tu mascota",
+            "foto_obligatoria": true,
+            "foto_max_mb": 10,
+            "foto_ayuda": "JPG o PNG, hasta 10 MB. Mejor una foto nítida, de frente y con buena luz.",
+            "texto_activo": true,
+            "texto_etiqueta": "Nombre o texto",
+            "texto_obligatorio": true,
+            "texto_max": 20,
+            "texto_ayuda": "Revísalo bien: lo grabamos tal y como lo escribes.",
+            "tipo_activa": true,
+            "tipo_etiqueta": "Tipografía",
+            "tipo_opciones": "F.1, F.2, F.3, F.4, F.6, F.8, F.16",
+            "tipo_ayuda": "Mira los modelos de letra en la última foto.",
+            "confirmacion": true,
+            "confirmacion_texto": "He revisado la foto y el texto. Sé que los productos personalizados no se pueden devolver por desistimiento."
+          }
+        }
+      },
+      "block_order": [
+        "personalizacion"
+      ],
+      "settings": {
+        "eyebrow": "Hecho a medida bajo pedido",
+        "envio_texto": "",
+        "confianza_1": "Envío a toda España",
+        "confianza_2": "Garantía legal de 3 años",
+        "confianza_3": "Pago 100% seguro",
+        "mostrar_ahorro": true
+      }
+    },
+    "marquesina": {
+      "type": "oc-marquesina",
+      "settings": {}
+    }
+  },
+  "order": [
+    "principal",
+    "marquesina"
+  ]
+}

@@ -161,3 +161,26 @@
   .oc-marquee__pista, .oc-ojo::after { animation: none; }
   .oc-btn, .oc-card__media img, .oc-regalo img, .oc-ventaja { transition: none; }
 }
+
+/* PERSONALIZACIÓN Y DETALLES DE PRODUCTO */
+.oc-muestra { display: inline-block; width: 18px; height: 18px; border-radius: 50%; background: var(--oc-muestra, #ccc) center / cover; border: 1px solid rgba(0,0,0,.15); vertical-align: -4px; margin-right: 6px; }
+.oc-opcion__valores label { display: inline-flex; align-items: center; }
+.oc-pers { display: grid; gap: 16px; border: 1.5px solid #E6DED3; border-radius: 20px; padding: 18px; margin: 0; background: #fff; }
+.oc-pers legend { font-weight: 700; padding: 0 6px; }
+.oc-pers__campo { display: grid; gap: 6px; }
+.oc-pers__campo label { font-weight: 600; }
+.oc-pers__campo input[type="text"], .oc-pers__campo select, .oc-pers__campo input[type="file"] { font: inherit; padding: 12px 14px; border-radius: 12px; border: 1.5px solid #D9D2C8; background: var(--oc-fondo); width: 100%; box-sizing: border-box; }
+.oc-pers__campo input:focus-visible, .oc-pers__campo select:focus-visible { outline: 3px solid var(--oc-coral); outline-offset: 1px; }
+.oc-pers__campo small { color: var(--oc-tinta-suave); font-size: 13px; }
+.oc-pers__check { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; }
+.oc-pers__check input { margin-top: 3px; width: 18px; height: 18px; flex: 0 0 18px; }
+.oc-pers__error { color: #B42318; font-weight: 600; margin: 0; }
+.oc-pers [aria-invalid="true"] { border-color: #B42318 !important; }
+.oc-aviso-fechas { margin: 0; background: #EAF3EE; color: var(--oc-temporada); border-radius: 14px; padding: 12px 16px; font-weight: 600; font-size: 15px; }
+.oc-pers__nombre { font-weight: 600; }
+.oc-pers__archivo { position: relative; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.oc-pers__archivo input[type="file"] { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.oc-pers__archivo label { cursor: pointer; padding: 12px 20px; }
+.oc-pers__archivo input:focus-visible + label { outline: 3px solid var(--oc-coral); outline-offset: 2px; }
+.oc-pers__archivo input[aria-invalid="true"] + label { border-color: #B42318; }
+.oc-pers__fichero { font-size: 14px; color: var(--oc-tinta-suave); overflow-wrap: anywhere; }

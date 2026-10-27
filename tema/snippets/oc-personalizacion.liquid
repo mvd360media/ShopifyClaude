@@ -1,0 +1,53 @@
+{%- comment -%}
+  Campos de personalización del producto (foto, texto y tipografía).
+  Se envían como propiedades del artículo: aparecen en el carrito, en el pedido y la foto se descarga desde el pedido.
+  Uso: {% render 'oc-personalizacion', block: bloque, section_id: section.id %}
+{%- endcomment -%}
+{%- assign b = block.settings -%}
+<fieldset class="oc-pers" data-oc-pers {{ block.shopify_attributes }}>
+  {%- if b.titulo != blank -%}<legend>{{ b.titulo }}</legend>{%- endif -%}
+
+  {%- if b.foto_activa -%}
+    <div class="oc-pers__campo">
+      <span class="oc-pers__nombre" id="oc-pers-foto-nombre-{{ section_id }}">{{ b.foto_etiqueta }}{% if b.foto_obligatoria %} <span aria-hidden="true">*</span>{% endif %}</span>
+      <div class="oc-pers__archivo">
+        <input type="file" id="oc-pers-foto-{{ section_id }}" name="properties[{{ b.foto_etiqueta | escape }}]"
+               accept=".jpg,.jpeg,.png,image/jpeg,image/png" data-oc-max-mb="{{ b.foto_max_mb }}" data-oc-nombre="{{ b.foto_etiqueta | escape }}"
+               {% if b.foto_obligatoria %}required data-oc-obligatorio{% endif %} aria-labelledby="oc-pers-foto-nombre-{{ section_id }}" aria-describedby="oc-pers-foto-ayuda-{{ section_id }}">
+        <label for="oc-pers-foto-{{ section_id }}" class="oc-btn oc-btn--secundario">Elegir foto</label>
+        <span class="oc-pers__fichero" data-oc-fichero>Ninguna foto elegida</span>
+      </div>
+      {%- if b.foto_ayuda != blank -%}<small id="oc-pers-foto-ayuda-{{ section_id }}">{{ b.foto_ayuda }}</small>{%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if b.texto_activo -%}
+    <div class="oc-pers__campo">
+      <label for="oc-pers-texto-{{ section_id }}">{{ b.texto_etiqueta }}{% if b.texto_obligatorio %} <span aria-hidden="true">*</span>{% endif %}</label>
+      <input type="text" id="oc-pers-texto-{{ section_id }}" name="properties[{{ b.texto_etiqueta | escape }}]" maxlength="{{ b.texto_max }}"
+             autocomplete="off" {% if b.texto_obligatorio %}required data-oc-obligatorio{% endif %} data-oc-contador aria-describedby="oc-pers-texto-ayuda-{{ section_id }}">
+      <small id="oc-pers-texto-ayuda-{{ section_id }}">{{ b.texto_ayuda }} <span data-oc-cuenta>0</span>/{{ b.texto_max }}</small>
+    </div>
+  {%- endif -%}
+
+  {%- if b.tipo_activa -%}
+    {%- assign opciones = b.tipo_opciones | split: ',' -%}
+    <div class="oc-pers__campo">
+      <label for="oc-pers-tipo-{{ section_id }}">{{ b.tipo_etiqueta }} <span aria-hidden="true">*</span></label>
+      <select id="oc-pers-tipo-{{ section_id }}" name="properties[{{ b.tipo_etiqueta | escape }}]" required data-oc-obligatorio>
+        <option value="">Elige una</option>
+        {%- for o in opciones -%}{%- assign o = o | strip -%}{%- if o != blank -%}<option value="{{ o | escape }}">{{ o }}</option>{%- endif -%}{%- endfor -%}
+      </select>
+      {%- if b.tipo_ayuda != blank -%}<small>{{ b.tipo_ayuda }}</small>{%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if b.confirmacion -%}
+    <label class="oc-pers__check">
+      <input type="checkbox" required data-oc-obligatorio data-oc-confirmacion>
+      <span>{{ b.confirmacion_texto }}</span>
+    </label>
+  {%- endif -%}
+
+  <p class="oc-pers__error" data-oc-error role="alert" hidden></p>
+</fieldset>

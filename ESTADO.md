@@ -8,7 +8,7 @@
 - Tema de trabajo: "Ojo Con Ese Detalle (Claude)" #211921994119 (sin publicar)
   - Vista previa: https://ccdf97-s7.myshopify.com?preview_theme_id=211921994119
   - Editor: https://ccdf97-s7.myshopify.com/admin/themes/211921994119/editor
-- Tema activo actual: Helio #211593757063 (no tocar)
+- Tema ACTIVO desde ~2026-10-27: "Ojo Con Ese Detalle (Claude)" #211921994119 (lo publicó la usuaria). Helio queda sin publicar. Antes de subir, comparar con el tema vivo (shopify theme pull) por si hay cambios del editor.
 - Última publicación: 2026-10-17 (sesión 3) estructura SEO, menús, blog, campaña Black Friday (tema sin publicar)
 
 ## Conexión (entorno en la nube)
@@ -141,6 +141,15 @@
 - Política de envío: apartado de personalizados ahora cubre colgante y adorno (plazos, fechas y aduana incluida).
 - Metacampos de categoría (color con muestras, material): sin permisos de metaobjetos; la usuaria los pone a mano.
 - Reseñas: la usuaria quiere Judge.me (importar de AliExpress); no tengo acceso a la app. Obligación legal de indicar el origen de las reseñas.
+
+## Personalización gratis en el tema (2026-10-27)
+- snippets/oc-personalizacion.liquid + bloque "Personalización" en sections/oc-producto.liquid: foto (JPG/PNG, tamaño máx.), texto (límite), tipografía (lista), casilla de confirmación. Se envían como propiedades del artículo (formulario multipart a /cart/add); validación en assets/oc-scripts.js (initPersonalizacion). Botón propio «Elegir foto».
+- oc-producto muestra metacampos: subtítulo, aviso de fechas (encima del botón) y plazo de entrega; muestras de color si la opción tiene swatch.
+- Plantillas: product.colgante-foto (foto 10 MB + texto 20 + tipografía F.1–F.16) y product.adorno-nombre (nombre 12). Garantía mostrada: «Garantía legal de 3 años». Antetítulo «Hecho a medida bajo pedido» (no «a mano»: no verificable).
+- Probado en vista previa: formulario multipart, campos visibles, errores (vacío, formato, límite). NO probado el añadir al carrito (producto sin publicar) → hacer pedido de prueba al publicar.
+- Colgante: fotos nuevas de la usuaria (un colgante por cadena) → principal = tres colores; todas las variantes con esa foto; nombres de archivo en español. Imagen de tipografías rehecha en español (la antigua borrada). Fotos 1-3 (varios colgantes / persona): propuestas para borrar, sin confirmar.
+- Colores enlazados al metacampo de categoría por la usuaria; el valor «Rosa» debería llamarse «Rosado»; las muestras no tienen color (metaobjetos sin código de color; sin permisos para leerlos).
+- Adorno a 24,90 €. Fichas sin «aduana»; política de envío sin «China» (solo «fuera de la UE»); privacidad mantiene China (obligatorio).
 
 ## Pendiente
 - [ ] Confirmar qué producto es el "Colgante personalizado con foto de mascota" y adaptar su ficha (español, 20 mm, 40/45/50 cm, foto + texto 20 caracteres, fechas límite, precio de venta)
