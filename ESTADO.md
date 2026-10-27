@@ -136,6 +136,12 @@
 - P1: «Double-sided custom» borrado por la usuaria (verificado: 9 variantes). Largos ordenados 40/45/50. SKU legibles en las variantes nuevas (COLGANTE-FOTO-20MM-DORADO-40CM...).
 - P2 APLICADO (2026-10-27): adorno de madera con forma de huella (no bola). Título, descripción (con 2 [PENDIENTE]: límite del nombre y plazo), SEO, URL adorno-navidad-personalizado-mascota + 301, tipo, categoría hg-3-58-7, etiquetas, metacampos, opción «Diseño» (Navideño/Sencillo/Alas de ángel · perro/gato), fotos ordenadas (principal = huella navideña sola), alt y nombres de archivo en español. Sin publicar.
 
+- 2026-10-27: colgante a 34,90 € (coste total 13,78 € con IVA, envío e importación, lo paga la usuaria). Opciones en orden Colgante → Largo de cadena → Color. FAQ «¿Tendré que pagar algo al recibirlo? No».
+- Adorno: coste 11,76 € (5,69 + 6,07 importación, envío gratis), con cordel, personalización por «nota al vendedor» sin límite de caracteres conocido. Plazo 2–3 semanas; fechas límite Navidad 29/11 y Reyes 12/12 (1 + 15 + 7 días). Recordatorios programados 30/11 y 13/12. Precio de venta pendiente.
+- Política de envío: apartado de personalizados ahora cubre colgante y adorno (plazos, fechas y aduana incluida).
+- Metacampos de categoría (color con muestras, material): sin permisos de metaobjetos; la usuaria los pone a mano.
+- Reseñas: la usuaria quiere Judge.me (importar de AliExpress); no tengo acceso a la app. Obligación legal de indicar el origen de las reseñas.
+
 ## Pendiente
 - [ ] Confirmar qué producto es el "Colgante personalizado con foto de mascota" y adaptar su ficha (español, 20 mm, 40/45/50 cm, foto + texto 20 caracteres, fechas límite, precio de venta)
 - [ ] Operativa: no enviar pedidos personalizados al fabricante hasta pasadas 2 h (plazo de cancelación)
