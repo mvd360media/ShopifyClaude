@@ -38,13 +38,109 @@
         "mostrar_ahorro": true
       }
     },
+    "pasos": {
+      "type": "oc-pasos",
+      "blocks": {
+        "p1": {
+          "type": "paso",
+          "settings": {
+            "titulo": "Elige tu modelo",
+            "texto": "Escoge la tipografía, el color o el diseño."
+          }
+        },
+        "p2": {
+          "type": "paso",
+          "settings": {
+            "titulo": "Escribe el nombre",
+            "texto": "Revísalo bien: se hace tal y como lo escribes."
+          }
+        },
+        "p3": {
+          "type": "paso",
+          "settings": {
+            "titulo": "Lo hacemos para ti",
+            "texto": "Se fabrica a medida bajo pedido y te enviamos el número de seguimiento."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "eyebrow": "Así de fácil",
+        "titulo": "Cómo funciona",
+        "fondo": "#F3ECE3"
+      }
+    },
+    "ventajas": {
+      "type": "oc-ventajas",
+      "blocks": {
+        "v1": {
+          "type": "ventaja",
+          "settings": {
+            "icono": "regalo",
+            "titulo": "Hecho a medida para ti",
+            "texto": "Cada pieza se fabrica con tu foto, tu texto o tu nombre cuando haces el pedido."
+          }
+        },
+        "v2": {
+          "type": "ventaja",
+          "settings": {
+            "icono": "envio",
+            "titulo": "Sin sorpresas al recibirlo",
+            "texto": "El precio que ves es el precio final: no pagas nada más al recibirlo."
+          }
+        },
+        "v3": {
+          "type": "ventaja",
+          "settings": {
+            "icono": "seguro",
+            "titulo": "Garantía legal de 3 años",
+            "texto": "Si llega defectuoso o con una personalización distinta de la que pediste, lo solucionamos."
+          }
+        }
+      },
+      "block_order": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "settings": {
+        "eyebrow": "Por qué Ojo con ese detalle",
+        "titulo": "Un regalo único, sin complicaciones"
+      }
+    },
+    "complementos": {
+      "type": "oc-complementos",
+      "settings": {
+        "eyebrow": "Completa tu regalo",
+        "titulo": "Combina bien con…",
+        "productos": [
+          "colgante-personalizado-foto-mascota",
+          "llavero-personalizado-foto-mascota",
+          "collar-nombre-personalizado",
+          "collar-foto-proyeccion"
+        ],
+        "coleccion": "regalos-personalizados",
+        "limite": 4,
+        "columnas": 4,
+        "boton_texto": "Ver y personalizar"
+      }
+    },
     "marquesina": {
       "type": "oc-marquesina",
-      "settings": {}
+      "settings": {
+        "frases": "Hecho a medida bajo pedido\nEnvío a toda España\nGarantía legal de 3 años\nPago 100% seguro\nCon foto, nombre o texto"
+      }
     }
   },
   "order": [
     "principal",
+    "pasos",
+    "ventajas",
+    "complementos",
     "marquesina"
   ]
 }

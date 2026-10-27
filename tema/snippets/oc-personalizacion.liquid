@@ -1,7 +1,7 @@
 {%- comment -%}
   Campos de personalización del producto (foto, texto y tipografía).
   Se envían como propiedades del artículo: aparecen en el carrito, en el pedido y la foto se descarga desde el pedido.
-  Uso: {% render 'oc-personalizacion', block: bloque, section_id: section.id %}
+  Uso: {% render 'oc-personalizacion', block: bloque, extras: bloques_texto_extra, section_id: section.id %}
 {%- endcomment -%}
 {%- assign b = block.settings -%}
 <fieldset class="oc-pers" data-oc-pers {{ block.shopify_attributes }}>
@@ -29,6 +29,16 @@
       <small id="oc-pers-texto-ayuda-{{ section_id }}">{{ b.texto_ayuda }} <span data-oc-cuenta>0</span>/{{ b.texto_max }}</small>
     </div>
   {%- endif -%}
+
+  {%- for x in extras -%}
+    {%- assign xs = x.settings -%}
+    <div class="oc-pers__campo" {{ x.shopify_attributes }}>
+      <label for="oc-pers-extra-{{ section_id }}-{{ forloop.index }}">{{ xs.etiqueta }}{% if xs.obligatorio %} <span aria-hidden="true">*</span>{% else %} <span class="oc-pers__opcional">(opcional)</span>{% endif %}</label>
+      <input type="text" id="oc-pers-extra-{{ section_id }}-{{ forloop.index }}" name="properties[{{ xs.etiqueta | escape }}]" maxlength="{{ xs.max }}"
+             autocomplete="off" data-oc-nombre="{{ xs.etiqueta | escape }}" {% if xs.obligatorio %}required data-oc-obligatorio{% endif %} data-oc-contador>
+      <small>{% if xs.ayuda != blank %}{{ xs.ayuda }} {% endif %}<span data-oc-cuenta>0</span>/{{ xs.max }}</small>
+    </div>
+  {%- endfor -%}
 
   {%- if b.tipo_activa -%}
     {%- assign opciones = b.tipo_opciones | split: ',' -%}

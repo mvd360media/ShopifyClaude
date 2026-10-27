@@ -83,7 +83,8 @@
           </script>
         {%- endunless -%}
         {%- assign pers = section.blocks | where: 'type', 'personalizacion' | first -%}
-        {%- if pers -%}{% render 'oc-personalizacion', block: pers, section_id: section.id %}{%- endif -%}
+        {%- assign pers_extras = section.blocks | where: 'type', 'texto_extra' -%}
+        {%- if pers -%}{% render 'oc-personalizacion', block: pers, extras: pers_extras, section_id: section.id %}{%- endif -%}
         {%- assign oc_aviso = product.metafields.custom.aviso_fechas.value -%}
         {%- if oc_aviso != blank -%}<p class="oc-aviso-fechas">{{ oc_aviso }}</p>{%- endif -%}
         <input type="hidden" name="id" value="{{ v.id }}">
@@ -108,6 +109,10 @@
       {%- if product.description != blank -%}
         <div class="oc-desc rte">{{ product.description }}</div>
       {%- endif -%}
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == '@app' -%}<div class="oc-app">{% render block %}</div>{%- endif -%}
+      {%- endfor -%}
 
       {%- assign caracteristicas = section.blocks | where: 'type', 'caracteristica' -%}
       {%- if caracteristicas.size > 0 -%}
@@ -193,6 +198,17 @@
         { "type": "text", "id": "confirmacion_texto", "label": "Texto de la confirmación", "default": "He revisado la foto y el texto. Sé que los productos personalizados no se pueden devolver por desistimiento." }
       ]
     },
+    {
+      "type": "texto_extra",
+      "name": "Campo de texto extra",
+      "settings": [
+        { "type": "text", "id": "etiqueta", "label": "Nombre del campo", "default": "Texto" },
+        { "type": "checkbox", "id": "obligatorio", "label": "Obligatorio", "default": false },
+        { "type": "range", "id": "max", "label": "Máximo de caracteres", "min": 1, "max": 60, "step": 1, "default": 15 },
+        { "type": "text", "id": "ayuda", "label": "Texto de ayuda" }
+      ]
+    },
+    { "type": "@app" },
     {
       "type": "caracteristica",
       "name": "Característica",

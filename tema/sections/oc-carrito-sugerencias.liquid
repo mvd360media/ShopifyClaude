@@ -1,0 +1,46 @@
+{{ 'oc-styles.css' | asset_url | stylesheet_tag }}
+{% style %}
+  #shopify-section-{{ section.id }} { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; background: {{ section.settings.fondo }}; }
+{% endstyle %}
+{%- comment -%} Sugerencias en el carrito: productos de la colección elegida que no estén ya en el carrito. {%- endcomment -%}
+{%- assign en_carrito = cart.items | map: 'product_id' -%}
+{%- if cart.item_count > 0 and section.settings.coleccion != blank -%}
+<section class="oc-complementos oc-section">
+  <div class="oc-container">
+    <div class="oc-pasos__cabecera">
+      <span class="oc-eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 class="oc-h oc-pasos__titulo">{{ section.settings.titulo }}</h2>
+      {%- if section.settings.texto != blank -%}<p class="oc-sub">{{ section.settings.texto }}</p>{%- endif -%}
+    </div>
+    <div class="oc-grid-productos">
+      {%- assign n = 0 -%}
+      {%- for p in section.settings.coleccion.products -%}
+        {%- unless en_carrito contains p.id -%}
+          {%- if p.available and n < section.settings.limite -%}
+            {% render 'oc-tarjeta', p: p, indice: n, boton: section.settings.boton_texto %}
+            {%- assign n = n | plus: 1 -%}
+          {%- endif -%}
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
+{% schema %}
+{
+  "name": "OC – Sugerencias carrito",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Completa tu regalo" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "¿Le añades otro detalle?" },
+    { "type": "textarea", "id": "texto", "label": "Texto", "default": "Así lo recibe todo junto." },
+    { "type": "collection", "id": "coleccion", "label": "Sugerir productos de esta colección" },
+    { "type": "range", "id": "limite", "label": "Número de productos", "min": 2, "max": 8, "step": 1, "default": 4 },
+    { "type": "text", "id": "boton_texto", "label": "Texto bajo cada producto", "default": "Ver y personalizar" },
+    { "type": "color", "id": "fondo", "label": "Color de fondo", "default": "#F3ECE3" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 64 }
+  ],
+  "presets": [ { "name": "OC – Sugerencias carrito" } ]
+}
+{% endschema %}

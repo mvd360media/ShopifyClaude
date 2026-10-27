@@ -1,0 +1,29 @@
+{%- comment -%}
+  Tarjeta de producto de las secciones Ojo Con (precio con rebaja de campaña y etiquetas).
+  Uso: {% render 'oc-tarjeta', p: producto, indice: forloop.index0, texto_oferta: 'Oferta', boton: 'Personalizar' %}
+{%- endcomment -%}
+<a class="oc-card oc-reveal" style="--oc-delay: {{ indice | default: 0 | times: 0.06 }}s" href="{{ p.url }}">
+  <div class="oc-card__media">
+    {%- if p.featured_media -%}
+      <img src="{{ p.featured_media | image_url: width: 700 }}" alt="{{ p.featured_media.alt | default: p.title | escape }}" loading="lazy" width="700" height="700">
+      {%- if p.media.size > 1 and p.media[1].media_type == 'image' -%}
+        <img class="oc-card__segunda" src="{{ p.media[1] | image_url: width: 700 }}" alt="" loading="lazy" width="700" height="700">
+      {%- endif -%}
+    {%- else -%}
+      <div class="oc-hueco">Sin foto</div>
+    {%- endif -%}
+    {%- capture oc_rebaja -%}{% render 'oc-rebaja', product: p %}{%- endcapture -%}
+    {%- assign oc_rebaja = oc_rebaja | strip | plus: 0 -%}
+    {%- assign p_precio = p.price | minus: oc_rebaja | at_least: 0 -%}
+    {%- assign p_tachado = p.compare_at_price | default: 0 -%}
+    {%- if oc_rebaja > 0 and p_tachado < p.price -%}{%- assign p_tachado = p.price -%}{%- endif -%}
+    {%- if p_tachado > p_precio -%}<span class="oc-card__etiqueta">{% if oc_rebaja > 0 and settings.oc_camp_etiqueta != blank %}{{ settings.oc_camp_etiqueta }}{% else %}{{ texto_oferta | default: 'Oferta' }}{% endif %}</span>{%- endif -%}
+  </div>
+  {% render 'oc-etiquetas', product: p %}
+  <span class="oc-card__titulo">{{ p.title }}</span>
+  <span class="oc-card__precio">
+    {%- if p.price_varies -%}Desde {% endif -%}{{ p_precio | money }}
+    {%- if p_tachado > p_precio -%} <s>{{ p_tachado | money }}</s>{%- endif -%}
+  </span>
+  {%- if boton != blank -%}<span class="oc-card__boton">{{ boton }} →</span>{%- endif -%}
+</a>

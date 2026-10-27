@@ -1,0 +1,175 @@
+{
+  "sections": {
+    "principal": {
+      "type": "oc-producto",
+      "blocks": {
+        "personalizacion": {
+          "type": "personalizacion",
+          "settings": {
+            "titulo": "Personaliza tu colgante",
+            "foto_activa": true,
+            "foto_etiqueta": "Foto de tu mascota",
+            "foto_obligatoria": true,
+            "foto_max_mb": 10,
+            "foto_ayuda": "JPG o PNG, hasta 10 MB. Mejor una foto con la cara bien visible y buena luz.",
+            "texto_activo": true,
+            "texto_etiqueta": "Nombre de tu mascota",
+            "texto_obligatorio": true,
+            "texto_max": 15,
+            "texto_ayuda": "Se graba por delante, bajo la foto.",
+            "tipo_activa": false,
+            "tipo_etiqueta": "Tipografía",
+            "tipo_opciones": "",
+            "tipo_ayuda": "",
+            "confirmacion": true,
+            "confirmacion_texto": "He revisado la foto y los textos. Sé que los productos personalizados no se pueden devolver por desistimiento."
+          }
+        },
+        "extra_1": {
+          "type": "texto_extra",
+          "settings": {
+            "etiqueta": "Frase 1 (detrás)",
+            "obligatorio": false,
+            "max": 14,
+            "ayuda": "Por ejemplo: Siempre conmigo."
+          }
+        },
+        "extra_2": {
+          "type": "texto_extra",
+          "settings": {
+            "etiqueta": "Frase 2 (detrás)",
+            "obligatorio": false,
+            "max": 14,
+            "ayuda": ""
+          }
+        },
+        "extra_3": {
+          "type": "texto_extra",
+          "settings": {
+            "etiqueta": "Frase 3 (detrás)",
+            "obligatorio": false,
+            "max": 14,
+            "ayuda": ""
+          }
+        }
+      },
+      "block_order": [
+        "personalizacion",
+        "extra_1",
+        "extra_2",
+        "extra_3"
+      ],
+      "settings": {
+        "eyebrow": "Hecho a medida bajo pedido",
+        "envio_texto": "",
+        "confianza_1": "Envío a toda España",
+        "confianza_2": "Garantía legal de 3 años",
+        "confianza_3": "Pago 100% seguro",
+        "mostrar_ahorro": true
+      }
+    },
+    "pasos": {
+      "type": "oc-pasos",
+      "blocks": {
+        "p1": {
+          "type": "paso",
+          "settings": {
+            "titulo": "Elige tu modelo",
+            "texto": "Escoge las opciones que más te gusten."
+          }
+        },
+        "p2": {
+          "type": "paso",
+          "settings": {
+            "titulo": "Sube tu foto",
+            "texto": "Una foto nítida y con buena luz. Te contamos cómo elegirla en nuestra guía."
+          }
+        },
+        "p3": {
+          "type": "paso",
+          "settings": {
+            "titulo": "Lo hacemos para ti",
+            "texto": "Se fabrica a medida bajo pedido y te enviamos el número de seguimiento."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "eyebrow": "Así de fácil",
+        "titulo": "Cómo funciona",
+        "fondo": "#F3ECE3"
+      }
+    },
+    "ventajas": {
+      "type": "oc-ventajas",
+      "blocks": {
+        "v1": {
+          "type": "ventaja",
+          "settings": {
+            "icono": "regalo",
+            "titulo": "Hecho a medida para ti",
+            "texto": "Cada pieza se fabrica con tu foto, tu texto o tu nombre cuando haces el pedido."
+          }
+        },
+        "v2": {
+          "type": "ventaja",
+          "settings": {
+            "icono": "envio",
+            "titulo": "Sin sorpresas al recibirlo",
+            "texto": "El precio que ves es el precio final: no pagas nada más al recibirlo."
+          }
+        },
+        "v3": {
+          "type": "ventaja",
+          "settings": {
+            "icono": "seguro",
+            "titulo": "Garantía legal de 3 años",
+            "texto": "Si llega defectuoso o con una personalización distinta de la que pediste, lo solucionamos."
+          }
+        }
+      },
+      "block_order": [
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "settings": {
+        "eyebrow": "Por qué Ojo con ese detalle",
+        "titulo": "Un regalo único, sin complicaciones"
+      }
+    },
+    "complementos": {
+      "type": "oc-complementos",
+      "settings": {
+        "eyebrow": "Completa tu regalo",
+        "titulo": "Combina bien con…",
+        "productos": [
+          "colgante-personalizado-foto-mascota",
+          "llavero-personalizado-foto-mascota",
+          "adorno-navidad-personalizado-mascota"
+        ],
+        "coleccion": "regalos-personalizados",
+        "limite": 4,
+        "columnas": 4,
+        "boton_texto": "Ver y personalizar"
+      }
+    },
+    "marquesina": {
+      "type": "oc-marquesina",
+      "settings": {
+        "frases": "Hecho a medida bajo pedido\nEnvío a toda España\nGarantía legal de 3 años\nPago 100% seguro\nCon foto, nombre o texto"
+      }
+    }
+  },
+  "order": [
+    "principal",
+    "pasos",
+    "ventajas",
+    "complementos",
+    "marquesina"
+  ]
+}

@@ -1,0 +1,48 @@
+{{ 'oc-styles.css' | asset_url | stylesheet_tag }}
+{% style %}
+  #shopify-section-{{ section.id }} { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; background: {{ section.settings.fondo }}; }
+{% endstyle %}
+<section class="oc-pasos oc-section">
+  <div class="oc-container">
+    <div class="oc-pasos__cabecera oc-reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="oc-eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.titulo != blank -%}<h2 class="oc-h oc-pasos__titulo">{{ section.settings.titulo }}</h2>{%- endif -%}
+      {%- if section.settings.texto != blank -%}<p class="oc-sub">{{ section.settings.texto }}</p>{%- endif -%}
+    </div>
+    <ol class="oc-pasos__lista">
+      {%- for block in section.blocks -%}
+        <li class="oc-paso oc-reveal" style="--oc-delay: {{ forloop.index0 | times: 0.08 }}s" {{ block.shopify_attributes }}>
+          <span class="oc-paso__num" aria-hidden="true">{{ forloop.index }}</span>
+          <strong>{{ block.settings.titulo }}</strong>
+          <span class="oc-sub">{{ block.settings.texto }}</span>
+        </li>
+      {%- endfor -%}
+    </ol>
+    {%- if section.settings.boton_texto != blank -%}
+      <div class="oc-pasos__pie"><a class="oc-btn oc-btn--primario" href="{{ section.settings.boton_url | default: '/collections/all' }}">{{ section.settings.boton_texto }}</a></div>
+    {%- endif -%}
+  </div>
+</section>
+{% schema %}
+{
+  "name": "OC – Cómo funciona",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Antetítulo", "default": "Así de fácil" },
+    { "type": "text", "id": "titulo", "label": "Título", "default": "Cómo funciona" },
+    { "type": "textarea", "id": "texto", "label": "Texto" },
+    { "type": "text", "id": "boton_texto", "label": "Botón: texto" },
+    { "type": "url", "id": "boton_url", "label": "Botón: enlace" },
+    { "type": "color", "id": "fondo", "label": "Color de fondo", "default": "#FBF8F4" },
+    { "type": "range", "id": "padding_top", "label": "Espacio superior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding_bottom", "label": "Espacio inferior (px)", "min": 0, "max": 160, "step": 8, "unit": "px", "default": 64 }
+  ],
+  "blocks": [
+    { "type": "paso", "name": "Paso", "settings": [
+      { "type": "text", "id": "titulo", "label": "Título", "default": "Paso" },
+      { "type": "textarea", "id": "texto", "label": "Texto", "default": "Explica el paso en una frase." }
+    ] }
+  ],
+  "presets": [ { "name": "OC – Cómo funciona", "blocks": [ { "type": "paso" }, { "type": "paso" }, { "type": "paso" } ] } ]
+}
+{% endschema %}

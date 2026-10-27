@@ -1537,6 +1537,28 @@
         "id": "oc_camp_etiqueta",
         "label": "Etiqueta",
         "default": "Black Friday"
+      },
+      {
+        "type": "header",
+        "content": "WhatsApp"
+      },
+      {
+        "type": "text",
+        "id": "oc_whatsapp_numero",
+        "label": "Número de WhatsApp (con prefijo, por ejemplo 34600000000)",
+        "info": "Vacío = el botón no se muestra."
+      },
+      {
+        "type": "text",
+        "id": "oc_whatsapp_texto",
+        "label": "Texto del botón",
+        "default": "¿Dudas? Escríbenos"
+      },
+      {
+        "type": "text",
+        "id": "oc_whatsapp_mensaje",
+        "label": "Mensaje inicial",
+        "default": "Hola, tengo una duda sobre un regalo personalizado."
       }
     ]
   }

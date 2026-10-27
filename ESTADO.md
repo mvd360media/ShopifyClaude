@@ -151,7 +151,21 @@
 - Colores enlazados al metacampo de categoría por la usuaria; el valor «Rosa» debería llamarse «Rosado»; las muestras no tienen color (metaobjetos sin código de color; sin permisos para leerlos).
 - Adorno a 24,90 €. Fichas sin «aduana»; política de envío sin «China» (solo «fuera de la UE»); privacidad mantiene China (obligatorio).
 
+## Fichas P3–P6 y estructura (2026-10-27, tarde)
+- Fichas P3 collar con nombre, P4 llavero, P5 collar con foto dentro, P6 colgante para cenizas: contenido en docs/seo/fichas_p3_p6.py, aplicado con herramientas/aplicar_fichas.py (textos, SEO, URL + 301, tipo, categoría, etiquetas, metacampos, plantilla, colecciones, nombres de opciones). Sin borrar variantes ni fotos.
+- Metacampos de filtro: custom.para_quien y custom.ocasion (listas) en los 6 productos.
+- Fotos: P3 23 imágenes de tipografía con «Tipografía X» en vez del texto en inglés + medidas en español; P5 3 infografías traducidas; P4 y P6 rehechas con IA sin la marca UniCrena y en español. Originales en docs/imagenes-originales/. Sustitución con fileUpdate originalSource (mismo media, misma variante).
+- Tema: snippets oc-tarjeta, oc-etiquetas (Personalizable / Llega antes de Navidad / Llega para Reyes, también en tarjetas de Dawn), oc-whatsapp; secciones oc-pasos, oc-complementos, oc-carrito-sugerencias; bloques texto_extra y @app en oc-producto; oc-drop se oculta si su colección está vacía.
+- Plantillas de producto: colgante-foto, adorno-nombre, collar-nombre, llavero-foto, collar-proyeccion, colgante-cenizas (ficha + cómo funciona + ventajas + completa tu regalo + marquesina).
+- Portada: regalos personalizados en general + campaña mascotas; sin sección Black Friday. Carrito con sugerencias de «Regalos personalizados». Colecciones con segunda foto al pasar el ratón.
+- Página nueva: /pages/como-elegir-la-foto.
+
 ## Pendiente
+- [ ] Precios de venta P3–P6 (falta el coste total de cada uno) y plazos/fechas límite P3–P6
+- [ ] Reducir variantes P3 (184) y P5 (75): propuesta en el chat; las borra la usuaria
+- [ ] Menú nuevo (propuesto, sin aplicar), publicar colecciones recuerdo-mascotas y joyeria-personalizada, publicar los 6 productos
+- [ ] Judge.me (instala la usuaria; bloque de aplicación en la ficha), Search & Discovery (filtros), número de WhatsApp
+- [ ] Pedido de prueba con foto tras publicar
 - [ ] Confirmar qué producto es el "Colgante personalizado con foto de mascota" y adaptar su ficha (español, 20 mm, 40/45/50 cm, foto + texto 20 caracteres, fechas límite, precio de venta)
 - [ ] Operativa: no enviar pedidos personalizados al fabricante hasta pasadas 2 h (plazo de cancelación)
 - [ ] 1 dic 2026: hero (imagen oc-h-hero.jpg, textos y botón) + CTA + barra de anuncios → Navidad

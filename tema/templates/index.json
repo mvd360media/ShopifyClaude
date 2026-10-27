@@ -3,21 +3,21 @@
     "hero": {
       "type": "oc-hero",
       "settings": {
-        "eyebrow": "Black Friday · del 20 al 30 de noviembre",
+        "eyebrow": "Regalos personalizados",
         "titulo": "Ojo con ese detalle",
-        "bajada": "Regalos originales y caprichos de temporada que no vas a ver en todas partes. Elegidos uno a uno, para quedar bien sin pensarlo mucho.",
-        "sello": "−5 € del 20 al 30 nov",
-        "boton_texto": "Ver Black Friday",
-        "boton2_texto": "Ideas por persona",
-        "boton2_url": "#regalos",
-        "boton_url": "/collections/black-friday",
-        "imagen": "shopify://shop_images/oc-h-blackfriday.jpg"
+        "bajada": "Regalos personalizados con foto, nombre o texto, hechos a medida para cada persona. Esta temporada: regalos para amantes de las mascotas.",
+        "sello": "Hecho a medida bajo pedido",
+        "boton_texto": "Ver regalos personalizados",
+        "boton2_texto": "Regalos con tu mascota",
+        "boton2_url": "/collections/mascotas",
+        "boton_url": "/collections/regalos-personalizados",
+        "imagen": "shopify://shop_images/colgante-personalizado-foto-mascota-tres-colores.avif"
       }
     },
     "marquesina": {
       "type": "oc-marquesina",
       "settings": {
-        "frases": "Envío a toda España\n14 días para devolver\nPago 100% seguro\nRegalos que se notan\nNuevas colecciones cada temporada"
+        "frases": "Hecho a medida bajo pedido\nEnvío a toda España\nGarantía legal de 3 años\nPago 100% seguro\nCon foto, nombre o texto"
       }
     },
     "drop": {
@@ -25,7 +25,7 @@
       "settings": {
         "eyebrow": "Temporada de Navidad",
         "titulo": "Especial Navidad",
-        "texto": "Detalles para estas fiestas: para regalar, decorar y contar los días. Disponible hasta el 6 de enero.",
+        "texto": "Detalles personalizados para estas fiestas. Mira en cada producto la fecha límite para recibirlo a tiempo.",
         "fecha_fin": "2027-01-06",
         "texto_fin": "Disponible durante",
         "coleccion": "navidad",
@@ -41,18 +41,18 @@
           "type": "tarjeta",
           "settings": {
             "titulo": "Para ella",
-            "subtitulo": "Ver ideas",
+            "subtitulo": "Joyas con su nombre o su foto",
             "url": "/collections/para-ella",
-            "imagen": "shopify://shop_images/oc-t-ella.jpg"
+            "imagen": "shopify://shop_images/collar-nombre-personalizado-plateado.webp"
           }
         },
         "r2": {
           "type": "tarjeta",
           "settings": {
             "titulo": "Para él",
-            "subtitulo": "Ver ideas",
+            "subtitulo": "Detalles que sí va a usar",
             "url": "/collections/para-el",
-            "imagen": "shopify://shop_images/oc-t-el.jpg"
+            "imagen": "shopify://shop_images/llavero-foto-perro-acero-inoxidable.webp"
           }
         },
         "r3": {
@@ -67,10 +67,10 @@
         "r4": {
           "type": "tarjeta",
           "settings": {
-            "titulo": "Menos de 20 €",
-            "subtitulo": "Detalles que suman",
-            "url": "/collections/menos-de-20",
-            "imagen": "shopify://shop_images/oc-t-menos20.jpg"
+            "titulo": "Amantes de las mascotas",
+            "subtitulo": "Con la foto de su mascota",
+            "url": "/collections/mascotas",
+            "imagen": "shopify://shop_images/colgante-foto-mascota-colores-disponibles.avif"
           }
         }
       },
@@ -93,8 +93,8 @@
           "type": "ventaja",
           "settings": {
             "icono": "ojo",
-            "titulo": "Seleccionado con ojo",
-            "texto": "Cada producto pasa un filtro: que sorprenda, que sea útil y que quede bonito al regalarlo."
+            "titulo": "Hecho a medida",
+            "texto": "Cada regalo se personaliza con tu foto, tu nombre o tu frase. Nada de regalos en serie."
           }
         },
         "v2": {
@@ -109,8 +109,8 @@
           "type": "ventaja",
           "settings": {
             "icono": "seguro",
-            "titulo": "Compra sin riesgo",
-            "texto": "Pago seguro, seguimiento del envío y 14 días para devolver si no te convence."
+            "titulo": "Compra tranquila",
+            "texto": "Pago seguro, seguimiento del envío y garantía legal de 3 años en todos los productos."
           }
         }
       },
@@ -131,21 +131,21 @@
           "type": "pregunta",
           "settings": {
             "pregunta": "¿Cuánto tarda mi pedido?",
-            "respuesta": "Preparamos tu pedido en 1–3 días laborables y lo recibes en España en un plazo total de 7 a 15 días laborables. Te enviamos el número de seguimiento por email."
+            "respuesta": "Los productos personalizados se fabrican bajo pedido: el plazo estimado de cada uno aparece en su ficha. El resto, de 7 a 15 días laborables. Siempre te enviamos el número de seguimiento."
           }
         },
         "q2": {
           "type": "pregunta",
           "settings": {
             "pregunta": "¿Llega a tiempo para Navidad o Reyes?",
-            "respuesta": "Para Navidad, pide antes del 1 de diciembre. Para Reyes, antes del 12 de diciembre. Después de esas fechas no podemos garantizar que llegue a tiempo."
+            "respuesta": "Cada producto indica en su ficha la fecha límite para recibirlo antes de Navidad o de Reyes. Pide antes de esa fecha."
           }
         },
         "q3": {
           "type": "pregunta",
           "settings": {
             "pregunta": "¿Puedo devolver un producto?",
-            "respuesta": "Sí. Tienes 14 días desde que lo recibes para devolverlo sin dar explicaciones. Escríbenos y te indicamos cómo hacerlo."
+            "respuesta": "Los productos no personalizados tienen 14 días para devolverlos. Los personalizados se hacen a medida y no admiten devolución por arrepentimiento, pero tienen garantía legal de 3 años si llegan defectuosos o con una personalización distinta."
           }
         },
         "q4": {
@@ -172,40 +172,82 @@
       ],
       "settings": {
         "eyebrow": "Antes de pedir",
-        "titulo": "Preguntas frecuentes"
+        "titulo": "Preguntas frecuentes",
+        "texto": "¿Te queda alguna duda? Escríbenos y te respondemos en un plazo de 48 horas laborables."
       }
     },
     "cta": {
       "type": "oc-cta",
       "settings": {
         "titulo": "¿Ya sabes qué regalar?",
-        "texto": "Black Friday: 5 € menos del 20 al 30 de noviembre. Adelanta tus regalos y quedas como un rey.",
-        "boton_texto": "Ver Black Friday",
-        "boton_url": "/collections/black-friday"
+        "texto": "Elige tu regalo, personalízalo y pide con tiempo: cada ficha te dice la fecha límite.",
+        "boton_texto": "Personaliza el tuyo",
+        "boton_url": "/collections/regalos-personalizados"
       }
     },
-    "black_friday": {
+    "pasos": {
+      "type": "oc-pasos",
+      "settings": {
+        "eyebrow": "Así de fácil",
+        "titulo": "Tu regalo personalizado en 3 pasos",
+        "texto": "Sin complicaciones: tú pones el detalle y nosotros lo convertimos en regalo.",
+        "boton_texto": "Personaliza el tuyo",
+        "boton_url": "/collections/regalos-personalizados",
+        "fondo": "#FBF8F4"
+      },
+      "blocks": {
+        "p1": {
+          "type": "paso",
+          "settings": {
+            "titulo": "Elige tu regalo",
+            "texto": "Colgantes, collares, llaveros y adornos que se personalizan."
+          }
+        },
+        "p2": {
+          "type": "paso",
+          "settings": {
+            "titulo": "Personalízalo",
+            "texto": "Sube una foto o escribe el nombre o la frase que quieras."
+          }
+        },
+        "p3": {
+          "type": "paso",
+          "settings": {
+            "titulo": "Lo hacemos para ti",
+            "texto": "Se fabrica a medida bajo pedido y te enviamos el número de seguimiento."
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ]
+    },
+    "campana": {
       "type": "oc-drop",
       "settings": {
-        "eyebrow": "Del 20 al 30 de noviembre",
-        "titulo": "Especial Black Friday",
-        "texto": "Nuestra selección para Black Friday y Cyber Monday: del 20 al 30 de noviembre, 5 € menos en cada producto de la colección. Ideal para adelantar los regalos de Navidad.",
-        "fecha_fin": "2026-12-01",
-        "texto_fin": "Termina en",
-        "texto_terminado": "Colección terminada",
-        "boton_texto": "Ver toda la colección Black Friday",
-        "coleccion": "black-friday",
-        "ocultar_al_terminar": true,
-        "fondo": "#F3ECE3"
+        "coleccion": "mascotas",
+        "eyebrow": "Campaña de temporada",
+        "titulo": "Regalos con la foto de tu mascota",
+        "texto": "Colgantes y llaveros con la foto de tu perro o tu gato: para regalar o para llevarla siempre contigo.",
+        "fecha_fin": "",
+        "boton_texto": "Ver todos los regalos con mascota",
+        "texto_oferta": "Oferta",
+        "limite": 8,
+        "columnas": 4,
+        "fondo": "#F3ECE3",
+        "ocultar_al_terminar": true
       }
     }
   },
   "order": [
     "hero",
     "marquesina",
-    "black_friday",
-    "drop",
+    "pasos",
+    "campana",
     "regalos",
+    "drop",
     "ventajas",
     "faq",
     "cta"

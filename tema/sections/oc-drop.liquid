@@ -1,5 +1,19 @@
 {{ 'oc-styles.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'oc-scripts.js' | asset_url }}" defer></script>
+
+
+{%- assign coleccion = section.settings.coleccion -%}
+{%- assign oc_terminada = false -%}
+{%- if section.settings.ocultar_al_terminar and section.settings.fecha_fin != blank -%}
+  {%- assign oc_hoy = 'now' | date: '%Y%m%d' | plus: 0 -%}
+  {%- assign oc_fin = section.settings.fecha_fin | date: '%Y%m%d' | plus: 0 -%}
+  {%- if oc_fin > 0 and oc_hoy >= oc_fin -%}{%- assign oc_terminada = true -%}{%- endif -%}
+{%- endif -%}
+{%- assign oc_vacia = false -%}
+{%- if section.settings.coleccion == blank or section.settings.coleccion.products_count == 0 -%}{%- assign oc_vacia = true -%}{%- endif -%}
+{%- assign oc_mostrar = false -%}
+{%- if request.design_mode -%}{%- assign oc_mostrar = true -%}{%- elsif oc_terminada == false and oc_vacia == false -%}{%- assign oc_mostrar = true -%}{%- endif -%}
+{%- if oc_mostrar -%}
 {% style %}
   #shopify-section-{{ section.id }} {
     padding-top: {{ section.settings.padding_top }}px;
@@ -9,15 +23,6 @@
   #shopify-section-{{ section.id }} .oc-drop__titulo { font-size: clamp(30px, 4.5vw, {{ section.settings.heading_size }}px); }
   #shopify-section-{{ section.id }} .oc-grid-productos { --oc-cols: {{ section.settings.columnas }}; }
 {% endstyle %}
-
-{%- assign coleccion = section.settings.coleccion -%}
-{%- assign oc_terminada = false -%}
-{%- if section.settings.ocultar_al_terminar and section.settings.fecha_fin != blank -%}
-  {%- assign oc_hoy = 'now' | date: '%Y%m%d' | plus: 0 -%}
-  {%- assign oc_fin = section.settings.fecha_fin | date: '%Y%m%d' | plus: 0 -%}
-  {%- if oc_fin > 0 and oc_hoy >= oc_fin -%}{%- assign oc_terminada = true -%}{%- endif -%}
-{%- endif -%}
-{%- if oc_terminada == false or request.design_mode -%}
 <section class="oc-drop oc-section">
   <div class="oc-container">
     <div class="oc-drop__cabecera oc-reveal">
@@ -36,26 +41,7 @@
     <div class="oc-grid-productos">
       {%- if coleccion != blank and coleccion.products_count > 0 -%}
         {%- for p in coleccion.products limit: section.settings.limite -%}
-          <a class="oc-card oc-reveal" style="--oc-delay: {{ forloop.index0 | times: 0.06 }}s" href="{{ p.url }}">
-            <div class="oc-card__media">
-              {%- if p.featured_media -%}
-                <img src="{{ p.featured_media | image_url: width: 700 }}" alt="{{ p.featured_media.alt | default: p.title | escape }}" loading="lazy" width="700" height="700">
-              {%- else -%}
-                <div class="oc-hueco">Sin foto</div>
-              {%- endif -%}
-              {%- capture oc_rebaja -%}{% render 'oc-rebaja', product: p %}{%- endcapture -%}
-              {%- assign oc_rebaja = oc_rebaja | strip | plus: 0 -%}
-              {%- assign p_precio = p.price | minus: oc_rebaja | at_least: 0 -%}
-              {%- assign p_tachado = p.compare_at_price | default: 0 -%}
-              {%- if oc_rebaja > 0 and p_tachado < p.price -%}{%- assign p_tachado = p.price -%}{%- endif -%}
-              {%- if p_tachado > p_precio -%}<span class="oc-card__etiqueta">{% if oc_rebaja > 0 and settings.oc_camp_etiqueta != blank %}{{ settings.oc_camp_etiqueta }}{% else %}{{ section.settings.texto_oferta }}{% endif %}</span>{%- endif -%}
-            </div>
-            <span class="oc-card__titulo">{{ p.title }}</span>
-            <span class="oc-card__precio">
-              {%- if p.price_varies -%}Desde {% endif -%}{{ p_precio | money }}
-              {%- if p_tachado > p_precio -%} <s>{{ p_tachado | money }}</s>{%- endif -%}
-            </span>
-          </a>
+          {% render 'oc-tarjeta', p: p, indice: forloop.index0, texto_oferta: section.settings.texto_oferta %}
         {%- endfor -%}
       {%- else -%}
         {%- for i in (1..section.settings.columnas) -%}

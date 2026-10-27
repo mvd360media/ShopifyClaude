@@ -90,13 +90,13 @@
       pers.dataset.ocListo = '1';
       var form = pers.closest('form');
       var error = pers.querySelector('[data-oc-error]');
-      var texto = pers.querySelector('[data-oc-contador]');
-      if (texto) {
-        var cuenta = pers.querySelector('[data-oc-cuenta]');
+      pers.querySelectorAll('[data-oc-contador]').forEach(function (texto) {
+        var cuenta = texto.parentNode.querySelector('[data-oc-cuenta]');
+        if (!cuenta) return;
         var contar = function () { cuenta.textContent = Array.from(texto.value).length; };
         texto.addEventListener('input', contar);
         contar();
-      }
+      });
       var fallo = function (campo, mensaje) {
         error.textContent = mensaje;
         error.hidden = false;

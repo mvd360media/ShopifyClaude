@@ -43,3 +43,13 @@ def subir_media_producto(product_id,path,alt=''):
         if s['status']=='FAILED': raise RuntimeError('procesado fallido')
         time.sleep(2)
     raise RuntimeError('tiempo de espera agotado')
+
+def reemplazar_imagen(media_id, path, filename=None, alt=None):
+    """Sustituye el contenido de una imagen existente (mismo media, misma posición y variantes)."""
+    f = {"id": media_id, "originalSource": staged(path)}
+    if filename: f["filename"] = filename
+    if alt is not None: f["alt"] = alt
+    r = run('''mutation($f:[FileUpdateInput!]!){fileUpdate(files:$f){files{id fileStatus} userErrors{field message code}}}''', {"f": [f]})
+    e = r['fileUpdate']['userErrors']
+    if e: raise RuntimeError(e)
+    return r['fileUpdate']['files'][0]['id']

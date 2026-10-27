@@ -18,23 +18,31 @@
       "blocks": {
         "subtotal": {
           "type": "subtotal",
-          "settings": {
-          }
+          "settings": {}
         },
         "buttons": {
           "type": "buttons",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
         "subtotal",
         "buttons"
       ]
+    },
+    "sugerencias": {
+      "type": "oc-carrito-sugerencias",
+      "settings": {
+        "coleccion": "regalos-personalizados",
+        "limite": 4,
+        "titulo": "¿Le añades otro detalle?",
+        "texto": "Así lo recibe todo junto."
+      }
     }
   },
   "order": [
     "cart-items",
+    "sugerencias",
     "cart-footer"
   ]
 }

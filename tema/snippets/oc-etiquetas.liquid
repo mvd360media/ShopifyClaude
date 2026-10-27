@@ -1,0 +1,13 @@
+{%- comment -%}
+  Etiquetas de tarjeta: «Personalizable» (si el producto tiene el metacampo custom.personalizacion)
+  y la de fecha límite (según custom.aviso_fechas: menciona Navidad o Reyes).
+  Uso: {% render 'oc-etiquetas', product: producto %}
+{%- endcomment -%}
+{%- assign oc_aviso = product.metafields.custom.aviso_fechas.value | default: '' -%}
+{%- if product.metafields.custom.personalizacion.value != blank or oc_aviso != blank -%}
+  <span class="oc-etiquetas">
+    {%- if product.metafields.custom.personalizacion.value != blank -%}<span class="oc-etiqueta">Personalizable</span>{%- endif -%}
+    {%- if oc_aviso contains 'Navidad' -%}<span class="oc-etiqueta oc-etiqueta--fecha">🎄 Llega antes de Navidad</span>
+    {%- elsif oc_aviso contains 'Reyes' -%}<span class="oc-etiqueta oc-etiqueta--fecha">👑 Llega para Reyes</span>{%- endif -%}
+  </span>
+{%- endif -%}
