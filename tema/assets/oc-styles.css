@@ -4,8 +4,8 @@
   --oc-fondo-alt: #F3ECE3;
   --oc-tinta: #1E1B2E;
   --oc-tinta-suave: #5B5668;
-  --oc-coral: #FF5A4E;
-  --oc-coral-hover: #E9473C;
+  --oc-coral: #B9532E;
+  --oc-coral-hover: #9E4526;
   --oc-temporada: #1F5E4A;
   --oc-titulares: 'Bricolage Grotesque', 'DM Sans', -apple-system, sans-serif;
   --oc-texto: 'DM Sans', -apple-system, 'Segoe UI', sans-serif;
@@ -28,7 +28,7 @@
 
 /* Botones */
 .oc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 28px; border-radius: 999px; font: 700 16px/1 var(--oc-texto); text-decoration: none; border: 2px solid transparent; cursor: pointer; transition: transform .25s var(--oc-ease), background-color .25s, color .25s, box-shadow .25s; }
-.oc-btn--primario { background: var(--oc-coral); color: #fff; box-shadow: 0 8px 24px -10px rgba(255, 90, 78, .7); }
+.oc-btn--primario { background: var(--oc-coral); color: #fff; box-shadow: 0 8px 24px -10px rgba(185, 83, 46, .6); }
 .oc-btn--primario:hover { background: var(--oc-coral-hover); transform: translateY(-2px); }
 .oc-btn--secundario { background: transparent; color: var(--oc-tinta); border-color: var(--oc-tinta); }
 .oc-btn--secundario:hover { background: var(--oc-tinta); color: var(--oc-fondo); }

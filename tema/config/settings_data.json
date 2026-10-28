@@ -2,7 +2,7 @@
   "current": "Dawn",
   "presets": {
     "Dawn": {
-      "logo_width": 90,
+      "logo_width": 220,
       "customer_account_menu": "customer-account-main-menu",
       "color_schemes": {
         "scheme-1": {
@@ -10,7 +10,7 @@
             "background": "#FBF8F4",
             "background_gradient": "",
             "text": "#1E1B2E",
-            "button": "#FF5A4E",
+            "button": "#B9532E",
             "button_label": "#FFFFFF",
             "secondary_button_label": "#1E1B2E",
             "shadow": "#1E1B2E"
@@ -43,7 +43,7 @@
             "background": "#1E1B2E",
             "background_gradient": "",
             "text": "#FBF8F4",
-            "button": "#FF5A4E",
+            "button": "#B9532E",
             "button_label": "#FFFFFF",
             "secondary_button_label": "#FBF8F4",
             "shadow": "#1E1B2E"
@@ -51,11 +51,11 @@
         },
         "scheme-5": {
           "settings": {
-            "background": "#FF5A4E",
+            "background": "#B9532E",
             "background_gradient": "",
             "text": "#FFFFFF",
             "button": "#FFFFFF",
-            "button_label": "#FF5A4E",
+            "button_label": "#B9532E",
             "secondary_button_label": "#FFFFFF",
             "shadow": "#1E1B2E"
           }
@@ -157,8 +157,8 @@
       "sale_badge_color_scheme": "scheme-5",
       "sold_out_badge_color_scheme": "scheme-3",
       "brand_headline": "Ojo con ese detalle",
-      "brand_description": "<p>Regalos y caprichos de temporada que no vas a ver en todas partes.</p>",
-      "brand_image_width": 100,
+      "brand_description": "<p>Regalos personalizados y a medida: con la foto, el nombre o el texto que tú elijas.</p>",
+      "brand_image_width": 90,
       "social_twitter_link": "",
       "social_facebook_link": "",
       "social_pinterest_link": "",
@@ -191,11 +191,11 @@
           }
         }
       },
-      "favicon": "shopify://shop_images/oc-favicon.png",
+      "favicon": "shopify://shop_images/oc-icono.png",
       "oc_marca": "Ojo Con Ese Detalle",
       "oc_seo_titulo_inicio": "Regalos originales para cada temporada | Ojo Con Ese Detalle",
       "oc_seo_descripcion_inicio": "Regalos originales y caprichos elegidos uno a uno: ideas para ella, para él, amigo invisible y menos de 20 €. Colecciones de Black Friday y Navidad. Envío a España.",
-      "oc_seo_imagen": "shopify://shop_images/oc-h-blackfriday.jpg",
+      "oc_seo_imagen": "shopify://shop_images/oc-compartir.jpg",
       "oc_camp_activa": false,
       "oc_camp_coleccion": "black-friday",
       "oc_camp_importe": 5,
@@ -206,7 +206,9 @@
       "oc_whatsapp_texto": "¿Dudas? Escríbenos",
       "oc_whatsapp_mensaje": "Hola, tengo una duda sobre un regalo personalizado.",
       "oc_envio_gratis": true,
-      "oc_envio_gratis_texto": "Envío gratis a península y Baleares"
+      "oc_envio_gratis_texto": "Envío gratis a península y Baleares",
+      "logo": "shopify://shop_images/oc-logo-horizontal.png",
+      "brand_image": "shopify://shop_images/oc-icono-transparente.png"
     }
   }
 }

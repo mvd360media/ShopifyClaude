@@ -1,7 +1,7 @@
 # Crea las páginas legales en la tienda (ejecutar desde la raíz del proyecto).
 # NOTA (2026-10-17): estas páginas se sustituyeron por las políticas de Shopify; se conserva como referencia.
 import sys,json; sys.path.insert(0,'herramientas'); from gql import run
-EMAIL="mvd360media@gmail.com"
+EMAIL="pedidos@ojoconesedetalle.es"
 PEND='<strong>[PENDIENTE: nombre o razón social, NIF y dirección del titular]</strong>'
 paginas=[
 ("Envíos y plazos","envios",True,f"""

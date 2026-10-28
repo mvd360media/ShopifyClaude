@@ -210,3 +210,10 @@
 - Problemas vistos en el pago: casilla «Enviarme novedades» PREMARCADA (RGPD: debe ir desmarcada); el envío dice «Se envía el siguiente día hábil» (falso para productos bajo pedido; también sale una fecha estimada en el email).
 - Canales: solo Tienda online, Point of Sale y Shop. Productos publicados solo en Tienda online. Falta instalar Google & YouTube y Facebook & Instagram.
 - Sin acceso para comprobar: carritos abandonados, Shopify Payments, facturas.
+
+## Revisión completa y logo (2026-10-28, noche)
+- Logo: docs/marca/ (original, horizontal transparente, icono, icono transparente, compartir 1200x628, logo-email). Subidos a Archivos: oc-logo-horizontal.png (cabecera, 220 px), oc-icono.png (favicon), oc-icono-transparente.png (pie), oc-compartir.jpg (imagen al compartir).
+- Colores: coral #FF5A4E → terracota del logo #B9532E (contraste 4,8 con blanco); hover #9E4526.
+- Corregido: código PRUEBA100% desactivado; email de todas las políticas → pedidos@; FAQ (plazos 2–4 semanas, fechas límite por producto, quitada pregunta de Black Friday); Quiénes somos (48 h, garantía 3 años en vez de 14 días); colecciones Navidad/Para ella/Para él/Amigo invisible con textos y SEO de regalos personalizados; artículo amigo invisible (adorno 24,90 €); menú sin «Para mascotas» (vacía); pie con texto nuevo; «Colecciones» y «Tu carrito está vacío».
+- DSers vuelve a escribir compareAtPrice con el coste del proveedor: borrados otra vez (196 variantes). Hay que desactivar en DSers la sincronización de precio de comparación.
+- Pendiente usuaria: formato de moneda «34,90 €», logo en emails y en el pago, quitar «Se envía el siguiente día hábil».
