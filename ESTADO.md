@@ -197,3 +197,9 @@
 - [ ] Judge.me, Search & Discovery (filtros), canales de Google y Meta, Search Console (la usuaria)
 - [x] IVA de importación P3–P6 lo paga la usuaria (confirmado)
 - Reseñas: aviso «Opiniones de compradores de este mismo producto en AliExpress» encima de los bloques de app (ajuste resenas_aviso de oc-producto); estrellas activadas en las colecciones. Judge.me (Reviews + Importer) instalado por la usuaria. Search & Discovery instalado.
+
+## Envíos y email de confirmación (2026-10-28)
+- Envíos comprobados: una sola zona «España» sin Canarias, Ceuta ni Melilla (península + Baleares). Zonas UE e Internacional borradas. Tarifas: Estándar 6,99 € y gratis desde 55 €.
+- Textos «toda España» → «península y Baleares»: política de envío, FAQ, Quiénes somos (publicados) y tema (confianza + marquesina; pendiente de publicar si el inicio de sesión del CLI caducó).
+- Email de confirmación corregido en docs/emails/email-confirmacion-corregido.liquid: mensaje propio en la rama de envío normal (estaba en la de recogida dividida), aviso de 2 h para corregir la personalización, y foto/texto visibles en todas las líneas (antes solo en tarjetas regalo).
+- Recomendación: envío gratis siempre durante el lanzamiento (el coste de envío ya va incluido en el coste del proveedor). IVA en envíos sigue DESACTIVADO: si se cobra envío, hay que activarlo.
