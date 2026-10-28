@@ -218,3 +218,4 @@
 - DSers vuelve a escribir compareAtPrice con el coste del proveedor: borrados otra vez (196 variantes). Hay que desactivar en DSers la sincronización de precio de comparación.
 - Pendiente usuaria: formato de moneda «34,90 €», logo en emails y en el pago, quitar «Se envía el siguiente día hábil».
 - Manual de gestión para la persona que lleve los pedidos: Claude Docs https://claude.ai/artifact/DqVs7f3Aw41wUMfNcHk4cx (rutina diaria, paso a paso DSers/AliExpress, chat con proveedor, plantillas, productos, problemas, calendario).
+- Manual solo de pedidos (para la pareja de la usuaria): https://claude.ai/artifact/FydAWSTEamLymnJ1W9FEdn
