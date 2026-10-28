@@ -55,7 +55,7 @@ dict(handle="colgante-para-cenizas-de-mascota", img="P6", tags=["Recuerdo de mas
 <p>Para que el grabado salga bien, elige una foto donde se vea bien su cara. Te ayudamos con {GUIA}.</p>
 <h2>Qué tener en cuenta al elegirlo</h2>
 <ul>
-<li><strong>Material:</strong> el nuestro es de acero inoxidable, según el fabricante.</li>
+<li><strong>Material:</strong> el nuestro es de acero inoxidable.</li>
 <li><strong>Tamaño:</strong> el corazón mide 2,5 × 2 cm y la cadena, 50 cm.</li>
 <li><strong>Si es un regalo:</strong> es un detalle de apoyo muy agradecido para alguien que acaba de perder a su mascota.</li>
 </ul>

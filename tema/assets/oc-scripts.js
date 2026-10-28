@@ -159,7 +159,54 @@
     });
   }
 
-  function init() { initReveal(); initCuentaAtras(); initGaleria(); initVariantes(); initPersonalizacion(); }
+
+  function initCarritoEmergente() {
+    document.querySelectorAll('[data-oc-producto][data-oc-ajax]').forEach(function (root) {
+      if (root.dataset.ocAjaxListo) return;
+      root.dataset.ocAjaxListo = '1';
+      var form = root.querySelector('form[action*="/cart/add"]');
+      var dialogo = root.parentNode.querySelector('[data-oc-emergente]') || document.querySelector('[data-oc-emergente]');
+      if (!form || !dialogo || typeof dialogo.showModal !== 'function') return;
+      var boton = form.querySelector('[type="submit"]');
+      var error = form.querySelector('[data-oc-error]');
+      dialogo.querySelectorAll('[data-oc-cerrar]').forEach(function (b) { b.addEventListener('click', function () { dialogo.close(); }); });
+      dialogo.addEventListener('click', function (e) { if (e.target === dialogo) dialogo.close(); });
+      form.addEventListener('submit', function (e) {
+        if (e.defaultPrevented) return;
+        e.preventDefault();
+        var texto = boton ? boton.textContent : '';
+        if (boton) { boton.disabled = true; boton.textContent = 'Añadiendo…'; }
+        fetch(window.Shopify && Shopify.routes ? Shopify.routes.root + 'cart/add.js' : '/cart/add.js', {
+          method: 'POST', body: new FormData(form), headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' }
+        }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+          .then(function (res) {
+            if (boton) { boton.disabled = false; boton.textContent = texto; }
+            if (!res.ok) {
+              if (error) { error.textContent = res.j.description || 'No se ha podido añadir. Inténtalo de nuevo.'; error.hidden = false; }
+              return;
+            }
+            var it = res.j;
+            var img = it.image ? '<img src="' + it.image + '" alt="" width="72" height="72">' : '';
+            var precio = it.final_line_price !== undefined ? (it.final_line_price / 100).toFixed(2).replace('.', ',') + ' €' : '';
+            dialogo.querySelector('[data-oc-emergente-producto]').innerHTML = img + '<div><strong>' + it.product_title + '</strong><span>' +
+              (it.variant_title && it.variant_title !== 'Default Title' ? it.variant_title : '') + '</span><span>' + precio + '</span></div>';
+            dialogo.querySelectorAll('.oc-reveal').forEach(function (x) { x.classList.add('oc-visible'); });
+            dialogo.showModal();
+            fetch('/?sections=cart-icon-bubble').then(function (r) { return r.json(); }).then(function (s) {
+              var b = document.getElementById('cart-icon-bubble');
+              if (b && s['cart-icon-bubble']) {
+                var tmp = document.createElement('div'); tmp.innerHTML = s['cart-icon-bubble'];
+                var nuevo = tmp.querySelector('.shopify-section') || tmp;
+                b.innerHTML = nuevo.innerHTML;
+              }
+            }).catch(function () {});
+          })
+          .catch(function () { if (boton) { boton.disabled = false; boton.textContent = texto; } form.submit(); });
+      });
+    });
+  }
+
+  function init() { initReveal(); initCuentaAtras(); initGaleria(); initVariantes(); initPersonalizacion(); initCarritoEmergente(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
   document.addEventListener('shopify:section:load', init);
 })();

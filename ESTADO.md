@@ -180,6 +180,14 @@
 - Navidad: los 6 personalizados. Mascotas: + collar de proyección. Amigo invisible: etiqueta en los 6.
 - Configuración leída: plan Basic; impuestos incluidos; IVA en envíos DESACTIVADO; envía a ~40 países (debería ser solo España); zona España incluye Canarias, Ceuta y Melilla; tarifas Estándar 6,99 € y 0 €; sin pasarela de pago. Sin permisos para cambiar envíos, mercados ni pagos.
 
+## Carrito y ventana emergente (2026-10-28)
+- Las sugerencias del carrito no se veían: las tarjetas usan la animación oc-reveal y la página del carrito no cargaba oc-scripts.js. Ahora oc-carrito-sugerencias, oc-complementos y oc-pasos cargan el script.
+- Ventana emergente al añadir al carrito (oc-producto, ajuste «emergente», colección de sugerencias, por defecto Regalos personalizados): envío por /cart/add.js con FormData (la foto se sube igual; probado en el llavero), actualiza la burbuja del carrito y muestra 3 sugerencias.
+- Envío gratis preparado en el tema (Configuración del tema → Ojo Con → «Anunciar envío gratis»), APAGADO hasta que la tarifa de España sea 0 €. Hoy: España 6,99 € (gratis desde 55 €), además zonas UE (8,99 €) e Internacional (12,99 €) que hay que borrar.
+- Quitado «(según el fabricante)» de fichas, artículos y colección de joyería (la usuaria ha comprobado las muestras).
+- Collar de proyección: marca «YILI» tapada en 8 fotos. Llavero: opción «Default Title» → «Modelo: Corazón con huellas».
+- Quiénes somos y artículo del amigo invisible sin enlace a «Menos de 20 €». Colecciones «Menos de 20 €» y «Black Friday» despublicadas con 301 (a Amigo invisible y Regalos personalizados).
+
 ## Pendiente
 - [ ] Pasarela de pago, envíos solo a España (decidir Canarias/Ceuta/Melilla), IVA en envíos, facturas, email de dominio (la usuaria; pasos en el chat)
 - [x] 2026-10-27: PUBLICADOS los 6 productos personalizados y los 6 artículos. Prueba real de carrito OK: foto subida a cdn.shopify.com/.../uploads, texto y tipografía como propiedades; sugerencias del carrito y WhatsApp visibles.

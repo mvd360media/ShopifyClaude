@@ -1559,6 +1559,23 @@
         "id": "oc_whatsapp_mensaje",
         "label": "Mensaje inicial",
         "default": "Hola, tengo una duda sobre un regalo personalizado."
+      },
+      {
+        "type": "header",
+        "content": "Envío gratis"
+      },
+      {
+        "type": "checkbox",
+        "id": "oc_envio_gratis",
+        "label": "Anunciar envío gratis en las fichas",
+        "default": false,
+        "info": "Actívalo solo cuando la tarifa de envío sea 0 € en Configuración → Envío y entrega."
+      },
+      {
+        "type": "text",
+        "id": "oc_envio_gratis_texto",
+        "label": "Texto",
+        "default": "Envío gratis"
       }
     ]
   }

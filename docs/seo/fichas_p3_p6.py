@@ -37,7 +37,7 @@ FICHAS = {
 <li><strong>Para parejas:</strong> con las tipografías «Dos nombres» o «Infinito» caben los nombres de los dos.</li>
 <li><strong>Para mamá:</strong> con el nombre de sus hijos.</li>
 </ul>
-<h2>Características (según el fabricante)</h2>
+<h2>Características</h2>
 <ul>
 <li><strong>Material:</strong> acero inoxidable</li>
 <li><strong>Colores:</strong> plateado o dorado</li>
@@ -87,7 +87,7 @@ FICHAS = {
 <li><strong>Para él:</strong> un regalo práctico que va a usar todos los días.</li>
 <li><strong>En recuerdo de tu mascota:</strong> una forma de llevarla siempre cerca.</li>
 </ul>
-<h2>Características (según el fabricante)</h2>
+<h2>Características</h2>
 <ul>
 <li><strong>Material:</strong> acero inoxidable 304</li>
 <li><strong>Forma:</strong> corazón con huellas recortadas</li>
@@ -136,7 +136,7 @@ FICHAS = {
 <li><strong>Para mamá:</strong> una foto de la familia que puede llevar siempre.</li>
 <li><strong>Para tu mejor amiga:</strong> un recuerdo que solo vosotras sabéis que está ahí.</li>
 </ul>
-<h2>Características (según el fabricante)</h2>
+<h2>Características</h2>
 <ul>
 <li><strong>Material:</strong> acero inoxidable y cobre</li>
 <li><strong>Colores:</strong> plateado, dorado o rosado</li>
@@ -186,7 +186,7 @@ FICHAS = {
 <li><strong>Para ti:</strong> para llevar cerca una parte de tu mascota.</li>
 <li><strong>Para alguien que ha perdido a su mascota:</strong> un detalle de apoyo que se agradece.</li>
 </ul>
-<h2>Características (según el fabricante)</h2>
+<h2>Características</h2>
 <ul>
 <li><strong>Material:</strong> acero inoxidable</li>
 <li><strong>Colgante:</strong> corazón de 2,5 × 2 cm</li>

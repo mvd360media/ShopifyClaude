@@ -221,3 +221,19 @@
   .oc-galeria__miniaturas button { flex: 0 0 76px; width: 76px; }
 }
 @media (min-width: 990px) { .oc-galeria__principal img { object-fit: contain; } }
+
+/* VENTANA AL AÑADIR AL CARRITO */
+.oc-emergente { border: 0; padding: 0; border-radius: 24px; width: min(720px, calc(100vw - 32px)); max-height: calc(100vh - 32px); background: var(--oc-fondo, #FBF8F4); color: var(--oc-tinta); box-shadow: 0 24px 60px -20px rgba(0,0,0,.45); }
+.oc-emergente::backdrop { background: rgba(30,27,46,.55); }
+.oc-emergente__caja { position: relative; display: grid; gap: 18px; padding: 28px; }
+.oc-emergente__cerrar { position: absolute; top: 12px; right: 14px; border: 0; background: transparent; font-size: 30px; line-height: 1; cursor: pointer; color: var(--oc-tinta); }
+.oc-emergente__ok { margin: 0; font-weight: 800; font-size: 20px; color: var(--oc-temporada, #1F5E4A); }
+.oc-emergente__producto { display: flex; gap: 14px; align-items: center; }
+.oc-emergente__producto img { width: 72px; height: 72px; object-fit: cover; border-radius: 12px; }
+.oc-emergente__producto div { display: grid; gap: 2px; font-size: 14px; }
+.oc-emergente__botones { display: flex; flex-wrap: wrap; gap: 10px; }
+.oc-emergente__botones .oc-btn { flex: 1 1 200px; }
+.oc-emergente__sub { margin: 6px 0 0; font-weight: 800; font-size: 18px; }
+.oc-emergente__sugerencias { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.oc-emergente__sugerencias .oc-card__titulo { font-size: 14px; }
+@media (max-width: 600px) { .oc-emergente__sugerencias { grid-template-columns: repeat(2, minmax(0, 1fr)); } .oc-emergente__sugerencias > :nth-child(3) { display: none; } .oc-emergente__caja { padding: 22px 18px; } }

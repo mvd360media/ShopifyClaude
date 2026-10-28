@@ -11,7 +11,7 @@
 {% endstyle %}
 
 {%- assign v = product.selected_or_first_available_variant -%}
-<section class="oc-producto oc-section" data-oc-producto data-oc-moneda="{{ shop.money_format | escape }}">
+<section class="oc-producto oc-section" data-oc-producto data-oc-moneda="{{ shop.money_format | escape }}"{% if section.settings.emergente %} data-oc-ajax{% endif %}>
   <div class="oc-container oc-producto__grid">
     <div class="oc-galeria" data-oc-galeria>
       {%- assign primera = product.selected_variant.featured_media | default: product.featured_media -%}
@@ -91,7 +91,9 @@
         {%- if pers -%}{% render 'oc-personalizacion', block: pers, extras: pers_extras, section_id: section.id %}{%- endif -%}
         {%- capture oc_aviso -%}{% render 'oc-aviso', product: product %}{%- endcapture -%}
         {%- assign oc_aviso = oc_aviso | strip -%}
-        {%- if oc_aviso != blank -%}<p class="oc-aviso-fechas">{{ oc_aviso }}</p>{%- endif -%}
+        {%- if oc_aviso != blank or settings.oc_envio_gratis -%}
+          <p class="oc-aviso-fechas">{% if settings.oc_envio_gratis and settings.oc_envio_gratis_texto != blank %}🚚 {{ settings.oc_envio_gratis_texto }}{% if oc_aviso != blank %} · {% endif %}{% endif %}{{ oc_aviso }}</p>
+        {%- endif -%}
         <input type="hidden" name="id" value="{{ v.id }}">
         <button type="submit" name="add" class="oc-btn oc-btn--primario oc-compra__boton"
                 data-texto="{{ section.settings.boton_texto | escape }}" data-agotado="{{ section.settings.agotado_texto | escape }}" data-no-disponible="{{ section.settings.no_disponible_texto | escape }}"
@@ -106,7 +108,7 @@
       {%- endif -%}
 
       <div class="oc-confianza">
-        <div>{% render 'oc-icono', nombre: 'envio' %}{{ section.settings.confianza_1 }}</div>
+        <div>{% render 'oc-icono', nombre: 'envio' %}{% if settings.oc_envio_gratis and settings.oc_envio_gratis_texto != blank %}{{ settings.oc_envio_gratis_texto }}{% else %}{{ section.settings.confianza_1 }}{% endif %}</div>
         <div>{% render 'oc-icono', nombre: 'devolucion' %}{{ section.settings.confianza_2 }}</div>
         <div>{% render 'oc-icono', nombre: 'seguro' %}{{ section.settings.confianza_3 }}</div>
       </div>
@@ -141,6 +143,33 @@
   </div>
 </section>
 
+{%- if section.settings.emergente -%}
+  {%- assign oc_sug_col = section.settings.emergente_coleccion | default: collections['regalos-personalizados'] -%}
+  <dialog class="oc-emergente" data-oc-emergente aria-labelledby="oc-emergente-titulo-{{ section.id }}">
+    <div class="oc-emergente__caja">
+      <button type="button" class="oc-emergente__cerrar" data-oc-cerrar aria-label="Cerrar">×</button>
+      <p class="oc-emergente__ok" id="oc-emergente-titulo-{{ section.id }}">✓ ¡Añadido al carrito!</p>
+      <div class="oc-emergente__producto" data-oc-emergente-producto></div>
+      <div class="oc-emergente__botones">
+        <a class="oc-btn oc-btn--primario" href="{{ routes.cart_url }}">Ver carrito y pagar</a>
+        <button type="button" class="oc-btn oc-btn--secundario" data-oc-cerrar>Seguir comprando</button>
+      </div>
+      {%- if oc_sug_col != blank -%}
+        <p class="oc-emergente__sub">{{ section.settings.emergente_titulo }}</p>
+        <div class="oc-emergente__sugerencias">
+          {%- assign n = 0 -%}
+          {%- for p in oc_sug_col.products -%}
+            {%- if p.id != product.id and p.available and n < 3 -%}
+              {% render 'oc-tarjeta', p: p, indice: n, boton: 'Ver y personalizar' %}
+              {%- assign n = n | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </dialog>
+{%- endif -%}
+
 <script type="application/ld+json">
   {{ product | structured_data }}
 </script>
@@ -163,6 +192,10 @@
     { "type": "text", "id": "confianza_1", "label": "Garantía 1", "default": "Envío a toda España" },
     { "type": "text", "id": "confianza_2", "label": "Garantía 2", "default": "14 días para devolver" },
     { "type": "text", "id": "confianza_3", "label": "Garantía 3", "default": "Pago 100% seguro" },
+    { "type": "header", "content": "Ventana al añadir al carrito" },
+    { "type": "checkbox", "id": "emergente", "label": "Mostrar ventana con sugerencias al añadir al carrito", "default": true },
+    { "type": "collection", "id": "emergente_coleccion", "label": "Sugerir productos de esta colección", "info": "Vacío = Regalos personalizados." },
+    { "type": "text", "id": "emergente_titulo", "label": "Título de las sugerencias", "default": "Completa tu regalo" },
     { "type": "header", "content": "Reseñas" },
     { "type": "text", "id": "resenas_aviso", "label": "Aviso sobre el origen de las reseñas", "default": "Opiniones de compradores de este mismo producto en AliExpress.", "info": "Obligatorio si muestras reseñas que no son de tu tienda. Se ve encima del bloque de la aplicación de reseñas." },
     { "type": "header", "content": "Qué incluye" },
