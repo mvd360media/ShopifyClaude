@@ -203,3 +203,10 @@
 - Textos «toda España» → «península y Baleares»: política de envío, FAQ, Quiénes somos (publicados) y tema (confianza + marquesina; pendiente de publicar si el inicio de sesión del CLI caducó).
 - Email de confirmación corregido en docs/emails/email-confirmacion-corregido.liquid: mensaje propio en la rama de envío normal (estaba en la de recogida dividida), aviso de 2 h para corregir la personalización, y foto/texto visibles en todas las líneas (antes solo en tarjetas regalo).
 - Recomendación: envío gratis siempre durante el lanzamiento (el coste de envío ya va incluido en el coste del proveedor). IVA en envíos sigue DESACTIVADO: si se cobra envío, hay que activarlo.
+
+## Revisión general (2026-10-28, tarde)
+- Envío: tarifa Estándar gratis (dos tarifas: 1 € sin condición y 0 € desde 1 €; en el pago solo sale GRATIS). IVA en envíos ACTIVADO. Pago: tarjeta, PayPal, Shop Pay y Google Pay visibles en el pago (probado con carrito real, sin pagar).
+- Tema: aviso «Envío gratis a península y Baleares» activado (ficha, confianza y marquesina). Política de envío y FAQ actualizadas.
+- Problemas vistos en el pago: casilla «Enviarme novedades» PREMARCADA (RGPD: debe ir desmarcada); el envío dice «Se envía el siguiente día hábil» (falso para productos bajo pedido; también sale una fecha estimada en el email).
+- Canales: solo Tienda online, Point of Sale y Shop. Productos publicados solo en Tienda online. Falta instalar Google & YouTube y Facebook & Instagram.
+- Sin acceso para comprobar: carritos abandonados, Shopify Payments, facturas.

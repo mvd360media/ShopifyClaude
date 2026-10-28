@@ -204,7 +204,9 @@
       "oc_camp_etiqueta": "Black Friday",
       "oc_whatsapp_numero": "34603603668",
       "oc_whatsapp_texto": "¿Dudas? Escríbenos",
-      "oc_whatsapp_mensaje": "Hola, tengo una duda sobre un regalo personalizado."
+      "oc_whatsapp_mensaje": "Hola, tengo una duda sobre un regalo personalizado.",
+      "oc_envio_gratis": true,
+      "oc_envio_gratis_texto": "Envío gratis a península y Baleares"
     }
   }
 }

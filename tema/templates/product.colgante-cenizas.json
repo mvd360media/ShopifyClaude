@@ -62,7 +62,7 @@
       "settings": {
         "eyebrow": "Hecho a medida bajo pedido",
         "envio_texto": "",
-        "confianza_1": "Envío a península y Baleares",
+        "confianza_1": "Envío gratis a península y Baleares",
         "confianza_2": "Garantía legal de 3 años",
         "confianza_3": "Pago 100% seguro",
         "mostrar_ahorro": true
@@ -161,7 +161,7 @@
     "marquesina": {
       "type": "oc-marquesina",
       "settings": {
-        "frases": "Hecho a medida bajo pedido\nEnvío a península y Baleares\nGarantía legal de 3 años\nPago 100% seguro\nCon foto, nombre o texto"
+        "frases": "Hecho a medida bajo pedido\nEnvío gratis a península y Baleares\nGarantía legal de 3 años\nPago 100% seguro\nCon foto, nombre o texto"
       }
     }
   },
