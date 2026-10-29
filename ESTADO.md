@@ -221,3 +221,4 @@
 - Manual solo de pedidos (para la pareja de la usuaria): https://claude.ai/artifact/FydAWSTEamLymnJ1W9FEdn
 - Tarea programada: revisión semanal los lunes 10:17 (Madrid), id trig_01XSYCYqY77hHQo8XfvfQVBS, vuelve a esta sesión.
 - Píxel de Metricool: snippets/oc-metricool.liquid, renderizado al final de layout/theme.liquid; solo se carga con consentimiento de análisis (Customer Privacy API). Probado desde EE. UU.: carga.
+- 2026-10-29: título y descripción de la portada (los que salen en Google) actualizados: «Regalos personalizados y a medida | Ojo Con Ese Detalle» y descripción con «Envío gratis a península y Baleares». Colecciones despublicadas black-friday y menos-de-20 sin «toda España».
