@@ -1,0 +1,20 @@
+{%- comment -%} Píxel de Metricool. Solo se carga si el visitante acepta las cookies de análisis (banner de cookies de Shopify). {%- endcomment -%}
+<script>
+  (function () {
+    var cargado = false;
+    function cargar() {
+      var cp = window.Shopify && window.Shopify.customerPrivacy;
+      if (cargado || !cp || !cp.analyticsProcessingAllowed()) return;
+      cargado = true;
+      var img = new Image(1, 1);
+      img.alt = '';
+      img.src = 'https://tracker.metricool.com/c3po.jpg?hash=e2890fea9ec66c27979ccec878219f4c';
+    }
+    document.addEventListener('visitorConsentCollected', cargar);
+    if (window.Shopify && window.Shopify.loadFeatures) {
+      window.Shopify.loadFeatures([{ name: 'consent-tracking-api', version: '0.1' }], function (error) {
+        if (!error) cargar();
+      });
+    }
+  })();
+</script>

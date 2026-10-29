@@ -220,3 +220,4 @@
 - Manual de gestión para la persona que lleve los pedidos: Claude Docs https://claude.ai/artifact/DqVs7f3Aw41wUMfNcHk4cx (rutina diaria, paso a paso DSers/AliExpress, chat con proveedor, plantillas, productos, problemas, calendario).
 - Manual solo de pedidos (para la pareja de la usuaria): https://claude.ai/artifact/FydAWSTEamLymnJ1W9FEdn
 - Tarea programada: revisión semanal los lunes 10:17 (Madrid), id trig_01XSYCYqY77hHQo8XfvfQVBS, vuelve a esta sesión.
+- Píxel de Metricool: snippets/oc-metricool.liquid, renderizado al final de layout/theme.liquid; solo se carga con consentimiento de análisis (Customer Privacy API). Probado desde EE. UU.: carga.
